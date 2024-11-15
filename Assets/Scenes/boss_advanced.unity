@@ -1538,7 +1538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681489261}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: -0.00000001533286, z: 0.00000000780787, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: 0.000000015332867, z: -0.000000007807873, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3260,7 +3260,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239307038}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: 0.00000001533286, z: -0.00000000780787, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: -0.000000015332867, z: 0.000000007807873, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3525,7 +3525,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400907634}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: -0.000000015332867, z: 0.000000007807873, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: 0.00000001533286, z: -0.00000000780787, w: 0.89111495}
   m_LocalPosition: {x: 20, y: 11, z: 2.0000005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3848,7 +3848,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529143529}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: -0.000000015332867, z: 0.000000007807873, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: 0.00000001533286, z: -0.00000000780787, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11677,28 +11677,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19eacc8973b76a642940f3b7c5b17ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _MeleeAttackDamage: 0
-  _fanProjectileDamage: 0
-  _sweepProjectileDamage: 0
-  _crossProjectileDamage: 0
-  _ultimateAttackDamage: 0
-  _crossAndFanProjectileLifetime: 0
-  _sweepProjectileLifetime: 0
-  _meleeCooldown: 0
-  _fanCooldown: 0
-  _sweepRangedCooldown: 0
-  _crossRangedCooldown: 0
-  _dashCooldown: 0
-  _ultimateCooldown: 0
-  _meleeMaxDistance: 4
+  _MeleeAttackDamage: 50
+  _fanProjectileDamage: 15
+  _sweepProjectileDamage: 25
+  _crossProjectileDamage: 30
+  _ultimateAttackDamage: 9999
+  _crossAndFanProjectileLifetime: 3
+  _sweepProjectileLifetime: 2
+  _meleeCooldown: 10
+  _fanRangedCooldown: 10
+  _sweepRangedCooldown: 60
+  _crossRangedCooldown: 6
+  _dashCooldown: 10
+  _ultimateCooldown: 180
+  _meleeMaxDistance: 15
   _dashMovementSpeed: 40
-  _fanProjectileMovementSpeed: 0
-  _sweepProjectileMovementSpeed: 0
-  _crossProjectileMovementSpeed: 0
+  _fanAndCrossProjectileMovementSpeed: 15
+  _sweepProjectileMovementSpeed: 10
   _bossMovementSpeed: 6.5
-  _bossMaxUltimateUses: 0
-  _bossUltimateHPThreshold: 0
-  _bossMaxHP: 200
+  _bossMaxUltimateUses: 2
+  _bossUltimateHPThreshold: 1000
+  _bossMaxHP: 2000
 --- !u!4 &7071485531560407489
 Transform:
   m_ObjectHideFlags: 0
