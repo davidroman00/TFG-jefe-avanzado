@@ -38,7 +38,7 @@ public class BossAnimationEvents : MonoBehaviour
     // }
     public void UltimateAttackStart()
     {
-        Instantiate(_bossReferences.UltimateWeaponPrefab, _bossReferences.LeftSimpleRangedSpawnPoint.position, _bossReferences.LeftSimpleRangedSpawnPoint.rotation);
+        //Instantiate(_bossReferences.UltimateWeaponPrefab, _bossReferences.LeftSimpleRangedSpawnPoint.position, _bossReferences.LeftSimpleRangedSpawnPoint.rotation);
     }
     public void UltimateBreakManager()
     {

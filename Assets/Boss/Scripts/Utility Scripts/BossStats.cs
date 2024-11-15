@@ -5,7 +5,13 @@ public class BossStats : MonoBehaviour
    //Here, there are stored every variable relative to the boss statistics.
    //The fact that there are some values at 0 on inspector means they are not necessary for the current phase of the boss.
    [SerializeField]
-   float _MeleeAttackDamage;
+   float _armor;
+   [SerializeField]
+   float _healthRegeneration;
+   [SerializeField]
+   float _cooldownReduction;
+   [SerializeField]
+   float _meleeAttackDamage;
    [SerializeField]
    float _fanProjectileDamage;
    [SerializeField]
@@ -51,7 +57,10 @@ public class BossStats : MonoBehaviour
 
    //This section is in charge of exporting every variable in ReadOnly, thanks to the getter.
    //If you want to modify these variables dynamically, you need a setter instead.
-   public float SimpleMeleeAttackDamage { get { return _MeleeAttackDamage; } }
+   public float Armor { get { return _armor; } set { _armor = value; } }
+   public float HealthRegeneration { get { return _healthRegeneration; } set { _healthRegeneration = value; } }
+   public float CooldownReduction { get { return _cooldownReduction; } set { _cooldownReduction = value; } }
+   public float SimpleMeleeAttackDamage { get { return _meleeAttackDamage; } }
    public float FanProjectileDamage { get { return _fanProjectileDamage; } }
    public float SweepProjectileDamage { get { return _sweepProjectileDamage; } }
    public float CrossProjectileDamage { get { return _crossProjectileDamage; } }
