@@ -5,53 +5,59 @@ public class BossStats : MonoBehaviour
    //Here, there are stored every variable relative to the boss statistics.
    //The fact that there are some values at 0 on inspector means they are not necessary for the current phase of the boss.
    [SerializeField]
-   float _simpleMeleeAttackDamage;
+   float _MeleeAttackDamage;
+   //[SerializeField]
+   //float _patternMeleeFinalAttackDamage;
    [SerializeField]
-   float _patternMeleeFinalAttackDamage;
+   float _fanProjectileDamage;
    [SerializeField]
-   float _simpleRangedProjectileDamage;
+   float _sweepProjectileDamage;
    [SerializeField]
-   float _patternRangedProjectileDamage;
-   [SerializeField]
-   float _areaAttackDamagePerSecond;
+   float _crossProjectileDamage;
+   //[SerializeField]
+   //float _areaAttackDamagePerSecond;
    [SerializeField]
    float _ultimateAttackDamage;
    [SerializeField]
-   float _patternRangedProjectileLifetime;
+   float _crossAndFanProjectileLifetime;
    [SerializeField]
-   float _simpleRangedProjectileLifetime;
+   float _sweepProjectileLifetime;
+   //[SerializeField]
+   //float _areaDuration;
    [SerializeField]
-   float _areaDuration;
+   float _meleeCooldown;
+   //[SerializeField]
+   //float _patternMeleeCooldown;
    [SerializeField]
-   float _simpleMeleeCooldown;
+   float _fanCooldown;
    [SerializeField]
-   float _patternMeleeCooldown;
+   float _sweepRangedCooldown;
    [SerializeField]
-   float _simpleRangedCooldown;
+   float _crossRangedCooldown;
+   //[SerializeField]
+   //float _areaCooldown;
    [SerializeField]
-   float _patternRangedCooldown;
-   [SerializeField]
-   float _areaCooldown;
-   [SerializeField]
-   float _simpleDashCooldown;
-   [SerializeField]
-   float _backDashCooldown;
+   float _dashCooldown;
+   //[SerializeField]
+   //float _backDashCooldown;
    [SerializeField]
    float _ultimateCooldown;
    [SerializeField]
    float _meleeMaxDistance;
-   [SerializeField]
-   float _rangedMinDistance;
-   [SerializeField]
-   float _dashMinDistance;
-   [SerializeField]
-   float _dashMaxDistance;
+   //[SerializeField]
+   //float _rangedMinDistance;
+   //[SerializeField]
+   //float _dashMinDistance;
+   //[SerializeField]
+   //float _dashMaxDistance;
    [SerializeField]
    float _dashMovementSpeed;
    [SerializeField]
-   float _simpleRangedProjectileMovementSpeed;
+   float _fanProjectileMovementSpeed;
    [SerializeField]
-   float _patternRangedProjectileMovementSpeed;
+   float _sweepProjectileMovementSpeed;
+   [SerializeField]
+   float _crossProjectileMovementSpeed;
    [SerializeField]
    float _bossMovementSpeed;
    [SerializeField]
@@ -60,43 +66,46 @@ public class BossStats : MonoBehaviour
    float _bossUltimateHPThreshold;
    [SerializeField]
    float _bossMaxHP;
-   bool _isLastMeleePatternAttack;
-   bool _isActualBackdashActive;
+   //bool _isLastMeleePatternAttack;
+   //bool _isActualBackdashActive;
    bool _isActualDashActive;
    bool _isOutsideArena;
 
    //This section is in charge of exporting every variable in ReadOnly, thanks to the getter.
    //If you want to modify these variables dynamically, you need a setter instead.
-   public float SimpleMeleeAttackDamage { get { return _simpleMeleeAttackDamage; } }
-   public float PatternMeleeFinalAttackDamage { get { return _patternMeleeFinalAttackDamage; } }
-   public float SimpleRangedProjectileDamage { get { return _simpleRangedProjectileDamage; } }
-   public float PatternRangedProjectileDamage { get { return _patternRangedProjectileDamage; } }
-   public float AreaAttackDamagePerSecond { get { return _areaAttackDamagePerSecond; } }
+   public float SimpleMeleeAttackDamage { get { return _MeleeAttackDamage; } }
+   //public float PatternMeleeFinalAttackDamage { get { return _patternMeleeFinalAttackDamage; } }
+   public float FanProjectileDamage { get { return _fanProjectileDamage; } }
+   public float SweepProjectileDamage { get { return _sweepProjectileDamage; } }
+   public float CrossProjectileDamage { get { return _crossProjectileDamage; } }
+   //public float AreaAttackDamagePerSecond { get { return _areaAttackDamagePerSecond; } }
    public float UltimateAttackDamage { get { return _ultimateAttackDamage; } }
-   public float PatternRangedProjectileLifetime { get { return _patternRangedProjectileLifetime; } }
-   public float SimpleRangedProjectileLifetime { get { return _simpleRangedProjectileLifetime; } }
-   public float AreaDuration { get { return _areaDuration; } }
-   public float SimpleMeleeCooldown { get { return _simpleMeleeCooldown; } }
-   public float PatternMeleeCooldown { get { return _patternMeleeCooldown; } }
-   public float SimpleRangedCooldown { get { return _simpleRangedCooldown; } }
-   public float PatternRangedCooldown { get { return _patternRangedCooldown; } }
-   public float AreaCooldown { get { return _areaCooldown; } }
-   public float SimpleDashCooldown { get { return _simpleDashCooldown; } }
-   public float BackDashCooldown { get { return _backDashCooldown; } }
+   public float CrossAndFanProjectileLifetime { get { return _crossAndFanProjectileLifetime; } }
+   public float SweepProjectileLifetime { get { return _sweepProjectileLifetime; } }
+   //public float AreaDuration { get { return _areaDuration; } }
+   public float MeleeCooldown { get { return _meleeCooldown; } }
+   //public float PatternMeleeCooldown { get { return _patternMeleeCooldown; } }
+   public float FanRangedCooldown { get { return _fanCooldown; } }
+   public float SweepRangedCooldown { get { return _sweepRangedCooldown; } }
+   public float CrossRangedCooldown { get { return _crossRangedCooldown; } }
+   //public float AreaCooldown { get { return _areaCooldown; } }
+   public float DashCooldown { get { return _dashCooldown; } }
+   //public float BackDashCooldown { get { return _backDashCooldown; } }
    public float UltimateCooldown { get { return _ultimateCooldown; } }
    public float MeleeMaxDistance { get { return _meleeMaxDistance; } }
-   public float RangedMinDistance { get { return _rangedMinDistance; } }
-   public float DashMinDistance { get { return _dashMinDistance; } }
-   public float DashMaxDistance { get { return _dashMaxDistance; } }
+   //public float RangedMinDistance { get { return _rangedMinDistance; } }
+   //public float DashMinDistance { get { return _dashMinDistance; } }
+   //public float DashMaxDistance { get { return _dashMaxDistance; } }
    public float DashMovementSpeed { get { return _dashMovementSpeed; } }
-   public float SimpleRangedProjectileMovementSpeed { get { return _simpleRangedProjectileMovementSpeed; } }
-   public float PatternRangedProjectileMovementSpeed { get { return _patternRangedProjectileMovementSpeed; } }
+   public float FanProjectileMovementSpeed { get { return _fanProjectileMovementSpeed; } }
+   public float SweepProjectileMovementSpeed { get { return _sweepProjectileMovementSpeed; } }
+   public float CrossProjectileMovementSpeed { get { return _crossProjectileMovementSpeed; } }
    public float BossMovementSpeed { get { return _bossMovementSpeed; } }
    public int BossMaxUltimateUses { get { return _bossMaxUltimateUses; } }
    public float BossUltimateHPThreshold { get { return _bossUltimateHPThreshold; } }
    public float BossMaxHP { get { return _bossMaxHP; } }
-   public bool IsLastMeleePatternAttack { get { return _isLastMeleePatternAttack; } set { _isLastMeleePatternAttack = value; } }
-   public bool IsActualBackdashActive { get { return _isActualBackdashActive; } set { _isActualBackdashActive = value; } }
+   //public bool IsLastMeleePatternAttack { get { return _isLastMeleePatternAttack; } set { _isLastMeleePatternAttack = value; } }
+   //public bool IsActualBackdashActive { get { return _isActualBackdashActive; } set { _isActualBackdashActive = value; } }
    public bool IsActualDashActive { get { return _isActualDashActive; } set { _isActualDashActive = value; } }
    public bool IsOutsideArena { get { return _isOutsideArena; } set { _isOutsideArena = value; } }
 }

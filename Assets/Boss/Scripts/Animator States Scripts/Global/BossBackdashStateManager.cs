@@ -24,11 +24,11 @@ public class BossBackdashStateManager : StateMachineBehaviour
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (_bossStats.IsActualBackdashActive && !_bossStats.IsOutsideArena)
-        //Since the boss is moved through transform.position, it is important to check if the boss is within the arena during the movement, otherwise it could clip thorugh walls.
-        {
-            animator.transform.Translate(_bossStats.DashMovementSpeed * Time.deltaTime * _moveDirection.normalized);
-        }
+        // if (_bossStats.IsActualBackdashActive && !_bossStats.IsOutsideArena)
+        // //Since the boss is moved through transform.position, it is important to check if the boss is within the arena during the movement, otherwise it could clip thorugh walls.
+        // {
+        //     animator.transform.Translate(_bossStats.DashMovementSpeed * Time.deltaTime * _moveDirection.normalized);
+        // }
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

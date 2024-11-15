@@ -3260,7 +3260,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239307038}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: -0.000000015332867, z: 0.000000007807873, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: 0.00000001533286, z: -0.00000000780787, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11677,30 +11677,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19eacc8973b76a642940f3b7c5b17ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _simpleMeleeAttackDamage: 5
-  _patternMeleeFinalAttackDamage: 10
-  _simpleRangedProjectileDamage: 5
-  _patternRangedProjectileDamage: 6
-  _areaAttackDamagePerSecond: 15
+  _MeleeAttackDamage: 0
+  _fanProjectileDamage: 0
+  _sweepProjectileDamage: 0
+  _crossProjectileDamage: 0
   _ultimateAttackDamage: 0
-  _patternRangedProjectileLifetime: 10
-  _simpleRangedProjectileLifetime: 2.5
-  _areaDuration: 15
-  _simpleMeleeCooldown: 9
-  _patternMeleeCooldown: 18
-  _simpleRangedCooldown: 7.5
-  _patternRangedCooldown: 25
-  _areaCooldown: 35
-  _simpleDashCooldown: 5
-  _backDashCooldown: 7.5
+  _crossAndFanProjectileLifetime: 0
+  _sweepProjectileLifetime: 0
+  _meleeCooldown: 0
+  _fanCooldown: 0
+  _sweepRangedCooldown: 0
+  _crossRangedCooldown: 0
+  _dashCooldown: 0
   _ultimateCooldown: 0
   _meleeMaxDistance: 4
-  _rangedMinDistance: 12.5
-  _dashMinDistance: 12
-  _dashMaxDistance: 7.5
   _dashMovementSpeed: 40
-  _simpleRangedProjectileMovementSpeed: 35
-  _patternRangedProjectileMovementSpeed: 3
+  _fanProjectileMovementSpeed: 0
+  _sweepProjectileMovementSpeed: 0
+  _crossProjectileMovementSpeed: 0
   _bossMovementSpeed: 6.5
   _bossMaxUltimateUses: 0
   _bossUltimateHPThreshold: 0

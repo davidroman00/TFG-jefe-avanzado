@@ -10,10 +10,10 @@ public class BossMeleeSimpleStateManager : StateMachineBehaviour
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger("meleeSimple");
-        if (_bossCooldownManager.IsPatternMeleeOnCooldown() && _bossCooldownManager.IsSimpleMeleeOnCooldown())
-        {
-            animator.SetBool("anyMeleeReady", false);
-        }
+        // animator.ResetTrigger("meleeSimple");
+        // if (_bossCooldownManager.IsPatternMeleeOnCooldown() && _bossCooldownManager.IsSimpleMeleeOnCooldown())
+        // {
+        //     animator.SetBool("anyMeleeReady", false);
+        // }
     }
 }

@@ -17,9 +17,9 @@ public class BossMeleeAnimationManager : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         PhaseChangeChecker(animator);
-        PatternMeleeChecker(animator);
-        SimpleMeleeChecker(animator);
-        SimpleDashChecker(animator);
+        // PatternMeleeChecker(animator);
+        // SimpleMeleeChecker(animator);
+        // SimpleDashChecker(animator);
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -37,25 +37,25 @@ public class BossMeleeAnimationManager : StateMachineBehaviour
             animator.SetTrigger("phaseChange");
         }
     }
-    void PatternMeleeChecker(Animator animator)
-    {
-        if ((Vector3.Distance(_bossReferences.PlayerTransform.position, animator.transform.position) <= _bossStats.MeleeMaxDistance) && !_bossCooldownManager.IsPatternMeleeOnCooldown())
-        {
-            animator.SetTrigger("meleePattern");
-        }
-    }
-    void SimpleMeleeChecker(Animator animator)
-    {
-        if ((Vector3.Distance(_bossReferences.PlayerTransform.position, animator.transform.position) <= _bossStats.MeleeMaxDistance) && !_bossCooldownManager.IsSimpleMeleeOnCooldown())
-        {
-            animator.SetTrigger("meleeSimple");
-        }
-    }
-    void SimpleDashChecker(Animator animator)
-    {
-        if ((Vector3.Distance(_bossReferences.PlayerTransform.position, animator.transform.position) >= _bossStats.DashMinDistance) && !_bossCooldownManager.IsSimpleDashOnCooldown())
-        {
-            animator.SetTrigger("dash");
-        }
-    }
+    // void PatternMeleeChecker(Animator animator)
+    // {
+    //     if ((Vector3.Distance(_bossReferences.PlayerTransform.position, animator.transform.position) <= _bossStats.MeleeMaxDistance) && !_bossCooldownManager.IsPatternMeleeOnCooldown())
+    //     {
+    //         animator.SetTrigger("meleePattern");
+    //     }
+    // }
+    // void SimpleMeleeChecker(Animator animator)
+    // {
+    //     if ((Vector3.Distance(_bossReferences.PlayerTransform.position, animator.transform.position) <= _bossStats.MeleeMaxDistance) && !_bossCooldownManager.IsSimpleMeleeOnCooldown())
+    //     {
+    //         animator.SetTrigger("meleeSimple");
+    //     }
+    // }
+    // void SimpleDashChecker(Animator animator)
+    // {
+    //     if ((Vector3.Distance(_bossReferences.PlayerTransform.position, animator.transform.position) >= _bossStats.DashMinDistance) && !_bossCooldownManager.IsSimpleDashOnCooldown())
+    //     {
+    //         animator.SetTrigger("dash");
+    //     }
+    // }
 }

@@ -23,34 +23,34 @@ public class BossCooldownManager : MonoBehaviour
     {
         _bossStats = GetComponent<BossStats>();
     }
-    public bool IsSimpleMeleeOnCooldown()
-    {
-        return Time.time < _lastSimpleMelee + _bossStats.SimpleMeleeCooldown;
-    }
-    public bool IsPatternMeleeOnCooldown()
-    {
-        return Time.time < _lastPatternMelee + _bossStats.PatternMeleeCooldown;
-    }
-    public bool IsSimpleRangedOnCooldown()
-    {
-        return Time.time < _lastSimpleRanged + _bossStats.SimpleRangedCooldown;
-    }
-    public bool IsPatternRangedOnCooldown()
-    {
-        return Time.time < _lastPatternRanged + _bossStats.PatternRangedCooldown;
-    }
-    public bool IsAreaOnCooldown()
-    {
-        return Time.time < _lastArea + _bossStats.AreaCooldown;
-    }
-    public bool IsSimpleDashOnCooldown()
-    {
-        return Time.time < _lastSimpleDash + _bossStats.SimpleDashCooldown;
-    }
-    public bool IsBackDashOnCooldown()
-    {
-        return Time.time < _lastBackdash + _bossStats.BackDashCooldown;
-    }
+    // public bool IsSimpleMeleeOnCooldown()
+    // {
+    //     return Time.time < _lastSimpleMelee + _bossStats.SimpleMeleeCooldown;
+    // }
+    // public bool IsPatternMeleeOnCooldown()
+    // {
+    //     return Time.time < _lastPatternMelee + _bossStats.PatternMeleeCooldown;
+    // }
+    // public bool IsSimpleRangedOnCooldown()
+    // {
+    //     return Time.time < _lastSimpleRanged + _bossStats.SimpleRangedCooldown;
+    // }
+    // public bool IsPatternRangedOnCooldown()
+    // {
+    //     return Time.time < _lastPatternRanged + _bossStats.PatternRangedCooldown;
+    // }
+    // public bool IsAreaOnCooldown()
+    // {
+    //     return Time.time < _lastArea + _bossStats.AreaCooldown;
+    // }
+    // public bool IsSimpleDashOnCooldown()
+    // {
+    //     return Time.time < _lastSimpleDash + _bossStats.SimpleDashCooldown;
+    // }
+    // public bool IsBackDashOnCooldown()
+    // {
+    //     return Time.time < _lastBackdash + _bossStats.BackDashCooldown;
+    // }
     public bool IsUltimateOnCooldown()
     {
         return Time.time < _lastUltimate + _bossStats.UltimateCooldown;
