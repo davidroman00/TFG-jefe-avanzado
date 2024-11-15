@@ -27,13 +27,13 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger("area");
-        animator.ResetTrigger("areaEnd");
-        animator.ResetTrigger("rangedSimple");
-        animator.ResetTrigger("rangedPattern");
-        animator.ResetTrigger("rangedPatternEnd");
+        // animator.ResetTrigger("area");
+        // animator.ResetTrigger("areaEnd");
+        // animator.ResetTrigger("rangedSimple");
+        // animator.ResetTrigger("rangedPattern");
+        // animator.ResetTrigger("rangedPatternEnd");
         animator.ResetTrigger("dash");
-        animator.ResetTrigger("backdash");
+        // animator.ResetTrigger("backdash");
         animator.ResetTrigger("ultimateBreakEnd");
         animator.ResetTrigger("ultimateBreak");
         //Resetting triggers at the exit of this state is important, so triggers don't stack in the animator while waiting for the current animation to end.
