@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class BossHealthManager : MonoBehaviour
-{ 
+{
     BossStats _bossStats;
     [SerializeField]
     BossUIHealthManager _bossUIHealthManager;
@@ -18,13 +18,22 @@ public class BossHealthManager : MonoBehaviour
     }
     void Update()
     {
-        if (_currentHealth <= 0 && this.gameObject.name == "BossCollisionsManagerPhase2"){
-            GetComponentInParent<Animator>().SetTrigger("death"); 
+        if (_bossStats.HealthRegeneration > 0)
+        {
+            BossRegenerateHealt();
+        }
+        if (_currentHealth <= 0)
+        {
+            GetComponentInParent<Animator>().SetTrigger("death");
         }
     }
     public void BossRecieveDamage(float value)
     {
-        _currentHealth -= value;
+        _currentHealth -= value - _bossStats.Armor;
         _bossUIHealthManager.SetCurrentHealth(_currentHealth);
+    }
+    void BossRegenerateHealt()
+    {
+        _currentHealth += _bossStats.HealthRegeneration * Time.deltaTime;
     }
 }

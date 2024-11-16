@@ -3198,7 +3198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239307038}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: -0.000000015332867, z: 0.000000007807873, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: 0.00000001533286, z: -0.00000000780787, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8270,6 +8270,9 @@ MonoBehaviour:
   - {fileID: 1138571178}
   _crossBossPosition: {fileID: 1156464666}
   _meleeAttackSpawnPoint: {fileID: 1582324053}
+  _sweepRangedProjectile: {fileID: 6490449092586672638, guid: d25e6f1d79d90cd41baa09fa5d589d98, type: 3}
+  _fanAndCrossRangedProjectile: {fileID: 6223892065744600617, guid: 9c49b3c24c89a454796973486ff213f0, type: 3}
+  _meleeAttackDevice: {fileID: 1681413290747829276, guid: 97ccaa0e13e38a04abbbbc7948d2199d, type: 3}
   _ultimateBossPosition: {fileID: 12189035}
   _ultimateWeaponSpawnPoint: {fileID: 457310546}
   _ultimateDeviceSpawnPoint: {fileID: 175955015}
