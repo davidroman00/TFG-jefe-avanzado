@@ -63,6 +63,8 @@ public class BossStats : MonoBehaviour
    [SerializeField]
    float _meleeMaxDistance;
    [SerializeField]
+   float _meleeMinDistance;
+   [SerializeField]
    float _dashMovementSpeed;
    [SerializeField]
    float _fanAndCrossProjectileMovementSpeed;
@@ -110,6 +112,7 @@ public class BossStats : MonoBehaviour
    public float AmountOfSpeedDebuffed { get { return _amountOfSpeedDebuffed; } }
    public float AmountOfArmorDebuffed { get { return _amountOfArmorDebuffed; } }
    public float MeleeMaxDistance { get { return _meleeMaxDistance; } }
+   public float MeleeMinDistance { get { return _meleeMinDistance; } }
    public float DashMovementSpeed { get { return _dashMovementSpeed; } }
    public float FanAndCrossProjectileMovementSpeed { get { return _fanAndCrossProjectileMovementSpeed; } }
    public float SweepProjectileMovementSpeed { get { return _sweepProjectileMovementSpeed; } }
