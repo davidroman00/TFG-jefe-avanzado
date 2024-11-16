@@ -6,7 +6,7 @@ public class BossMeleeStateManager : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _bossCooldownManager = animator.GetComponent<BossCooldownManager>();
-        _bossCooldownManager.LastSimpleMelee = Time.time;
+        _bossCooldownManager.LastMelee = Time.time;
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

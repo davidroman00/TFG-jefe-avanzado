@@ -18,7 +18,7 @@ public class BossHealthManager : MonoBehaviour
     }
     void Update()
     {
-        if (_bossStats.HealthRegeneration > 0)
+        if (_bossStats.HealthRegenerationAmount > 0)
         {
             BossRegenerateHealt();
         }
@@ -29,11 +29,11 @@ public class BossHealthManager : MonoBehaviour
     }
     public void BossRecieveDamage(float value)
     {
-        _currentHealth -= value - _bossStats.Armor;
+        _currentHealth -= value - _bossStats.ArmorAmount;
         _bossUIHealthManager.SetCurrentHealth(_currentHealth);
     }
     void BossRegenerateHealt()
     {
-        _currentHealth += _bossStats.HealthRegeneration * Time.deltaTime;
+        _currentHealth += _bossStats.HealthRegenerationAmount * Time.deltaTime;
     }
 }

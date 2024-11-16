@@ -5,11 +5,13 @@ public class BossStats : MonoBehaviour
    //Here, there are stored every variable relative to the boss statistics.
    //The fact that there are some values at 0 on inspector means they are not necessary for the current phase of the boss.
    [SerializeField]
-   float _armor;
+   float _armorAmount;
    [SerializeField]
-   float _healthRegeneration;
+   float _healthRegenerationAmount;
    [SerializeField]
-   float _cooldownReduction;
+   float _cooldownReductionAmount;
+   [SerializeField]
+   float _totalDamageBuff;
    [SerializeField]
    float _meleeAttackDamage;
    [SerializeField]
@@ -37,6 +39,28 @@ public class BossStats : MonoBehaviour
    [SerializeField]
    float _ultimateCooldown;
    [SerializeField]
+   float _buffCooldown;
+   [SerializeField]
+   float _debuffCooldown;
+   [SerializeField]
+   float _buffDuration;
+   [SerializeField]
+   float _debuffDuration;
+   [SerializeField]
+   float _amountOfArmorBuffed;
+   [SerializeField]
+   float _amountOfRegenerationBuffed;
+   [SerializeField]
+   float _amountOfDamageBuffed;
+   [SerializeField]
+   float _amountOfCooldownBuffed;
+   [SerializeField]
+   float _amountOfDamageDebuffed;
+   [SerializeField]
+   float _amountOfSpeedDebuffed;
+   [SerializeField]
+   float _amountOfArmorDebuffed;
+   [SerializeField]
    float _meleeMaxDistance;
    [SerializeField]
    float _dashMovementSpeed;
@@ -57,9 +81,10 @@ public class BossStats : MonoBehaviour
 
    //This section is in charge of exporting every variable in ReadOnly, thanks to the getter.
    //If you want to modify these variables dynamically, you need a setter instead.
-   public float Armor { get { return _armor; } set { _armor = value; } }
-   public float HealthRegeneration { get { return _healthRegeneration; } set { _healthRegeneration = value; } }
-   public float CooldownReduction { get { return _cooldownReduction; } set { _cooldownReduction = value; } }
+   public float ArmorAmount { get { return _armorAmount; } set { _armorAmount = value; } }
+   public float HealthRegenerationAmount { get { return _healthRegenerationAmount; } set { _healthRegenerationAmount = value; } }
+   public float CooldownReductionAmount { get { return _cooldownReductionAmount; } set { _cooldownReductionAmount = value; } }
+   public float TotalDamageBuff { get { return _totalDamageBuff; } }
    public float SimpleMeleeAttackDamage { get { return _meleeAttackDamage; } }
    public float FanProjectileDamage { get { return _fanProjectileDamage; } }
    public float SweepProjectileDamage { get { return _sweepProjectileDamage; } }
@@ -73,6 +98,17 @@ public class BossStats : MonoBehaviour
    public float CrossRangedCooldown { get { return _crossRangedCooldown; } }
    public float DashCooldown { get { return _dashCooldown; } }
    public float UltimateCooldown { get { return _ultimateCooldown; } }
+   public float BuffCooldown { get { return _buffCooldown; } }
+   public float DebuffCooldown { get { return _debuffCooldown; } }
+   public float BuffDuration { get { return _buffDuration; } }
+   public float DebuffDuration { get { return _debuffDuration; } }
+   public float AmountOfArmorBuffed { get { return _amountOfArmorBuffed; } }
+   public float AmountOfRegenerationBuffed { get { return _amountOfRegenerationBuffed; } }
+   public float AmountOfDamageBuffed { get { return _amountOfDamageBuffed; } }
+   public float AmountOfCooldownBuffed { get { return _amountOfCooldownBuffed; } }
+   public float AmountOfDamageDebuffed { get { return _amountOfDamageDebuffed; } }
+   public float AmountOfSpeedDebuffed { get { return _amountOfSpeedDebuffed; } }
+   public float AmountOfArmorDebuffed { get { return _amountOfArmorDebuffed; } }
    public float MeleeMaxDistance { get { return _meleeMaxDistance; } }
    public float DashMovementSpeed { get { return _dashMovementSpeed; } }
    public float FanAndCrossProjectileMovementSpeed { get { return _fanAndCrossProjectileMovementSpeed; } }
