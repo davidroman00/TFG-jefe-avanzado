@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossStats : MonoBehaviour
@@ -11,7 +12,7 @@ public class BossStats : MonoBehaviour
    [SerializeField]
    float _cooldownReductionAmount;
    [SerializeField]
-   float _totalDamageBuff;
+   float _totalDamage;
    [SerializeField]
    float _meleeAttackDamage;
    [SerializeField]
@@ -77,7 +78,7 @@ public class BossStats : MonoBehaviour
    public float ArmorAmount { get { return _armorAmount; } set { _armorAmount = value; } }
    public float HealthRegenerationAmount { get { return _healthRegenerationAmount; } set { _healthRegenerationAmount = value; } }
    public float CooldownReductionAmount { get { return _cooldownReductionAmount; } set { _cooldownReductionAmount = value; } }
-   public float TotalDamageBuff { get { return _totalDamageBuff; } }
+   public float TotalDamage { get { return _totalDamage; } set { _totalDamage = value;} }
    public float SimpleMeleeAttackDamage { get { return _meleeAttackDamage; } }
    public float FanProjectileDamage { get { return _fanProjectileDamage; } }
    public float SweepProjectileDamage { get { return _sweepProjectileDamage; } }

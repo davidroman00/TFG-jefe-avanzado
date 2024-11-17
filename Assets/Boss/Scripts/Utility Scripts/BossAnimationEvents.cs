@@ -4,94 +4,92 @@ public class BossAnimationEvents : MonoBehaviour
 {
     BossReferences _bossReferences;
     BossStats _bossStats;
+    CharacterStats _characterStats;
     Animator _animator;
     int _currentUltimateBreakLoops;
+    float _lastBuff;
+    bool _isBuffActive;
+    float _lastDebuff;
+    bool _isDebuffActive;
     void Awake()
     {
         _bossReferences = GetComponent<BossReferences>();
         _bossStats = GetComponent<BossStats>();
+        _characterStats = FindFirstObjectByType<CharacterStats>();
         _animator = GetComponent<Animator>();
     }
-
+    void Update()
+    {
+        if (_isBuffActive)
+        {
+            CheckBuffDuration();
+        }
+        if (_isDebuffActive)
+        {
+            CheckDebuffDuration();
+        }
+    }
     //These are (mostly) public methods so they can be accessed through an animation event.
     public void MeleeAttackSpawn()
     {
         Instantiate(_bossReferences.MeleeAttackDevice, _bossReferences.MeleeAttackSpawnPoint.position, _bossReferences.MeleeAttackSpawnPoint.rotation);
     }
-    // public void LeftSimpleProjectileSpawn()
-    // {
-    //     Instantiate(_bossReferences.SimpleProjectilePrefab, _bossReferences.LeftSimpleRangedSpawnPoint.position, _bossReferences.LeftSimpleRangedSpawnPoint.rotation);
-    // }
-    // public void RightSimpleProjectileSpawn()
-    // {
-    //     Instantiate(_bossReferences.SimpleProjectilePrefab, _bossReferences.RightSimpleRangedSpawnPoint.position, _bossReferences.RightSimpleRangedSpawnPoint.rotation);
-    // }
-    // public void PatternProjectileSpawnManager()
-    // {
-    //     _currentRangedPatternLoops++;
-    //     switch (_currentRangedPatternLoops)
-    //     {
-    //         case 1:
-    //             PatternProjectileSpawn1();
-    //             break;
-    //         case 2:
-    //             PatternProjectileSpawn2();
-    //             break;
-    //         case 3:
-    //             PatternProjectileSpawn3();
-    //             break;
-    //         case 4:
-    //             PatternProjectileSpawn4();
-    //             break;
-    //         case 5:
-    //             PatternProjectileSpawn5();
-    //             _animator.SetTrigger("rangedPatternEnd");
-    //             _currentRangedPatternLoops = 0;
-    //             break;
-    //     }
-    // }
-    // void PatternProjectileSpawn1()
-    // {
-    //     Instantiate(_bossReferences.PatternProjectilePrefab, _bossReferences.PatternRangedSpawnPoint1.position, _bossReferences.PatternRangedSpawnPoint1.rotation);
-    // }
-    // void PatternProjectileSpawn2()
-    // {
-    //     Instantiate(_bossReferences.PatternProjectilePrefab, _bossReferences.PatternRangedSpawnPoint2.position, _bossReferences.PatternRangedSpawnPoint2.rotation);
-    // }
-    // void PatternProjectileSpawn3()
-    // {
-    //     Instantiate(_bossReferences.PatternProjectilePrefab, _bossReferences.PatternRangedSpawnPoint3.position, _bossReferences.PatternRangedSpawnPoint3.rotation);
-    // }
-    // void PatternProjectileSpawn4()
-    // {
-    //     Instantiate(_bossReferences.PatternProjectilePrefab, _bossReferences.PatternRangedSpawnPoint4.position, _bossReferences.PatternRangedSpawnPoint4.rotation);
-    // }
-    // void PatternProjectileSpawn5()
-    // {
-    //     Instantiate(_bossReferences.PatternProjectilePrefab, _bossReferences.PatternRangedSpawnPoint5.position, _bossReferences.PatternRangedSpawnPoint5.rotation);
-    // }
-    // public void AreaSpawnManager()
-    // {
-    //     _currentAreaLoops++;
-    //     if (_currentAreaLoops >= 3)
-    //     {
-    //         AreaSpawn();
-    //         _animator.SetTrigger("areaEnd");
-    //         _currentAreaLoops = 0;
-    //     }
-    // }
-    // void AreaSpawn()
-    // {
-    //     if (Random.value > .5)
-    //     //This way, the side on which the area is placed is selected randomly
-    //     {
-    //         Instantiate(_bossReferences.AreaPrefab, _bossReferences.LeftAreaSpawnPoint.position, _bossReferences.LeftAreaSpawnPoint.rotation);
-    //     }
-    //     else
-    //     {
-    //         Instantiate(_bossReferences.AreaPrefab, _bossReferences.RightAreaSpawnPoint.position, _bossReferences.RightAreaSpawnPoint.rotation);
-    //     }
-    // }
+    public void FanProjectilesSpawn()
+    {
+        for (int i = 0; i < _bossReferences.FanRangedSpawnPoints.Length; i++)
+            Instantiate(_bossReferences.FanAndCrossRangedProjectile, _bossReferences.FanRangedSpawnPoints[i].position, _bossReferences.FanRangedSpawnPoints[i].rotation);
+    }
+    public void CrossProjectilesSpawn()
+    {
+        for (int i = 0; i < _bossReferences.CrossRangedSpawnPoints.Length; i++)
+            Instantiate(_bossReferences.FanAndCrossRangedProjectile, _bossReferences.CrossRangedSpawnPoints[i].position, _bossReferences.CrossRangedSpawnPoints[i].rotation);
+    }
+    public void SweepProjectilesSpawn()
+    {
+
+    }
+    public void ApplyBuff()
+    {
+        _bossStats.ArmorAmount += _bossStats.AmountOfArmorBuffed;
+        _bossStats.HealthRegenerationAmount += _bossStats.AmountOfRegenerationBuffed;
+        _bossStats.CooldownReductionAmount += _bossStats.AmountOfCooldownBuffed;
+        _bossStats.TotalDamage += _bossStats.AmountOfDamageBuffed;
+
+        _lastBuff = Time.time;
+        _isBuffActive = true;
+    }
+    void CheckBuffDuration()
+    {
+        if (Time.time < _lastBuff + _bossStats.BuffDuration)
+        {
+            _bossStats.ArmorAmount -= _bossStats.AmountOfArmorBuffed;
+            _bossStats.HealthRegenerationAmount -= _bossStats.AmountOfRegenerationBuffed;
+            _bossStats.CooldownReductionAmount -= _bossStats.AmountOfCooldownBuffed;
+            _bossStats.TotalDamage -= _bossStats.AmountOfDamageBuffed;
+
+            _isBuffActive = false;
+        }
+
+    }
+    public void ApplyDebuff()
+    {
+
+        _lastDebuff = Time.time;
+        _isDebuffActive = true;
+    }
+    void CheckDebuffDuration()
+    {
+       if (Time.time < _lastBuff + _bossStats.DebuffDuration)
+        {
+            
+            
+            _isDebuffActive = false;
+        }
+    }
+    public void TeleportToPosition()
+    {
+        transform.position = _bossReferences.ActualTeleportPosition.position;
+    }
     public void UltimateAttackStart()
     {
         Instantiate(_bossReferences.UltimateWeaponPrefab, _bossReferences.UltimateWeaponSpawnPoint.position, _bossReferences.UltimateWeaponSpawnPoint.rotation);

@@ -39,10 +39,6 @@ public class BossCooldownManager : MonoBehaviour
     {
         return Time.time < _lastCrossRanged + _bossStats.CrossRangedCooldown;
     }
-    public bool IsDashOnCooldown()
-    {
-        return Time.time < _lastDash + _bossStats.DashCooldown;
-    }
     public bool IsUltimateOnCooldown()
     {
         return Time.time < _lastUltimate + _bossStats.UltimateCooldown;

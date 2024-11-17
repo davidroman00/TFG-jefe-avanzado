@@ -38,6 +38,7 @@ public class BossReferences : MonoBehaviour
     GameObject _ultimateDevicePrefab;
     [SerializeField]
     Transform _playerTransform;
+    Transform _actualTeleportPosition;
 
     public Transform[] FanRangedSpawnPoints { get { return _fanRangedSpawnPoints; } }
     public Transform[] FanBossPositions { get { return _fanBossPositions; } }
@@ -56,4 +57,5 @@ public class BossReferences : MonoBehaviour
     public GameObject UltimateWeaponPrefab { get { return _ultimateWeaponPrefab; } }
     public GameObject UltimateDevicePrefab { get { return _ultimateDevicePrefab; } }
     public Transform PlayerTransform { get { return _playerTransform; } }
+    public Transform ActualTeleportPosition { get { return _actualTeleportPosition; } set { _actualTeleportPosition = value; } }
 }

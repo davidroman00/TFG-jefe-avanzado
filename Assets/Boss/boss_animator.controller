@@ -709,6 +709,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18ffd8a649e0aa45add5462857ca264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bossStats: {fileID: 0}
+  _bossReferences: {fileID: 0}
+  _playerPosition: {x: 0, y: 0, z: 0}
 --- !u!1101 &-861864233847958972
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1375,13 +1378,12 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: boss_dash
+  m_Name: boss_teleport_to_melee
   m_Speed: 1.25
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2465839013740420152}
   m_StateMachineBehaviours:
-  - {fileID: -873369617476203803}
   - {fileID: -4944657941464953994}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -1391,7 +1393,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ae63b4c75193ea943b75efe54ac20c49, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9cf7dc1c4d3687e4d9eda1ef3e644112, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
