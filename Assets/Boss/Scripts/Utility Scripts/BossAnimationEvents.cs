@@ -4,50 +4,19 @@ public class BossAnimationEvents : MonoBehaviour
 {
     BossReferences _bossReferences;
     BossStats _bossStats;
-    //BossMeleeWeapon _bossMeleeWeapon;
     Animator _animator;
-    int _currentRangedPatternLoops;
-    int _currentAreaLoops;
     int _currentUltimateBreakLoops;
     void Awake()
     {
         _bossReferences = GetComponent<BossReferences>();
         _bossStats = GetComponent<BossStats>();
-        //_bossMeleeWeapon = GetComponentInChildren<BossMeleeWeapon>();
         _animator = GetComponent<Animator>();
     }
 
     //These are (mostly) public methods so they can be accessed through an animation event.
-    // public void SimpleMeleeAttackStart()
-    // {
-    //     _bossMeleeWeapon.enabled = true;
-    // }
-    // public void SimpleMeleeAttackMid()
-    // {
-    //     _bossMeleeWeapon.enabled = false;
-    // }
-    // public void PatternFinalAttackStart()
-    // {
-    //     _bossMeleeWeapon.enabled = true;
-    //     _bossStats.IsLastMeleePatternAttack = true;
-    // }
-    // public void PatternFinalAttackEnd()
-    // {
-    //     _bossMeleeWeapon.enabled = false;
-    //     _bossStats.IsLastMeleePatternAttack = false;
-    // }
-    public void UltimateAttackStart()
+    public void MeleeAttackSpawn()
     {
-        //Instantiate(_bossReferences.UltimateWeaponPrefab, _bossReferences.LeftSimpleRangedSpawnPoint.position, _bossReferences.LeftSimpleRangedSpawnPoint.rotation);
-    }
-    public void UltimateBreakManager()
-    {
-        _currentUltimateBreakLoops++;
-        if (_currentUltimateBreakLoops >= 5)
-        {
-            _animator.SetTrigger("ultimateBreakEnd");
-            _currentUltimateBreakLoops = 0;
-        }
+        Instantiate(_bossReferences.MeleeAttackDevice, _bossReferences.MeleeAttackSpawnPoint.position, _bossReferences.MeleeAttackSpawnPoint.rotation);
     }
     // public void LeftSimpleProjectileSpawn()
     // {
@@ -123,25 +92,17 @@ public class BossAnimationEvents : MonoBehaviour
     //         Instantiate(_bossReferences.AreaPrefab, _bossReferences.RightAreaSpawnPoint.position, _bossReferences.RightAreaSpawnPoint.rotation);
     //     }
     // }
-    // public void ActualBackdashStart()
-    // {
-    //     _bossStats.IsActualBackdashActive = true;
-    // }
-    // public void ActualBackdashEnd()
-    // {
-    //     _bossStats.IsActualBackdashActive = false;
-    // }
-    // public void ActualDashStart()
-    // {
-    //     _bossStats.IsActualDashActive = true;
-    // }
-    // public void ActualDashEnd()
-    // {
-    //     _bossStats.IsActualDashActive = false;
-    // }
-    // public void PhaseChange()
-    // {
-    //     _bossReferences.BossPhase1.SetActive(false);
-    //     _bossReferences.BossPhase2.SetActive(true);
-    // }
+    public void UltimateAttackStart()
+    {
+        Instantiate(_bossReferences.UltimateWeaponPrefab, _bossReferences.UltimateWeaponSpawnPoint.position, _bossReferences.UltimateWeaponSpawnPoint.rotation);
+    }
+    public void UltimateBreakManager()
+    {
+        _currentUltimateBreakLoops++;
+        if (_currentUltimateBreakLoops >= 5)
+        {
+            _animator.SetTrigger("ultimateBreakEnd");
+            _currentUltimateBreakLoops = 0;
+        }
+    }
 }

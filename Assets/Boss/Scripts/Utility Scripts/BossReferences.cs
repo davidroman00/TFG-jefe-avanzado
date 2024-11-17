@@ -19,6 +19,8 @@ public class BossReferences : MonoBehaviour
     [SerializeField]
     Transform _meleeAttackSpawnPoint;
     [SerializeField]
+    Transform _meleeAttackTeleportPoint;
+    [SerializeField]
     GameObject _sweepRangedProjectile;
     [SerializeField]
     GameObject _fanAndCrossRangedProjectile;
@@ -47,6 +49,7 @@ public class BossReferences : MonoBehaviour
     public GameObject SweepRangedProjectile { get { return _sweepRangedProjectile; } }
     public GameObject FanAndCrossRangedProjectile { get { return _fanAndCrossRangedProjectile; } }
     public GameObject MeleeAttackDevice { get { return _meleeAttackDevice; } }
+    public Transform MeleeAttackTeleportPoint { get { return _meleeAttackTeleportPoint; } }
     public Transform UltimateBossPosition { get { return _ultimateBossPosition; } }
     public Transform UltimateWeaponSpawnPoint { get { return _ultimateWeaponSpawnPoint; } }
     public Transform UltimateDeviceSpawnPoint { get { return _ultimateDeviceSpawnPoint; } }

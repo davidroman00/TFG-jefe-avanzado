@@ -35,8 +35,6 @@ public class BossStats : MonoBehaviour
    [SerializeField]
    float _crossRangedCooldown;
    [SerializeField]
-   float _dashCooldown;
-   [SerializeField]
    float _ultimateCooldown;
    [SerializeField]
    float _buffCooldown;
@@ -61,12 +59,6 @@ public class BossStats : MonoBehaviour
    [SerializeField]
    float _amountOfArmorDebuffed;
    [SerializeField]
-   float _meleeMaxDistance;
-   [SerializeField]
-   float _meleeMinDistance;
-   [SerializeField]
-   float _dashMovementSpeed;
-   [SerializeField]
    float _fanAndCrossProjectileMovementSpeed;
    [SerializeField]
    float _sweepProjectileMovementSpeed;
@@ -78,7 +70,6 @@ public class BossStats : MonoBehaviour
    float _bossUltimateHPThreshold;
    [SerializeField]
    float _bossMaxHP;
-   bool _isActualDashActive;
    bool _isOutsideArena;
 
    //This section is in charge of exporting every variable in ReadOnly, thanks to the getter.
@@ -98,7 +89,6 @@ public class BossStats : MonoBehaviour
    public float FanRangedCooldown { get { return _fanRangedCooldown; } }
    public float SweepRangedCooldown { get { return _sweepRangedCooldown; } }
    public float CrossRangedCooldown { get { return _crossRangedCooldown; } }
-   public float DashCooldown { get { return _dashCooldown; } }
    public float UltimateCooldown { get { return _ultimateCooldown; } }
    public float BuffCooldown { get { return _buffCooldown; } }
    public float DebuffCooldown { get { return _debuffCooldown; } }
@@ -111,15 +101,11 @@ public class BossStats : MonoBehaviour
    public float AmountOfDamageDebuffed { get { return _amountOfDamageDebuffed; } }
    public float AmountOfSpeedDebuffed { get { return _amountOfSpeedDebuffed; } }
    public float AmountOfArmorDebuffed { get { return _amountOfArmorDebuffed; } }
-   public float MeleeMaxDistance { get { return _meleeMaxDistance; } }
-   public float MeleeMinDistance { get { return _meleeMinDistance; } }
-   public float DashMovementSpeed { get { return _dashMovementSpeed; } }
    public float FanAndCrossProjectileMovementSpeed { get { return _fanAndCrossProjectileMovementSpeed; } }
    public float SweepProjectileMovementSpeed { get { return _sweepProjectileMovementSpeed; } }
    public float BossMovementSpeed { get { return _bossMovementSpeed; } }
    public int BossMaxUltimateUses { get { return _bossMaxUltimateUses; } }
    public float BossUltimateHPThreshold { get { return _bossUltimateHPThreshold; } }
    public float BossMaxHP { get { return _bossMaxHP; } }
-   public bool IsActualDashActive { get { return _isActualDashActive; } set { _isActualDashActive = value; } }
    public bool IsOutsideArena { get { return _isOutsideArena; } set { _isOutsideArena = value; } }
 }
