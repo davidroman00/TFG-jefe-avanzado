@@ -6,11 +6,11 @@ public class BossAnimationEvents : MonoBehaviour
     BossStats _bossStats;
     CharacterStats _characterStats;
     Animator _animator;
-    int _currentUltimateBreakLoops;
     float _lastBuff;
     bool _isBuffActive;
     float _lastDebuff;
     bool _isDebuffActive;
+    int _currentUltimateBreakLoops;
     void Awake()
     {
         _bossReferences = GetComponent<BossReferences>();
@@ -46,6 +46,22 @@ public class BossAnimationEvents : MonoBehaviour
     }
     public void SweepProjectilesSpawn()
     {
+        for (int i = 0; i < _bossReferences.SweepRangedSpawnPoints.Length; i++)
+        {
+            Instantiate(_bossReferences.SweepRangedProjectile, _bossReferences.SweepRangedSpawnPoints[i].position, _bossReferences.SweepRangedSpawnPoints[i].rotation);
+            if (i == _bossReferences.CrossRangedSpawnPoints.Length)
+            {
+                if (_characterStats.IsSweepBreak)
+                {
+                    _animator.SetTrigger("sweepBreak");
+                }
+                else
+                {
+                    _animator.SetTrigger("notSweepBreak");
+                }
+                _characterStats.IsSweepBreak = false;
+            }
+        }
 
     }
     public void ApplyBuff()
@@ -73,16 +89,21 @@ public class BossAnimationEvents : MonoBehaviour
     }
     public void ApplyDebuff()
     {
+        _characterStats.ArmorAmount -= _bossStats.AmountOfArmorDebuffed;
+        _characterStats.MovementSpeed -= _bossStats.AmountOfSpeedDebuffed;
+        _characterStats.TotalDamage -= _bossStats.AmountOfDamageDebuffed;
 
         _lastDebuff = Time.time;
         _isDebuffActive = true;
     }
     void CheckDebuffDuration()
     {
-       if (Time.time < _lastBuff + _bossStats.DebuffDuration)
+        if (Time.time < _lastBuff + _bossStats.DebuffDuration)
         {
-            
-            
+            _characterStats.ArmorAmount += _bossStats.AmountOfArmorDebuffed;
+            _characterStats.MovementSpeed += _bossStats.AmountOfSpeedDebuffed;
+            _characterStats.TotalDamage += _bossStats.AmountOfDamageDebuffed;
+
             _isDebuffActive = false;
         }
     }
