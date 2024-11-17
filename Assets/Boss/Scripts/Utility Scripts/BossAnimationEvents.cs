@@ -6,6 +6,7 @@ public class BossAnimationEvents : MonoBehaviour
     BossStats _bossStats;
     CharacterStats _characterStats;
     Animator _animator;
+    int _currentSweepLoops;
     float _lastBuff;
     bool _isBuffActive;
     float _lastDebuff;
@@ -46,11 +47,17 @@ public class BossAnimationEvents : MonoBehaviour
     }
     public void SweepProjectilesSpawn()
     {
-        for (int i = 0; i < _bossReferences.SweepRangedSpawnPoints.Length; i++)
+        _currentSweepLoops++;
+        switch (_currentSweepLoops)
         {
-            Instantiate(_bossReferences.SweepRangedProjectile, _bossReferences.SweepRangedSpawnPoints[i].position, _bossReferences.SweepRangedSpawnPoints[i].rotation);
-            if (i == _bossReferences.CrossRangedSpawnPoints.Length)
-            {
+            case 1:
+                SweepProjectileSpawn1();
+                break;
+            case 2:
+                SweepProjectileSpawn2();
+                break;
+            case 3:
+                SweepProjectileSpawn3();
                 if (_characterStats.IsSweepBreak)
                 {
                     _animator.SetTrigger("sweepBreak");
@@ -59,10 +66,22 @@ public class BossAnimationEvents : MonoBehaviour
                 {
                     _animator.SetTrigger("notSweepBreak");
                 }
+                _currentSweepLoops = 0;
                 _characterStats.IsSweepBreak = false;
-            }
+                break;
         }
-
+    }
+    void SweepProjectileSpawn1()
+    {
+        Instantiate(_bossReferences.SweepRangedProjectile, _bossReferences.SweepRangedSpawnPoints[0].position, _bossReferences.SweepRangedSpawnPoints[0].rotation);
+    }
+    void SweepProjectileSpawn2()
+    {
+        Instantiate(_bossReferences.SweepRangedProjectile, _bossReferences.SweepRangedSpawnPoints[1].position, _bossReferences.SweepRangedSpawnPoints[1].rotation);
+    }
+    void SweepProjectileSpawn3()
+    {
+        Instantiate(_bossReferences.SweepRangedProjectile, _bossReferences.SweepRangedSpawnPoints[2].position, _bossReferences.SweepRangedSpawnPoints[2].rotation);
     }
     public void ApplyBuff()
     {
@@ -110,6 +129,10 @@ public class BossAnimationEvents : MonoBehaviour
     public void TeleportToPosition()
     {
         transform.position = _bossReferences.ActualTeleportPosition.position;
+    }
+    public void UltimateDeviceSpawn()
+    {
+        Instantiate(_bossReferences.UltimateDevicePrefab, _bossReferences.UltimateDeviceSpawnPoint.position, _bossReferences.UltimateDeviceSpawnPoint.rotation);
     }
     public void UltimateAttackStart()
     {
