@@ -16,11 +16,9 @@ public class BossStats : MonoBehaviour
    [SerializeField]
    float _meleeAttackDamage;
    [SerializeField]
-   float _fanProjectileDamage;
+   float _fanAndCrossProjectileDamage;
    [SerializeField]
-   float _sweepProjectileDamage;
-   [SerializeField]
-   float _crossProjectileDamage;
+   float _sweepProjectileDamage; 
    [SerializeField]
    float _ultimateAttackDamage;
    [SerializeField]
@@ -80,9 +78,8 @@ public class BossStats : MonoBehaviour
    public float CooldownReductionAmount { get { return _cooldownReductionAmount; } set { _cooldownReductionAmount = value; } }
    public float TotalDamage { get { return _totalDamage; } set { _totalDamage = value;} }
    public float SimpleMeleeAttackDamage { get { return _meleeAttackDamage; } }
-   public float FanProjectileDamage { get { return _fanProjectileDamage; } }
+   public float FanAndCrossProjectileDamage { get { return _fanAndCrossProjectileDamage; } }
    public float SweepProjectileDamage { get { return _sweepProjectileDamage; } }
-   public float CrossProjectileDamage { get { return _crossProjectileDamage; } }
    public float UltimateAttackDamage { get { return _ultimateAttackDamage; } }
    public float CrossAndFanProjectileLifetime { get { return _crossAndFanProjectileLifetime; } }
    public float SweepProjectileLifetime { get { return _sweepProjectileLifetime; } }

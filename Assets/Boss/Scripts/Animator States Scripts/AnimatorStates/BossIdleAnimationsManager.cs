@@ -32,7 +32,7 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
         // animator.ResetTrigger("rangedSimple");
         // animator.ResetTrigger("rangedPattern");
         // animator.ResetTrigger("rangedPatternEnd");
-        animator.ResetTrigger("dash");
+        //animator.ResetTrigger("dash");
         // animator.ResetTrigger("backdash");
         animator.ResetTrigger("ultimateBreakEnd");
         animator.ResetTrigger("ultimateBreak");
