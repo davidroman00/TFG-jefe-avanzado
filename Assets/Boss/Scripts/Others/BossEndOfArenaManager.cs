@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndOfArenaManager : MonoBehaviour
+public class BossEndOfArenaManager : MonoBehaviour
 {
     void OnTriggerEnter(Collider collider)
     {

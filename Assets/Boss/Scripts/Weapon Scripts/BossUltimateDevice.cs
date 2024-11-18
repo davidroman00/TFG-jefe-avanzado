@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class UltimateDeviceManager : MonoBehaviour
+public class BossUltimateDevice : MonoBehaviour
 {
     bool _isDeviceDestroyed;
     public bool IsDeviceDestroyed { get { return _isDeviceDestroyed; } }

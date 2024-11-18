@@ -1,14 +1,15 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class FanAndCrossProjectile : MonoBehaviour
+public class BossSweepProjectile : MonoBehaviour
 {
     BossStats _bossStats;
     void Awake()
     {
         _bossStats = FindFirstObjectByType<BossStats>();
 
-        Destroy(gameObject, _bossStats.CrossAndFanProjectileLifetime);
+        Destroy(gameObject, _bossStats.SweepProjectileLifetime);
     }
     void Update()
     {
@@ -16,15 +17,14 @@ public class FanAndCrossProjectile : MonoBehaviour
     }
     void HandleProjectileMovement()
     {
-        transform.Translate(_bossStats.FanAndCrossProjectileMovementSpeed * Time.deltaTime * Vector3.forward);
+        transform.Translate(_bossStats.SweepProjectileMovementSpeed * Time.deltaTime * Vector3.forward);
     }
     void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Player"))
         {
             collider.GetComponent<CharacterHealthManager>()
-            .PlayerRecieveDamage(_bossStats.FanAndCrossProjectileDamage * 1 + (_bossStats.TotalDamage / 100));
-            Destroy(gameObject);
+            .PlayerRecieveDamage(_bossStats.SweepProjectileDamage * 1 + (_bossStats.TotalDamage / 100));
         }
     }
 }

@@ -18,13 +18,15 @@ public class BossStats : MonoBehaviour
    [SerializeField]
    float _fanAndCrossProjectileDamage;
    [SerializeField]
-   float _sweepProjectileDamage; 
+   float _sweepProjectileDamage;
    [SerializeField]
    float _ultimateAttackDamage;
    [SerializeField]
    float _crossAndFanProjectileLifetime;
    [SerializeField]
    float _sweepProjectileLifetime;
+   [SerializeField]
+   float _meleeAttackLifetime;
    [SerializeField]
    float _meleeCooldown;
    [SerializeField]
@@ -76,13 +78,14 @@ public class BossStats : MonoBehaviour
    public float ArmorAmount { get { return _armorAmount; } set { _armorAmount = value; } }
    public float HealthRegenerationAmount { get { return _healthRegenerationAmount; } set { _healthRegenerationAmount = value; } }
    public float CooldownReductionAmount { get { return _cooldownReductionAmount; } set { _cooldownReductionAmount = value; } }
-   public float TotalDamage { get { return _totalDamage; } set { _totalDamage = value;} }
-   public float SimpleMeleeAttackDamage { get { return _meleeAttackDamage; } }
+   public float TotalDamage { get { return _totalDamage; } set { _totalDamage = value; } }
+   public float MeleeAttackDamage { get { return _meleeAttackDamage; } }
    public float FanAndCrossProjectileDamage { get { return _fanAndCrossProjectileDamage; } }
    public float SweepProjectileDamage { get { return _sweepProjectileDamage; } }
    public float UltimateAttackDamage { get { return _ultimateAttackDamage; } }
    public float CrossAndFanProjectileLifetime { get { return _crossAndFanProjectileLifetime; } }
    public float SweepProjectileLifetime { get { return _sweepProjectileLifetime; } }
+   public float MeleeAttackLifetime { get { return _meleeAttackLifetime; } }
    public float MeleeCooldown { get { return _meleeCooldown; } }
    public float FanRangedCooldown { get { return _fanRangedCooldown; } }
    public float SweepRangedCooldown { get { return _sweepRangedCooldown; } }

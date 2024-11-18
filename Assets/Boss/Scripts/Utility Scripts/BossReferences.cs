@@ -39,6 +39,8 @@ public class BossReferences : MonoBehaviour
     [SerializeField]
     Transform _playerTransform;
     Transform _actualTeleportPosition;
+    bool _isActualRightDodgeActive;
+    bool _isActualLeftDodgeActive;
 
     public Transform[] FanRangedSpawnPoints { get { return _fanRangedSpawnPoints; } }
     public Transform[] FanBossPositions { get { return _fanBossPositions; } }
@@ -58,4 +60,6 @@ public class BossReferences : MonoBehaviour
     public GameObject UltimateDevicePrefab { get { return _ultimateDevicePrefab; } }
     public Transform PlayerTransform { get { return _playerTransform; } }
     public Transform ActualTeleportPosition { get { return _actualTeleportPosition; } set { _actualTeleportPosition = value; } }
+    public bool IsActualRightDodgeActive { get { return _isActualRightDodgeActive; } set { _isActualRightDodgeActive = value; } }
+    public bool IsActualLeftDodgeActive { get { return _isActualLeftDodgeActive; } set { _isActualLeftDodgeActive = value; } }
 }
