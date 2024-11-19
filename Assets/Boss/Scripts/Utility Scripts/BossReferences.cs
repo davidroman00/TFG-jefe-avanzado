@@ -19,7 +19,7 @@ public class BossReferences : MonoBehaviour
     [SerializeField]
     Transform _meleeAttackSpawnPoint;
     [SerializeField]
-    Transform _meleeAttackTeleportPoint;
+    Transform _meleeAttackPosition;
     [SerializeField]
     GameObject _sweepRangedProjectile;
     [SerializeField]
@@ -41,6 +41,7 @@ public class BossReferences : MonoBehaviour
     Transform _actualTeleportPosition;
     bool _isActualRightDodgeActive;
     bool _isActualLeftDodgeActive;
+    int _actualUltimateUses;
 
     public Transform[] FanRangedSpawnPoints { get { return _fanRangedSpawnPoints; } }
     public Transform[] FanBossPositions { get { return _fanBossPositions; } }
@@ -52,7 +53,7 @@ public class BossReferences : MonoBehaviour
     public GameObject SweepRangedProjectile { get { return _sweepRangedProjectile; } }
     public GameObject FanAndCrossRangedProjectile { get { return _fanAndCrossRangedProjectile; } }
     public GameObject MeleeAttackDevice { get { return _meleeAttackDevice; } }
-    public Transform MeleeAttackTeleportPoint { get { return _meleeAttackTeleportPoint; } }
+    public Transform MeleeAttackPosition { get { return _meleeAttackPosition; } }
     public Transform UltimateBossPosition { get { return _ultimateBossPosition; } }
     public Transform UltimateWeaponSpawnPoint { get { return _ultimateWeaponSpawnPoint; } }
     public Transform UltimateDeviceSpawnPoint { get { return _ultimateDeviceSpawnPoint; } }
@@ -62,4 +63,5 @@ public class BossReferences : MonoBehaviour
     public Transform ActualTeleportPosition { get { return _actualTeleportPosition; } set { _actualTeleportPosition = value; } }
     public bool IsActualRightDodgeActive { get { return _isActualRightDodgeActive; } set { _isActualRightDodgeActive = value; } }
     public bool IsActualLeftDodgeActive { get { return _isActualLeftDodgeActive; } set { _isActualLeftDodgeActive = value; } }
+    public int ActualUltimateUses { get { return _actualUltimateUses; } set { _actualUltimateUses = value; } }
 }

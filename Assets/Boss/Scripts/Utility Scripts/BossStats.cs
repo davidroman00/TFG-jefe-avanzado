@@ -42,6 +42,8 @@ public class BossStats : MonoBehaviour
    [SerializeField]
    float _debuffCooldown;
    [SerializeField]
+   float _dodgeCooldown;
+   [SerializeField]
    float _buffDuration;
    [SerializeField]
    float _debuffDuration;
@@ -93,6 +95,7 @@ public class BossStats : MonoBehaviour
    public float UltimateCooldown { get { return _ultimateCooldown; } }
    public float BuffCooldown { get { return _buffCooldown; } }
    public float DebuffCooldown { get { return _debuffCooldown; } }
+   public float DodgeCooldown { get { return _dodgeCooldown; } }
    public float BuffDuration { get { return _buffDuration; } }
    public float DebuffDuration { get { return _debuffDuration; } }
    public float AmountOfArmorBuffed { get { return _amountOfArmorBuffed; } }
