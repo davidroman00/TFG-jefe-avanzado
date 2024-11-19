@@ -25,34 +25,34 @@ public class BossCooldownManager : MonoBehaviour
     }
     public bool IsMeleeOnCooldown()
     {
-        return Time.time < _lastMelee + _bossStats.MeleeCooldown;
+        return Time.time < _lastMelee + _bossStats.MeleeCooldown * (1 - _bossStats.CooldownReductionAmount);
     }
     public bool IsFanOnCooldown()
     {
-        return Time.time < _lastFanRanged + _bossStats.FanRangedCooldown;
+        return Time.time < _lastFanRanged + _bossStats.FanRangedCooldown * (1 - _bossStats.CooldownReductionAmount);
     }
     public bool IsSweepOnCooldown()
     {
-        return Time.time < _lastSweepRanged + _bossStats.SweepRangedCooldown;
+        return Time.time < _lastSweepRanged + _bossStats.SweepRangedCooldown * (1 - _bossStats.CooldownReductionAmount);
     }
     public bool IsCrossOnCooldown()
     {
-        return Time.time < _lastCrossRanged + _bossStats.CrossRangedCooldown;
+        return Time.time < _lastCrossRanged + _bossStats.CrossRangedCooldown * (1 - _bossStats.CooldownReductionAmount);
     }
     public bool IsUltimateOnCooldown()
     {
-        return Time.time < _lastUltimate + _bossStats.UltimateCooldown;
+        return Time.time < _lastUltimate + _bossStats.UltimateCooldown * (1 - _bossStats.CooldownReductionAmount);
     }
     public bool IsBuffOnCooldown()
     {
-        return Time.time < _lastBuff + _bossStats.BuffCooldown;
+        return Time.time < _lastBuff + _bossStats.BuffCooldown * (1 - _bossStats.CooldownReductionAmount);
     }
     public bool IsDebuffOnCooldown()
     {
-        return Time.time < _lastDebuff + _bossStats.DebuffCooldown;
+        return Time.time < _lastDebuff + _bossStats.DebuffCooldown * (1 - _bossStats.CooldownReductionAmount);
     }
     public bool IsDodgeOnCooldown()
     {
-        return Time.time < _lastDodge + _bossStats.DodgeCooldown;
+        return Time.time < _lastDodge + _bossStats.DodgeCooldown * (1 - _bossStats.CooldownReductionAmount);
     }
 }

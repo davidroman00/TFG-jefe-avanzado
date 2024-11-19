@@ -1507,7 +1507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681489261}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: -0.00000001533286, z: 0.00000000780787, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: 0.000000015332867, z: -0.000000007807873, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8278,38 +8278,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa5f6f97e48b2f49a13984a8c83b7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meleeAttackSpawnPoint: {fileID: 1582324053}
   _fanRangedSpawnPoints:
   - {fileID: 1652736301}
   - {fileID: 195220404}
   - {fileID: 1544525637}
   - {fileID: 859621549}
   - {fileID: 190595746}
-  _fanBossPositions:
-  - {fileID: 821985493}
-  - {fileID: 822419291}
-  - {fileID: 225997670}
-  - {fileID: 2064711237}
   _sweepRangedSpawnPoints:
   - {fileID: 225997670}
   - {fileID: 2064711237}
   - {fileID: 2032097964}
-  _sweepBossPosition: {fileID: 426357246}
   _crossRangedSpawnPoints:
   - {fileID: 74050636}
   - {fileID: 2046796864}
   - {fileID: 1570213856}
   - {fileID: 1138571178}
-  _crossBossPosition: {fileID: 1156464666}
-  _meleeAttackSpawnPoint: {fileID: 1582324053}
-  _meleeAttackTeleportPoint: {fileID: 653225986}
-  _sweepRangedProjectile: {fileID: 6490449092586672638, guid: d25e6f1d79d90cd41baa09fa5d589d98, type: 3}
-  _fanAndCrossRangedProjectile: {fileID: 6223892065744600617, guid: 9c49b3c24c89a454796973486ff213f0, type: 3}
-  _meleeAttackDevice: {fileID: 1681413290747829276, guid: 97ccaa0e13e38a04abbbbc7948d2199d, type: 3}
-  _ultimateBossPosition: {fileID: 12189035}
   _ultimateWeaponSpawnPoint: {fileID: 457310546}
   _ultimateDeviceSpawnPoint: {fileID: 175955015}
+  _meleeAttackPrefab: {fileID: 1681413290747829276, guid: 97ccaa0e13e38a04abbbbc7948d2199d, type: 3}
+  _fanAndCrossProjectilePrefab: {fileID: 6223892065744600617, guid: 9c49b3c24c89a454796973486ff213f0, type: 3}
+  _sweepProjectilePrefab: {fileID: 6490449092586672638, guid: d25e6f1d79d90cd41baa09fa5d589d98, type: 3}
   _ultimateWeaponPrefab: {fileID: 5514457849210237520, guid: 35051370defcf2148bed6012ed4fe59f, type: 3}
   _ultimateDevicePrefab: {fileID: 6064615753601011668, guid: e668956b4e685104185cc900df673bb0, type: 3}
+  _meleeAttackBossPosition: {fileID: 0}
+  _fanBossPositions:
+  - {fileID: 821985493}
+  - {fileID: 822419291}
+  - {fileID: 225997670}
+  - {fileID: 2064711237}
+  _sweepBossPosition: {fileID: 426357246}
+  _crossBossPosition: {fileID: 1156464666}
+  _ultimateBossPosition: {fileID: 12189035}
   _playerTransform: {fileID: 8138290668355377068}
 --- !u!4 &3340761571235983235
 Transform:
@@ -11656,6 +11656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19eacc8973b76a642940f3b7c5b17ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bossMaxHP: 2000
   _armorAmount: 5
   _healthRegenerationAmount: 0
   _cooldownReductionAmount: 0
@@ -11664,31 +11665,31 @@ MonoBehaviour:
   _fanAndCrossProjectileDamage: 15
   _sweepProjectileDamage: 25
   _ultimateAttackDamage: 9999
-  _crossAndFanProjectileLifetime: 2
-  _sweepProjectileLifetime: 4
-  _meleeAttackLifetime: 0.5
   _meleeCooldown: 10
   _fanRangedCooldown: 10
   _sweepRangedCooldown: 60
   _crossRangedCooldown: 6
-  _ultimateCooldown: 180
   _buffCooldown: 75
   _debuffCooldown: 100
+  _dodgeCooldown: 7
+  _ultimateCooldown: 180
+  _fanAndCrossProjectileMovementSpeed: 32.5
+  _sweepProjectileMovementSpeed: 25
+  _dodgeMovementSpeed: 40
+  _fanAndCrossProjectileLifetime: 0
+  _sweepProjectileLifetime: 4
+  _meleeAttackLifetime: 0.5
   _buffDuration: 15
-  _debuffDuration: 10
   _amountOfArmorBuffed: 10
   _amountOfRegenerationBuffed: 5
   _amountOfDamageBuffed: 20
   _amountOfCooldownBuffed: 30
+  _debuffDuration: 10
   _amountOfDamageDebuffed: 15
   _amountOfSpeedDebuffed: 20
   _amountOfArmorDebuffed: 100
-  _fanAndCrossProjectileMovementSpeed: 32.5
-  _sweepProjectileMovementSpeed: 25
-  _bossMovementSpeed: 6.5
   _bossMaxUltimateUses: 2
   _bossUltimateHPThreshold: 1000
-  _bossMaxHP: 2000
 --- !u!4 &7071485531560407489
 Transform:
   m_ObjectHideFlags: 0

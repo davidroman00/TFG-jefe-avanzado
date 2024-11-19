@@ -33,17 +33,17 @@ public class BossAnimationEvents : MonoBehaviour
     //These are (mostly) public methods so they can be accessed through an animation event.
     public void MeleeAttackSpawn()
     {
-        Instantiate(_bossReferences.MeleeAttackDevice, _bossReferences.MeleeAttackSpawnPoint.position, _bossReferences.MeleeAttackSpawnPoint.rotation);
+        Instantiate(_bossReferences.MeleeAttackPrefab, _bossReferences.MeleeAttackSpawnPoint.position, _bossReferences.MeleeAttackSpawnPoint.rotation);
     }
     public void FanProjectilesSpawn()
     {
         for (int i = 0; i < _bossReferences.FanRangedSpawnPoints.Length; i++)
-            Instantiate(_bossReferences.FanAndCrossRangedProjectile, _bossReferences.FanRangedSpawnPoints[i].position, _bossReferences.FanRangedSpawnPoints[i].rotation);
+            Instantiate(_bossReferences.FanAndCrossProjectilePrefab, _bossReferences.FanRangedSpawnPoints[i].position, _bossReferences.FanRangedSpawnPoints[i].rotation);
     }
     public void CrossProjectilesSpawn()
     {
         for (int i = 0; i < _bossReferences.CrossRangedSpawnPoints.Length; i++)
-            Instantiate(_bossReferences.FanAndCrossRangedProjectile, _bossReferences.CrossRangedSpawnPoints[i].position, _bossReferences.CrossRangedSpawnPoints[i].rotation);
+            Instantiate(_bossReferences.FanAndCrossProjectilePrefab, _bossReferences.CrossRangedSpawnPoints[i].position, _bossReferences.CrossRangedSpawnPoints[i].rotation);
     }
     public void SweepProjectilesSpawn()
     {
@@ -73,15 +73,15 @@ public class BossAnimationEvents : MonoBehaviour
     }
     void SweepProjectileSpawn1()
     {
-        Instantiate(_bossReferences.SweepRangedProjectile, _bossReferences.SweepRangedSpawnPoints[0].position, _bossReferences.SweepRangedSpawnPoints[0].rotation);
+        Instantiate(_bossReferences.SweepProjectilePrefab, _bossReferences.SweepRangedSpawnPoints[0].position, _bossReferences.SweepRangedSpawnPoints[0].rotation);
     }
     void SweepProjectileSpawn2()
     {
-        Instantiate(_bossReferences.SweepRangedProjectile, _bossReferences.SweepRangedSpawnPoints[1].position, _bossReferences.SweepRangedSpawnPoints[1].rotation);
+        Instantiate(_bossReferences.SweepProjectilePrefab, _bossReferences.SweepRangedSpawnPoints[1].position, _bossReferences.SweepRangedSpawnPoints[1].rotation);
     }
     void SweepProjectileSpawn3()
     {
-        Instantiate(_bossReferences.SweepRangedProjectile, _bossReferences.SweepRangedSpawnPoints[2].position, _bossReferences.SweepRangedSpawnPoints[2].rotation);
+        Instantiate(_bossReferences.SweepProjectilePrefab, _bossReferences.SweepRangedSpawnPoints[2].position, _bossReferences.SweepRangedSpawnPoints[2].rotation);
     }
     public void ApplyBuff()
     {

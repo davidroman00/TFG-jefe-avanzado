@@ -8,7 +8,7 @@ public class BossFanAndCrossProjectile : MonoBehaviour
     {
         _bossStats = FindFirstObjectByType<BossStats>();
 
-        Destroy(gameObject, _bossStats.CrossAndFanProjectileLifetime);
+        Destroy(gameObject, _bossStats.FanAndCrossProjectileLifetime);
     }
     void Update()
     {

@@ -6,16 +6,16 @@ public class BossEndOfArenaManager : MonoBehaviour
 {
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.GetComponentInParent<BossStats>())
+        if (collider.GetComponentInParent<BossReferences>())
         {
-            collider.GetComponentInParent<BossStats>().IsOutsideArena = true;
+            collider.GetComponentInParent<BossReferences>().IsOutsideArena = true;
         }
     }
     void OnTriggerExit(Collider collider)
     {
-        if (collider.GetComponentInParent<BossStats>())
+        if (collider.GetComponentInParent<BossReferences>())
         {
-            collider.GetComponentInParent<BossStats>().IsOutsideArena = false;
+            collider.GetComponentInParent<BossReferences>().IsOutsideArena = false;
         }
     }
 }

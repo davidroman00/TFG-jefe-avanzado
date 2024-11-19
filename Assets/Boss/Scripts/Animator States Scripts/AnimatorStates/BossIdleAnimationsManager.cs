@@ -41,7 +41,7 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
     {
         if (!_bossCooldownManager.IsMeleeOnCooldown())
         {
-            _bossReferences.ActualTeleportPosition = _bossReferences.MeleeAttackPosition;
+            _bossReferences.ActualTeleportPosition = _bossReferences.MeleeAttackBossPosition;
             animator.SetTrigger("melee");
         }
     }
