@@ -3,7 +3,11 @@ using UnityEngine;
 public class BossReferences : MonoBehaviour
 {
     //Here, there are stored and exported every object required for the boss to operate correctly.
-    //The fact that there are some values at 'none' on inspector means they are not necessary for the current phase of the boss.   
+    //The fact that there are some values at 'none' on inspector means they are not necessary for the current phase of the boss. 
+    [Header("Player transform")]
+    [SerializeField]
+    Transform _playerTransform;
+
     [Header("Projectiles and weapons spawn points")]
     [SerializeField]
     Transform _meleeAttackSpawnPoint;
@@ -43,14 +47,16 @@ public class BossReferences : MonoBehaviour
     Transform _ultimateBossPosition;
 
     //General utility variables
-    [SerializeField]
-    Transform _playerTransform;
     Transform _actualTeleportPosition;
     bool _isActualRightDodgeActive;
     bool _isActualLeftDodgeActive;
     int _actualUltimateUses;
     bool _isOutsideArena;
+    
 
+    //Player transform
+    public Transform PlayerTransform { get { return _playerTransform; } }
+    
     //Projectiles and weapons spawn points
     public Transform MeleeAttackSpawnPoint { get { return _meleeAttackSpawnPoint; } }
     public Transform[] FanRangedSpawnPoints { get { return _fanRangedSpawnPoints; } }
@@ -74,7 +80,6 @@ public class BossReferences : MonoBehaviour
     public Transform UltimateBossPosition { get { return _ultimateBossPosition; } }
 
     //General utility variables
-    public Transform PlayerTransform { get { return _playerTransform; } }
     public Transform ActualTeleportPosition { get { return _actualTeleportPosition; } set { _actualTeleportPosition = value; } }
     public bool IsActualRightDodgeActive { get { return _isActualRightDodgeActive; } set { _isActualRightDodgeActive = value; } }
     public bool IsActualLeftDodgeActive { get { return _isActualLeftDodgeActive; } set { _isActualLeftDodgeActive = value; } }

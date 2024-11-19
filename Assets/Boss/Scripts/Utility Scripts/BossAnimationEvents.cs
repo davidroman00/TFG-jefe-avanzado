@@ -4,28 +4,26 @@ public class BossAnimationEvents : MonoBehaviour
 {
     BossReferences _bossReferences;
     BossStats _bossStats;
+    BossCooldownManager _bossCooldownManager;
     CharacterStats _characterStats;
     Animator _animator;
     int _currentSweepLoops;
-    float _lastBuff;
-    bool _isBuffActive;
-    float _lastDebuff;
-    bool _isDebuffActive;
     int _currentUltimateBreakLoops;
     void Awake()
     {
         _bossReferences = GetComponent<BossReferences>();
         _bossStats = GetComponent<BossStats>();
+        _bossCooldownManager = GetComponent<BossCooldownManager>();
         _characterStats = FindFirstObjectByType<CharacterStats>();
         _animator = GetComponent<Animator>();
     }
     void Update()
     {
-        if (_isBuffActive)
+        if (_bossCooldownManager.IsBuffActive())
         {
             CheckBuffDuration();
         }
-        if (_isDebuffActive)
+        if (_bossCooldownManager.IsDebuffActive())
         {
             CheckDebuffDuration();
         }
@@ -34,16 +32,23 @@ public class BossAnimationEvents : MonoBehaviour
     public void MeleeAttackSpawn()
     {
         Instantiate(_bossReferences.MeleeAttackPrefab, _bossReferences.MeleeAttackSpawnPoint.position, _bossReferences.MeleeAttackSpawnPoint.rotation);
+        _bossCooldownManager.LastMelee = Time.time;
     }
     public void FanProjectilesSpawn()
     {
         for (int i = 0; i < _bossReferences.FanRangedSpawnPoints.Length; i++)
+        {
             Instantiate(_bossReferences.FanAndCrossProjectilePrefab, _bossReferences.FanRangedSpawnPoints[i].position, _bossReferences.FanRangedSpawnPoints[i].rotation);
+        }
+        _bossCooldownManager.LastFan = Time.time;
     }
     public void CrossProjectilesSpawn()
     {
         for (int i = 0; i < _bossReferences.CrossRangedSpawnPoints.Length; i++)
+        {
             Instantiate(_bossReferences.FanAndCrossProjectilePrefab, _bossReferences.CrossRangedSpawnPoints[i].position, _bossReferences.CrossRangedSpawnPoints[i].rotation);
+        }
+        _bossCooldownManager.LastCross = Time.time;
     }
     public void SweepProjectilesSpawn()
     {
@@ -70,6 +75,7 @@ public class BossAnimationEvents : MonoBehaviour
                 _characterStats.IsSweepBreak = false;
                 break;
         }
+        _bossCooldownManager.LastSweep = Time.time;
     }
     void SweepProjectileSpawn1()
     {
@@ -90,19 +96,16 @@ public class BossAnimationEvents : MonoBehaviour
         _bossStats.CooldownReductionAmount += _bossStats.AmountOfCooldownBuffed;
         _bossStats.TotalDamage += _bossStats.AmountOfDamageBuffed;
 
-        _lastBuff = Time.time;
-        _isBuffActive = true;
+        _bossCooldownManager.LastBuff = Time.time;
     }
     void CheckBuffDuration()
     {
-        if (Time.time < _lastBuff + _bossStats.BuffDuration)
+        if (!_bossCooldownManager.IsBuffActive())
         {
             _bossStats.ArmorAmount -= _bossStats.AmountOfArmorBuffed;
             _bossStats.HealthRegenerationAmount -= _bossStats.AmountOfRegenerationBuffed;
             _bossStats.CooldownReductionAmount -= _bossStats.AmountOfCooldownBuffed;
             _bossStats.TotalDamage -= _bossStats.AmountOfDamageBuffed;
-
-            _isBuffActive = false;
         }
 
     }
@@ -112,18 +115,15 @@ public class BossAnimationEvents : MonoBehaviour
         _characterStats.MovementSpeed -= _bossStats.AmountOfSpeedDebuffed;
         _characterStats.TotalDamage -= _bossStats.AmountOfDamageDebuffed;
 
-        _lastDebuff = Time.time;
-        _isDebuffActive = true;
+        _bossCooldownManager.LastDebuff = Time.time;
     }
     void CheckDebuffDuration()
     {
-        if (Time.time < _lastBuff + _bossStats.DebuffDuration)
+        if (!_bossCooldownManager.IsDebuffActive())
         {
             _characterStats.ArmorAmount += _bossStats.AmountOfArmorDebuffed;
             _characterStats.MovementSpeed += _bossStats.AmountOfSpeedDebuffed;
             _characterStats.TotalDamage += _bossStats.AmountOfDamageDebuffed;
-
-            _isDebuffActive = false;
         }
     }
     public void TeleportToPosition()
@@ -133,6 +133,7 @@ public class BossAnimationEvents : MonoBehaviour
     public void UltimateDeviceSpawn()
     {
         Instantiate(_bossReferences.UltimateDevicePrefab, _bossReferences.UltimateDeviceSpawnPoint.position, _bossReferences.UltimateDeviceSpawnPoint.rotation);
+        _bossCooldownManager.LastUltimate = Time.time;
     }
     public void UltimateAttackStart()
     {

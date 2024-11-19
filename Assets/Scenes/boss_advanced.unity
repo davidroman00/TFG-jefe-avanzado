@@ -1507,7 +1507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681489261}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: 0.000000015332867, z: -0.000000007807873, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: -0.00000001533286, z: 0.00000000780787, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2327,7 +2327,7 @@ Transform:
   m_GameObject: {fileID: 906019139}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.652206, y: 0.13495159, z: 18.671051}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3229,7 +3229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239307038}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: 0.00000001533286, z: -0.00000000780787, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: -0.000000015332867, z: 0.000000007807873, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3495,7 +3495,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400907634}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: 0.00000001533286, z: -0.00000000780787, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: -0.000000015332867, z: 0.000000007807873, w: 0.89111495}
   m_LocalPosition: {x: 20, y: 11, z: 2.0000005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3818,7 +3818,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529143529}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: 0.00000001533286, z: -0.00000000780787, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: -0.000000015332867, z: 0.000000007807873, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8278,6 +8278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa5f6f97e48b2f49a13984a8c83b7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerTransform: {fileID: 8138290668355377068}
   _meleeAttackSpawnPoint: {fileID: 1582324053}
   _fanRangedSpawnPoints:
   - {fileID: 1652736301}
@@ -8301,7 +8302,7 @@ MonoBehaviour:
   _sweepProjectilePrefab: {fileID: 6490449092586672638, guid: d25e6f1d79d90cd41baa09fa5d589d98, type: 3}
   _ultimateWeaponPrefab: {fileID: 5514457849210237520, guid: 35051370defcf2148bed6012ed4fe59f, type: 3}
   _ultimateDevicePrefab: {fileID: 6064615753601011668, guid: e668956b4e685104185cc900df673bb0, type: 3}
-  _meleeAttackBossPosition: {fileID: 0}
+  _meleeAttackBossPosition: {fileID: 653225986}
   _fanBossPositions:
   - {fileID: 821985493}
   - {fileID: 822419291}
@@ -8310,7 +8311,6 @@ MonoBehaviour:
   _sweepBossPosition: {fileID: 426357246}
   _crossBossPosition: {fileID: 1156464666}
   _ultimateBossPosition: {fileID: 12189035}
-  _playerTransform: {fileID: 8138290668355377068}
 --- !u!4 &3340761571235983235
 Transform:
   m_ObjectHideFlags: 0
