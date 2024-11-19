@@ -1,7 +1,11 @@
 using UnityEngine;
 
-public class BossUltimateBreakChecker : StateMachineBehaviour
+public class BossUltimateState : StateMachineBehaviour
 {
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.GetComponent<BossCooldownManager>().LastUltimate = Time.time;
+    }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (FindAnyObjectByType<BossUltimateDevice>() && FindAnyObjectByType<BossUltimateDevice>().IsDeviceDestroyed)
@@ -9,5 +13,9 @@ public class BossUltimateBreakChecker : StateMachineBehaviour
         {
             animator.SetTrigger("ultimateBreak");
         }
+    }
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.ResetTrigger("ultimate");
     }
 }

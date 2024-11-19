@@ -30,12 +30,16 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
         animator.ResetTrigger("melee");
         animator.ResetTrigger("fan");
         animator.ResetTrigger("sweep");
+        animator.ResetTrigger("sweepBreak");
+        animator.ResetTrigger("notSweepBreak");
         animator.ResetTrigger("cross");
         animator.ResetTrigger("buff");
         animator.ResetTrigger("debuff");
         animator.ResetTrigger("dodgeLeft");
         animator.ResetTrigger("dodgeRight");
         animator.ResetTrigger("ultimate");
+        animator.ResetTrigger("ultimateBreak");
+        animator.ResetTrigger("ultimateBreakEnd");
         //Resetting triggers at the exit of this state is important, so triggers don't stack in the animator while waiting for the current animation to end.
         //It only happens if two, or more, of them are set at the same time.
     }

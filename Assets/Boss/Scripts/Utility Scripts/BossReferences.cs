@@ -12,11 +12,11 @@ public class BossReferences : MonoBehaviour
     [SerializeField]
     Transform _meleeAttackSpawnPoint;
     [SerializeField]
-    Transform[] _fanRangedSpawnPoints;
+    Transform[] _fanProjectilesSpawnPoints;
     [SerializeField]
-    Transform[] _sweepRangedSpawnPoints;
+    Transform[] _sweepProjectilesSpawnPoints;
     [SerializeField]
-    Transform[] _crossRangedSpawnPoints;
+    Transform[] _crossProjectilesSpawnPoints;
     [SerializeField]
     Transform _ultimateWeaponSpawnPoint;
     [SerializeField]
@@ -52,16 +52,16 @@ public class BossReferences : MonoBehaviour
     bool _isActualLeftDodgeActive;
     int _actualUltimateUses;
     bool _isOutsideArena;
-    
+
 
     //Player transform
     public Transform PlayerTransform { get { return _playerTransform; } }
     
     //Projectiles and weapons spawn points
     public Transform MeleeAttackSpawnPoint { get { return _meleeAttackSpawnPoint; } }
-    public Transform[] FanRangedSpawnPoints { get { return _fanRangedSpawnPoints; } }
-    public Transform[] SweepRangedSpawnPoints { get { return _sweepRangedSpawnPoints; } }
-    public Transform[] CrossRangedSpawnPoints { get { return _crossRangedSpawnPoints; } }
+    public Transform[] FanProjectilesSpawnPoints { get { return _fanProjectilesSpawnPoints; } }
+    public Transform[] SweepProjectilesSpawnPoints { get { return _sweepProjectilesSpawnPoints; } }
+    public Transform[] CrossProjectilesSpawnPoints { get { return _crossProjectilesSpawnPoints; } }
     public Transform UltimateWeaponSpawnPoint { get { return _ultimateWeaponSpawnPoint; } }
     public Transform UltimateDeviceSpawnPoint { get { return _ultimateDeviceSpawnPoint; } }
 
