@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BossAnimationEvents : MonoBehaviour
@@ -7,8 +8,8 @@ public class BossAnimationEvents : MonoBehaviour
     BossCooldownManager _bossCooldownManager;
     CharacterStats _characterStats;
     Animator _animator;
-    int _currentSweepLoops;
     int _currentUltimateBreakLoops;
+
     void Awake()
     {
         _bossReferences = GetComponent<BossReferences>();
@@ -17,17 +18,7 @@ public class BossAnimationEvents : MonoBehaviour
         _characterStats = FindFirstObjectByType<CharacterStats>();
         _animator = GetComponent<Animator>();
     }
-    void Update()
-    {
-        if (_bossCooldownManager.IsBuffActive())
-        {
-            CheckBuffDuration();
-        }
-        if (_bossCooldownManager.IsDebuffActive())
-        {
-            CheckDebuffDuration();
-        }
-    }
+    void Update(){Debug.Log(_bossStats.ArmorAmount);}
     //These are (mostly) public methods so they can be accessed through an animation event.
     public void MeleeAttackSpawn()
     {
@@ -52,17 +43,18 @@ public class BossAnimationEvents : MonoBehaviour
     }
     public void SweepProjectilesSpawn()
     {
-        _currentSweepLoops++;
-        switch (_currentSweepLoops)
+        for (int i = 0; i < _bossReferences.SweepRangedSpawnPoints.Length; i++)
         {
-            case 1:
-                SweepProjectileSpawn1();
-                break;
-            case 2:
-                SweepProjectileSpawn2();
-                break;
-            case 3:
-                SweepProjectileSpawn3();
+            Instantiate(_bossReferences.SweepProjectilePrefab, _bossReferences.SweepRangedSpawnPoints[i].position, _bossReferences.SweepRangedSpawnPoints[i].rotation);
+        }
+        _bossCooldownManager.LastSweep = Time.time;
+    }
+    public void CheckSweepBreak()
+    {
+        for (int i = 0; i < _bossReferences.SweepRangedSpawnPoints.Length; i++)
+        {
+            if (i >= _bossReferences.SweepRangedSpawnPoints.Length)
+            {
                 if (_characterStats.IsSweepBreak)
                 {
                     _animator.SetTrigger("sweepBreak");
@@ -71,25 +63,11 @@ public class BossAnimationEvents : MonoBehaviour
                 {
                     _animator.SetTrigger("notSweepBreak");
                 }
-                _currentSweepLoops = 0;
-                _characterStats.IsSweepBreak = false;
-                break;
+            }
         }
-        _bossCooldownManager.LastSweep = Time.time;
+        _characterStats.IsSweepBreak = false;
     }
-    void SweepProjectileSpawn1()
-    {
-        Instantiate(_bossReferences.SweepProjectilePrefab, _bossReferences.SweepRangedSpawnPoints[0].position, _bossReferences.SweepRangedSpawnPoints[0].rotation);
-    }
-    void SweepProjectileSpawn2()
-    {
-        Instantiate(_bossReferences.SweepProjectilePrefab, _bossReferences.SweepRangedSpawnPoints[1].position, _bossReferences.SweepRangedSpawnPoints[1].rotation);
-    }
-    void SweepProjectileSpawn3()
-    {
-        Instantiate(_bossReferences.SweepProjectilePrefab, _bossReferences.SweepRangedSpawnPoints[2].position, _bossReferences.SweepRangedSpawnPoints[2].rotation);
-    }
-    public void ApplyBuff()
+    public IEnumerator ApplyBuff()
     {
         _bossStats.ArmorAmount += _bossStats.AmountOfArmorBuffed;
         _bossStats.HealthRegenerationAmount += _bossStats.AmountOfRegenerationBuffed;
@@ -97,34 +75,32 @@ public class BossAnimationEvents : MonoBehaviour
         _bossStats.TotalDamage += _bossStats.AmountOfDamageBuffed;
 
         _bossCooldownManager.LastBuff = Time.time;
-    }
-    void CheckBuffDuration()
-    {
-        if (!_bossCooldownManager.IsBuffActive())
-        {
-            _bossStats.ArmorAmount -= _bossStats.AmountOfArmorBuffed;
-            _bossStats.HealthRegenerationAmount -= _bossStats.AmountOfRegenerationBuffed;
-            _bossStats.CooldownReductionAmount -= _bossStats.AmountOfCooldownBuffed;
-            _bossStats.TotalDamage -= _bossStats.AmountOfDamageBuffed;
-        }
 
+        yield return new WaitForSeconds(_bossStats.BuffDuration);
+        RevertBuff();
     }
-    public void ApplyDebuff()
+    void RevertBuff()
+    {
+        _bossStats.ArmorAmount -= _bossStats.AmountOfArmorBuffed;
+        _bossStats.HealthRegenerationAmount -= _bossStats.AmountOfRegenerationBuffed;
+        _bossStats.CooldownReductionAmount -= _bossStats.AmountOfCooldownBuffed;
+        _bossStats.TotalDamage -= _bossStats.AmountOfDamageBuffed;
+    }
+    public IEnumerator ApplyDebuff()
     {
         _characterStats.ArmorAmount -= _bossStats.AmountOfArmorDebuffed;
         _characterStats.MovementSpeed -= _bossStats.AmountOfSpeedDebuffed;
         _characterStats.TotalDamage -= _bossStats.AmountOfDamageDebuffed;
 
         _bossCooldownManager.LastDebuff = Time.time;
+        yield return new WaitForSeconds(_bossStats.DebuffDuration);
+        RevertDebuff();
     }
-    void CheckDebuffDuration()
+    void RevertDebuff()
     {
-        if (!_bossCooldownManager.IsDebuffActive())
-        {
-            _characterStats.ArmorAmount += _bossStats.AmountOfArmorDebuffed;
-            _characterStats.MovementSpeed += _bossStats.AmountOfSpeedDebuffed;
-            _characterStats.TotalDamage += _bossStats.AmountOfDamageDebuffed;
-        }
+        _characterStats.ArmorAmount += _bossStats.AmountOfArmorDebuffed;
+        _characterStats.MovementSpeed += _bossStats.AmountOfSpeedDebuffed;
+        _characterStats.TotalDamage += _bossStats.AmountOfDamageDebuffed;
     }
     public void TeleportToPosition()
     {

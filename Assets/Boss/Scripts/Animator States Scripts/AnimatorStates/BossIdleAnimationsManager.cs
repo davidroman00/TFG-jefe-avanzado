@@ -22,6 +22,7 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
         CrossChecker(animator);
         BuffChecker(animator);
         DebuffChecker(animator);
+        DodgeChecker(animator);
         UltimateChecker(animator);
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -32,6 +33,8 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
         animator.ResetTrigger("cross");
         animator.ResetTrigger("buff");
         animator.ResetTrigger("debuff");
+        animator.ResetTrigger("dodgeLeft");
+        animator.ResetTrigger("dodgeRight");
         animator.ResetTrigger("ultimate");
         //Resetting triggers at the exit of this state is important, so triggers don't stack in the animator while waiting for the current animation to end.
         //It only happens if two, or more, of them are set at the same time.

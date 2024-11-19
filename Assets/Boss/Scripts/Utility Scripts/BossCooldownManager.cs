@@ -48,17 +48,9 @@ public class BossCooldownManager : MonoBehaviour
     {
         return Time.time < _lastBuff + _bossStats.BuffCooldown * (1 - _bossStats.CooldownReductionAmount);
     }
-    public bool IsBuffActive()
-    {
-        return Time.time < _lastBuff + _bossStats.BuffDuration;
-    }
     public bool IsDebuffOnCooldown()
     {
         return Time.time < _lastDebuff + _bossStats.DebuffCooldown * (1 - _bossStats.CooldownReductionAmount);
-    }
-    public bool IsDebuffActive()
-    {
-        return Time.time < _lastDebuff + _bossStats.DebuffDuration;
     }
     public bool IsDodgeOnCooldown()
     {
