@@ -77,7 +77,6 @@ public class BossAnimationEvents : MonoBehaviour
             {
                 _animator.SetTrigger("notSweepBreak");
             }
-            _bossReferences.ActualTeleportPosition = _bossReferences.CrossBossPosition;
             _characterStats.IsSweepBreak = false;
             _currentSweepLoops = 0;
         }

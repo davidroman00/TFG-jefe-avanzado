@@ -26,7 +26,7 @@ public class BossFanAndCrossProjectile : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             collider.GetComponent<CharacterHealthManager>()
-            .PlayerRecieveDamage(_bossStats.FanAndCrossProjectileDamage * 1 + (_bossStats.TotalDamage / 100));
+            .PlayerRecieveDamage(_bossStats.FanAndCrossProjectileDamage * (1 + _bossStats.TotalDamage / 100));
 
             Destroy(gameObject);
         }

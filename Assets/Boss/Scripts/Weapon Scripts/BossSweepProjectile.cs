@@ -24,7 +24,7 @@ public class BossSweepProjectile : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             collider.GetComponent<CharacterHealthManager>()
-            .PlayerRecieveDamage(_bossStats.SweepProjectileDamage * 1 + (_bossStats.TotalDamage / 100));
+            .PlayerRecieveDamage(_bossStats.SweepProjectileDamage * (1 + _bossStats.TotalDamage / 100));
         }
     }
 }

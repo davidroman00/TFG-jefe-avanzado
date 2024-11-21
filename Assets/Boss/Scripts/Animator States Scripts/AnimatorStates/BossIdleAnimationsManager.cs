@@ -48,16 +48,13 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
     {
         if (!_bossCooldownManager.IsMeleeOnCooldown())
         {
-            _bossReferences.ActualTeleportPosition = _bossReferences.MeleeAttackBossPosition;
             animator.SetTrigger("melee");
         }
     }
     void FanChecker(Animator animator)
     {
         if (!_bossCooldownManager.IsFanOnCooldown())
-        {
-            int randomFanPosition = Random.Range(0, _bossReferences.FanBossPositions.Length);
-            _bossReferences.ActualTeleportPosition = _bossReferences.FanBossPositions[randomFanPosition];
+        {            
             animator.SetTrigger("fan");
         }
     }
@@ -65,7 +62,6 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
     {
         if (!_bossCooldownManager.IsSweepOnCooldown())
         {
-            _bossReferences.ActualTeleportPosition = _bossReferences.SweepBossPosition;
             animator.SetTrigger("sweep");
         }
     }
@@ -73,7 +69,6 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
     {
         if (!_bossCooldownManager.IsCrossOnCooldown())
         {
-            _bossReferences.ActualTeleportPosition = _bossReferences.CrossBossPosition;
             animator.SetTrigger("cross");
         }
     }
@@ -106,7 +101,6 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
     {
         if (_bossReferences.ActualUltimateUses < _bossStats.BossMaxUltimateUses && _bossHealthManager.CurrentHealth <= _bossStats.BossUltimateHPThreshold && !_bossCooldownManager.IsUltimateOnCooldown())
         {
-            _bossReferences.ActualTeleportPosition = _bossReferences.UltimateBossPosition;
             animator.SetTrigger("ultimate");
             _bossReferences.ActualUltimateUses++;
         }

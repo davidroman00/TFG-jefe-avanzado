@@ -26,34 +26,34 @@ public class BossCooldownManager : MonoBehaviour
     }
     public bool IsMeleeOnCooldown()
     {
-        return Time.time < _lastMelee + _bossStats.MeleeCooldown * (1 - _bossStats.CooldownReductionAmount);
+        return Time.time < _lastMelee + _bossStats.MeleeCooldown * (1 - _bossStats.CooldownReductionAmount / 100);
     }
     public bool IsFanOnCooldown()
     {
-        return Time.time < _lastFan + _bossStats.FanRangedCooldown * (1 - _bossStats.CooldownReductionAmount);
+        return Time.time < _lastFan + _bossStats.FanRangedCooldown * (1 - _bossStats.CooldownReductionAmount / 100);
     }
     public bool IsSweepOnCooldown()
     {
-        return Time.time < _lastSweep + _bossStats.SweepRangedCooldown * (1 - _bossStats.CooldownReductionAmount);
+        return Time.time < _lastSweep + _bossStats.SweepRangedCooldown * (1 - _bossStats.CooldownReductionAmount / 100);
     }
     public bool IsCrossOnCooldown()
     {
-        return Time.time < _lastCross + _bossStats.CrossRangedCooldown * (1 - _bossStats.CooldownReductionAmount);
+        return Time.time < _lastCross + _bossStats.CrossRangedCooldown * (1 - _bossStats.CooldownReductionAmount / 100);
     }
     public bool IsUltimateOnCooldown()
     {
-        return Time.time < _lastUltimate + _bossStats.UltimateCooldown * (1 - _bossStats.CooldownReductionAmount);
+        return Time.time < _lastUltimate + _bossStats.UltimateCooldown * (1 - _bossStats.CooldownReductionAmount / 100);
     }
     public bool IsBuffOnCooldown()
     {
-        return Time.time < _lastBuff + _bossStats.BuffCooldown * (1 - _bossStats.CooldownReductionAmount);
+        return Time.time < _lastBuff + _bossStats.BuffCooldown * (1 - _bossStats.CooldownReductionAmount / 100);
     }
     public bool IsDebuffOnCooldown()
     {
-        return Time.time < _lastDebuff + _bossStats.DebuffCooldown * (1 - _bossStats.CooldownReductionAmount);
+        return Time.time < _lastDebuff + _bossStats.DebuffCooldown * (1 - _bossStats.CooldownReductionAmount / 100);
     }
     public bool IsDodgeOnCooldown()
     {
-        return Time.time < _lastDodge + _bossStats.DodgeCooldown * (1 - _bossStats.CooldownReductionAmount);
+        return Time.time < _lastDodge + _bossStats.DodgeCooldown * (1 - _bossStats.CooldownReductionAmount / 100);
     }
 }
