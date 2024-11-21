@@ -8,6 +8,8 @@ public class CharacterStats : MonoBehaviour
     [SerializeField]
     float _armorAmount;
     [SerializeField]
+    float _totalMovementSpeed;
+    [SerializeField]
     float _totalDamage;
     [SerializeField]
     float _movementSpeed;
@@ -26,6 +28,7 @@ public class CharacterStats : MonoBehaviour
     public float MaxHealth { get { return _maxHealth; } }
     public float ArmorAmount { get { return _armorAmount; } set { _armorAmount = value; } }
     public float TotalDamage { get { return _totalDamage; } set { _totalDamage = value; } }
+    public float TotalMovementSpeed { get { return _totalMovementSpeed; } set { _totalMovementSpeed = value; } }
     public float MovementSpeed { get { return _movementSpeed; } set { _movementSpeed = value; } }
     public float BackdashMovementSpeed { get { return _backdashMovementSpeed; } }
     public float AttackDamage { get { return _attackDamage; } }

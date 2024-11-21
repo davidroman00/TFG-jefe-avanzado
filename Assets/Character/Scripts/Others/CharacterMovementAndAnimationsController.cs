@@ -86,7 +86,7 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
 
         //Handling character movement.
         _moveDirection = Quaternion.Euler(0, _targetAngle, 0) * Vector3.forward;
-        _characterController.Move(_characterStats.MovementSpeed * Time.deltaTime * _moveDirection.normalized);
+        _characterController.Move(_characterStats.MovementSpeed * (1 + _characterStats.TotalMovementSpeed / 100) * Time.deltaTime * _moveDirection.normalized);
 
         _backdashMoveDirection = Quaternion.Euler(0, _appliedAngle, 0) * Vector3.back;
     }

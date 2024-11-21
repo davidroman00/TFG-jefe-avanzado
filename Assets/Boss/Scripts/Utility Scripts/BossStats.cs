@@ -74,6 +74,8 @@ public class BossStats : MonoBehaviour
    float _amountOfDamageBuffed;
    [SerializeField]
    float _amountOfCooldownBuffed;
+   [SerializeField]
+   float _amountOfAnimationSpeedBuffed;
 
    [Header("Boss debuff related stats")]
    [SerializeField]
@@ -135,6 +137,7 @@ public class BossStats : MonoBehaviour
    public float AmountOfRegenerationBuffed { get { return _amountOfRegenerationBuffed; } }
    public float AmountOfDamageBuffed { get { return _amountOfDamageBuffed; } }
    public float AmountOfCooldownBuffed { get { return _amountOfCooldownBuffed; } }
+   public float AmountOfAnimationSpeedBuffed { get { return _amountOfAnimationSpeedBuffed; } }
 
    //Boss debuff related stats
    public float DebuffDuration { get { return _debuffDuration; } }

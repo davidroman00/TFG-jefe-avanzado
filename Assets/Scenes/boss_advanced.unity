@@ -267,7 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 74050636}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CrossNorthSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 190595746}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FanSpawnPoint5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 195220404}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FanSpawnPoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1719,7 +1719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 774103825}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BossCrossProjectileSpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2140,7 +2140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 859621549}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FanSpawnPoint4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2708,7 +2708,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1138571178}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CrossWestSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3282,7 +3282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1328244861}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BossFanProjetileSpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3495,7 +3495,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400907634}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: 0.00000001533286, z: -0.00000000780787, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: -0.000000015332867, z: 0.000000007807873, w: 0.89111495}
   m_LocalPosition: {x: 20, y: 11, z: 2.0000005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3818,7 +3818,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529143529}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: 0.00000001533286, z: -0.00000000780787, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: -0.000000015332867, z: 0.000000007807873, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3835,7 +3835,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1544525637}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FanSpawnPoint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4002,7 +4002,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1570213856}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: 'CrossEastSpawnPoint '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4033,7 +4033,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1582324053}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BossMeleeSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4228,7 +4228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1652736301}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FanSpawnPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5015,7 +5015,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1802726936}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BossProjectileSpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5297,7 +5297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2046796864}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: 'CrossSouthSpawnPoint '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6227,9 +6227,9 @@ GameObject:
   - component: {fileID: 7032664271659441854}
   - component: {fileID: 1669210594459620749}
   - component: {fileID: 181728311140387342}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BossLogic
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10482,7 +10482,7 @@ GameObject:
   - component: {fileID: 7663700717129087862}
   - component: {fileID: 8086418292144690000}
   - component: {fileID: 6694820626361550946}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BossColisionsManagerPhase1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11687,7 +11687,7 @@ MonoBehaviour:
   _amountOfCooldownBuffed: 30
   _debuffDuration: 10
   _amountOfDamageDebuffed: 15
-  _amountOfSpeedDebuffed: 20
+  _amountOfSpeedDebuffed: 25
   _amountOfArmorDebuffed: 100
   _bossMaxUltimateUses: 2
   _bossUltimateHPThreshold: 1000
@@ -13292,6 +13292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _armorAmount: 0
+  _totalMovementSpeed: 0
   _totalDamage: 0
   _movementSpeed: 10
   _backdashMovementSpeed: 25
