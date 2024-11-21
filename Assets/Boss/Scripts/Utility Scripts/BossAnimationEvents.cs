@@ -119,6 +119,10 @@ public class BossAnimationEvents : MonoBehaviour
     {
         _bossReferences.IsActualDodgeActive = true;
     }
+    public void ActualMidDodge()
+    {
+        _bossReferences.HasReachedMidDodge = true;
+    }
     public void ActualDodgeEnd()
     {
         _bossReferences.IsActualDodgeActive = false;

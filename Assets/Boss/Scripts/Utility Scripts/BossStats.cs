@@ -54,6 +54,8 @@ public class BossStats : MonoBehaviour
    float _sweepProjectileMovementSpeed;
    [SerializeField]
    float _dodgeMovementSpeed;
+   [SerializeField]
+   float _dodgeAccelerationSpeed;
 
    [Header("Boss projectiles lifetime stats")]
    [SerializeField]
@@ -125,6 +127,7 @@ public class BossStats : MonoBehaviour
    public float FanAndCrossProjectileDecelarationSpeed { get { return _fanAndCrossProjectileDecelerationSpeed; } }
    public float SweepProjectileMovementSpeed { get { return _sweepProjectileMovementSpeed; } }
    public float DodgeMovementSpeed { get { return _dodgeMovementSpeed; } }
+   public float DodgeAccelerationSpeed { get { return _dodgeAccelerationSpeed; } }
 
    //Boss projectiles lifetime stats
    public float FanAndCrossProjectileLifetime { get { return _fanAndCrossProjectileLifetime; } }

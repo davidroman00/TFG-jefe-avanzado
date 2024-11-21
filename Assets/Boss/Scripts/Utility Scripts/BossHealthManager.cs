@@ -29,7 +29,14 @@ public class BossHealthManager : MonoBehaviour
     }
     public void BossRecieveDamage(float value)
     {
-        _currentHealth -= value - _bossStats.ArmorAmount;
+        if (value > 0)
+        {
+            _currentHealth -= value - _bossStats.ArmorAmount;
+        }
+        else
+        {
+            _currentHealth -= value;
+        }
         _bossUIHealthManager.SetCurrentHealth(_currentHealth);
     }
     void BossRegenerateHealt()

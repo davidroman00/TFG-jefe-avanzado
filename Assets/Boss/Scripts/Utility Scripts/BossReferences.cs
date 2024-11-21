@@ -49,13 +49,14 @@ public class BossReferences : MonoBehaviour
     //General utility variables
     Transform _actualTeleportPosition;
     bool _isActualDodgeActive;
+    bool _hasReachedMidDodge;
     int _actualUltimateUses;
     bool _isOutsideArena;
 
 
     //Player transform
     public Transform PlayerTransform { get { return _playerTransform; } }
-    
+
     //Projectiles and weapons spawn points
     public Transform MeleeAttackSpawnPoint { get { return _meleeAttackSpawnPoint; } }
     public Transform[] FanProjectilesSpawnPoints { get { return _fanProjectilesSpawnPoints; } }
@@ -81,6 +82,7 @@ public class BossReferences : MonoBehaviour
     //General utility variables
     public Transform ActualTeleportPosition { get { return _actualTeleportPosition; } set { _actualTeleportPosition = value; } }
     public bool IsActualDodgeActive { get { return _isActualDodgeActive; } set { _isActualDodgeActive = value; } }
+    public bool HasReachedMidDodge { get { return _hasReachedMidDodge; } set { _hasReachedMidDodge = value; } }
     public int ActualUltimateUses { get { return _actualUltimateUses; } set { _actualUltimateUses = value; } }
     public bool IsOutsideArena { get { return _isOutsideArena; } set { _isOutsideArena = value; } }
 }
