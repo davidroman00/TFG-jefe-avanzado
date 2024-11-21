@@ -49,6 +49,8 @@ public class BossStats : MonoBehaviour
    [SerializeField]
    float _fanAndCrossProjectileMovementSpeed;
    [SerializeField]
+   float _fanAndCrossProjectileDecelerationSpeed;
+   [SerializeField]
    float _sweepProjectileMovementSpeed;
    [SerializeField]
    float _dodgeMovementSpeed;
@@ -91,7 +93,7 @@ public class BossStats : MonoBehaviour
 
    //This section is in charge of exporting every variable in ReadOnly, thanks to the getter.
    //If you want to modify these variables dynamically, you need a setter instead.
-   
+
    //Boss global combat stats
    public float BossMaxHP { get { return _bossMaxHP; } }
    public float ArmorAmount { get { return _armorAmount; } set { _armorAmount = value; } }
@@ -118,6 +120,7 @@ public class BossStats : MonoBehaviour
 
    // Boss movement speed stats
    public float FanAndCrossProjectileMovementSpeed { get { return _fanAndCrossProjectileMovementSpeed; } }
+   public float FanAndCrossProjectileDecelarationSpeed { get { return _fanAndCrossProjectileDecelerationSpeed; } }
    public float SweepProjectileMovementSpeed { get { return _sweepProjectileMovementSpeed; } }
    public float DodgeMovementSpeed { get { return _dodgeMovementSpeed; } }
 

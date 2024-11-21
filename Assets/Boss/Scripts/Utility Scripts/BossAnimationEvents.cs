@@ -7,6 +7,7 @@ public class BossAnimationEvents : MonoBehaviour
     BossStats _bossStats;
     CharacterStats _characterStats;
     Animator _animator;
+    int _currentSweepLoops;
     int _currentUltimateBreakLoops;
 
     void Awake()
@@ -38,29 +39,48 @@ public class BossAnimationEvents : MonoBehaviour
     }
     public void SweepProjectilesSpawn()
     {
-        for (int i = 0; i < _bossReferences.SweepProjectilesSpawnPoints.Length; i++)
+        switch (_currentSweepLoops)
         {
-            Instantiate(_bossReferences.SweepProjectilePrefab, _bossReferences.SweepProjectilesSpawnPoints[i].position, _bossReferences.SweepProjectilesSpawnPoints[i].rotation);
+            case 0:
+                SweepProjectileSpawn1();
+                break;
+            case 1:
+                SweepProjectileSpawn2();
+                break;
+            case 2:
+                SweepProjectileSpawn3();
+                break;
         }
+        _currentSweepLoops++;
+    }
+    void SweepProjectileSpawn1()
+    {
+        Instantiate(_bossReferences.SweepProjectilePrefab, _bossReferences.SweepProjectilesSpawnPoints[0].position, _bossReferences.SweepProjectilesSpawnPoints[0].rotation);
+    }
+    void SweepProjectileSpawn2()
+    {
+        Instantiate(_bossReferences.SweepProjectilePrefab, _bossReferences.SweepProjectilesSpawnPoints[1].position, _bossReferences.SweepProjectilesSpawnPoints[1].rotation);
+    }
+    void SweepProjectileSpawn3()
+    {
+        Instantiate(_bossReferences.SweepProjectilePrefab, _bossReferences.SweepProjectilesSpawnPoints[2].position, _bossReferences.SweepProjectilesSpawnPoints[2].rotation);
     }
     public void CheckSweepBreak()
     {
-        for (int i = 0; i < _bossReferences.SweepProjectilesSpawnPoints.Length; i++)
+        if (_currentSweepLoops >= 2)
         {
-            if (i >= _bossReferences.SweepProjectilesSpawnPoints.Length)
+            if (_characterStats.IsSweepBreak)
             {
-                _bossReferences.ActualTeleportPosition = _bossReferences.CrossBossPosition;
-                if (_characterStats.IsSweepBreak)
-                {
-                    _animator.SetTrigger("sweepBreak");
-                }
-                else
-                {
-                    _animator.SetTrigger("notSweepBreak");
-                }
+                _animator.SetTrigger("sweepBreak");
             }
+            else
+            {
+                _animator.SetTrigger("notSweepBreak");
+            }
+            _bossReferences.ActualTeleportPosition = _bossReferences.CrossBossPosition;
+            _characterStats.IsSweepBreak = false;
+            _currentSweepLoops = 0;
         }
-        _characterStats.IsSweepBreak = false;
     }
     public IEnumerator ApplyBuff()
     {
@@ -94,9 +114,18 @@ public class BossAnimationEvents : MonoBehaviour
         _characterStats.MovementSpeed += _bossStats.AmountOfSpeedDebuffed;
         _characterStats.TotalDamage += _bossStats.AmountOfDamageDebuffed;
     }
+    public void ActualDodgeStart()
+    {
+        _bossReferences.IsActualDodgeActive = true;
+    }
+    public void ActualDodgeEnd()
+    {
+        _bossReferences.IsActualDodgeActive = false;
+    }
     public void TeleportToPosition()
     {
         transform.position = _bossReferences.ActualTeleportPosition.position;
+        transform.rotation = _bossReferences.ActualTeleportPosition.rotation;
     }
     public void UltimateDeviceSpawn()
     {

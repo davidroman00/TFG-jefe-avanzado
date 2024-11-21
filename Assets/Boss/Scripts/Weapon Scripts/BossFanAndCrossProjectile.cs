@@ -4,9 +4,11 @@ using UnityEngine;
 public class BossFanAndCrossProjectile : MonoBehaviour
 {
     BossStats _bossStats;
+    float _projectileSpeed;
     void Awake()
     {
         _bossStats = FindFirstObjectByType<BossStats>();
+        _projectileSpeed = _bossStats.FanAndCrossProjectileMovementSpeed;
 
         Destroy(gameObject, _bossStats.FanAndCrossProjectileLifetime);
     }
@@ -16,7 +18,8 @@ public class BossFanAndCrossProjectile : MonoBehaviour
     }
     void HandleProjectileMovement()
     {
-        transform.Translate(_bossStats.FanAndCrossProjectileMovementSpeed * Time.deltaTime * Vector3.forward);
+        transform.Translate(_projectileSpeed * Time.deltaTime * Vector3.forward);
+        _projectileSpeed -= _bossStats.FanAndCrossProjectileDecelarationSpeed * Time.deltaTime;
     }
     void OnTriggerEnter(Collider collider)
     {
@@ -24,7 +27,7 @@ public class BossFanAndCrossProjectile : MonoBehaviour
         {
             collider.GetComponent<CharacterHealthManager>()
             .PlayerRecieveDamage(_bossStats.FanAndCrossProjectileDamage * 1 + (_bossStats.TotalDamage / 100));
-            
+
             Destroy(gameObject);
         }
     }

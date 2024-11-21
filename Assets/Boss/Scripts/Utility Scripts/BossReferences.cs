@@ -48,8 +48,7 @@ public class BossReferences : MonoBehaviour
 
     //General utility variables
     Transform _actualTeleportPosition;
-    bool _isActualRightDodgeActive;
-    bool _isActualLeftDodgeActive;
+    bool _isActualDodgeActive;
     int _actualUltimateUses;
     bool _isOutsideArena;
 
@@ -81,8 +80,7 @@ public class BossReferences : MonoBehaviour
 
     //General utility variables
     public Transform ActualTeleportPosition { get { return _actualTeleportPosition; } set { _actualTeleportPosition = value; } }
-    public bool IsActualRightDodgeActive { get { return _isActualRightDodgeActive; } set { _isActualRightDodgeActive = value; } }
-    public bool IsActualLeftDodgeActive { get { return _isActualLeftDodgeActive; } set { _isActualLeftDodgeActive = value; } }
+    public bool IsActualDodgeActive { get { return _isActualDodgeActive; } set { _isActualDodgeActive = value; } }
     public int ActualUltimateUses { get { return _actualUltimateUses; } set { _actualUltimateUses = value; } }
     public bool IsOutsideArena { get { return _isOutsideArena; } set { _isOutsideArena = value; } }
 }
