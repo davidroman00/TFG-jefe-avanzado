@@ -32,6 +32,7 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
         animator.ResetTrigger("sweep");
         animator.ResetTrigger("sweepBreak");
         animator.ResetTrigger("notSweepBreak");
+        animator.ResetTrigger("sweepBreakEnd");
         animator.ResetTrigger("cross");
         animator.ResetTrigger("buff");
         animator.ResetTrigger("debuff");

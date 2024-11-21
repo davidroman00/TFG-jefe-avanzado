@@ -92908,7 +92908,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 4.266667
+  - time: 4.0666666
     functionName: CheckSweepBreak
     data: 
     objectReferenceParameter: {fileID: 0}

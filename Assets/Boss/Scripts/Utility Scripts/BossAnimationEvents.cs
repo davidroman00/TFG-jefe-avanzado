@@ -8,7 +8,7 @@ public class BossAnimationEvents : MonoBehaviour
     CharacterStats _characterStats;
     Animator _animator;
     int _currentSweepLoops;
-    int _currentUltimateBreakLoops;
+    int _currentDefensiveBreakLoops;
 
     void Awake()
     {
@@ -39,19 +39,19 @@ public class BossAnimationEvents : MonoBehaviour
     }
     public void SweepProjectilesSpawn()
     {
+        _currentSweepLoops++;
         switch (_currentSweepLoops)
         {
-            case 0:
+            case 1:
                 SweepProjectileSpawn1();
                 break;
-            case 1:
+            case 2:
                 SweepProjectileSpawn2();
                 break;
-            case 2:
+            case 3:
                 SweepProjectileSpawn3();
                 break;
         }
-        _currentSweepLoops++;
     }
     void SweepProjectileSpawn1()
     {
@@ -67,7 +67,7 @@ public class BossAnimationEvents : MonoBehaviour
     }
     public void CheckSweepBreak()
     {
-        if (_currentSweepLoops >= 2)
+        if (_currentSweepLoops >= 3)
         {
             if (_characterStats.IsSweepBreak)
             {
@@ -136,13 +136,14 @@ public class BossAnimationEvents : MonoBehaviour
     {
         Instantiate(_bossReferences.UltimateWeaponPrefab, _bossReferences.UltimateWeaponSpawnPoint.position, _bossReferences.UltimateWeaponSpawnPoint.rotation);
     }
-    public void UltimateBreakManager()
+    public void DefensiveBreakManager()
     {
-        _currentUltimateBreakLoops++;
-        if (_currentUltimateBreakLoops >= 5)
+        _currentDefensiveBreakLoops++;
+        if (_currentDefensiveBreakLoops >= 5)
         {
             _animator.SetTrigger("ultimateBreakEnd");
-            _currentUltimateBreakLoops = 0;
+            _animator.SetTrigger("sweepBreakEnd");
+            _currentDefensiveBreakLoops = 0;
         }
     }
 }
