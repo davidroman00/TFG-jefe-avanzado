@@ -46,6 +46,12 @@ public class BossReferences : MonoBehaviour
     [SerializeField]
     Transform _ultimateBossPosition;
 
+    [Header("Boss UI images")]
+    [SerializeField]
+    GameObject _buffIcon;
+    [SerializeField]
+    GameObject _debuffIcon;
+
     //General utility variables
     Transform _actualTeleportPosition;
     bool _isActualDodgeActive;
@@ -78,6 +84,10 @@ public class BossReferences : MonoBehaviour
     public Transform SweepBossPosition { get { return _sweepBossPosition; } }
     public Transform CrossBossPosition { get { return _crossBossPosition; } }
     public Transform UltimateBossPosition { get { return _ultimateBossPosition; } }
+
+    //Boss UI images
+    public GameObject BuffIcon { get { return _buffIcon; } }
+    public GameObject DebuffIcon { get { return _debuffIcon; } }
 
     //General utility variables
     public Transform ActualTeleportPosition { get { return _actualTeleportPosition; } set { _actualTeleportPosition = value; } }

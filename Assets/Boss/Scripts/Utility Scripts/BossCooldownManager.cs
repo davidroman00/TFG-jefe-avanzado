@@ -17,8 +17,8 @@ public class BossCooldownManager : MonoBehaviour
     public float LastSweep { set { _lastSweep = value; } }
     public float LastCross { set { _lastCross = value; } }
     public float LastUltimate { set { _lastUltimate = value; } }
-    public float LastBuff { set { _lastBuff = value; } }
-    public float LastDebuff { set { _lastDebuff = value; } }
+    public float LastBuff { get { return _lastBuff; } set { _lastBuff = value; } }
+    public float LastDebuff { get { return _lastDebuff; } set { _lastDebuff = value; } }
     public float LastDodge { set { _lastDodge = value; } }
     void Awake()
     {

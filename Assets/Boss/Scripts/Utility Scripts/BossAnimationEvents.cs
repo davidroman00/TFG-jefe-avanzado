@@ -88,6 +88,7 @@ public class BossAnimationEvents : MonoBehaviour
         _bossStats.CooldownReductionAmount += _bossStats.AmountOfCooldownBuffed;
         _bossStats.TotalDamage += _bossStats.AmountOfDamageBuffed;
         _animator.SetFloat("animationSpeed", 1 + _bossStats.AmountOfAnimationSpeedBuffed / 100);
+        _bossReferences.BuffIcon.SetActive(true);
 
         yield return new WaitForSeconds(_bossStats.BuffDuration);
         RevertBuff();
@@ -99,12 +100,14 @@ public class BossAnimationEvents : MonoBehaviour
         _bossStats.CooldownReductionAmount -= _bossStats.AmountOfCooldownBuffed;
         _bossStats.TotalDamage -= _bossStats.AmountOfDamageBuffed;
         _animator.SetFloat("animationSpeed", 1);
+        _bossReferences.BuffIcon.SetActive(false);
     }
     public IEnumerator ApplyDebuff()
     {
         _characterStats.ArmorAmount -= _bossStats.AmountOfArmorDebuffed;
         _characterStats.TotalMovementSpeed -= _bossStats.AmountOfSpeedDebuffed;
         _characterStats.TotalDamage -= _bossStats.AmountOfDamageDebuffed;
+        _bossReferences.DebuffIcon.SetActive(true);
 
         yield return new WaitForSeconds(_bossStats.DebuffDuration);
         RevertDebuff();
@@ -114,6 +117,7 @@ public class BossAnimationEvents : MonoBehaviour
         _characterStats.ArmorAmount += _bossStats.AmountOfArmorDebuffed;
         _characterStats.TotalMovementSpeed += _bossStats.AmountOfSpeedDebuffed;
         _characterStats.TotalDamage += _bossStats.AmountOfDamageDebuffed;
+        _bossReferences.DebuffIcon.SetActive(false);
     }
     public void ActualDodgeStart()
     {
