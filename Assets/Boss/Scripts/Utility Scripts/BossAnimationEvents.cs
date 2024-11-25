@@ -7,6 +7,7 @@ public class BossAnimationEvents : MonoBehaviour
     BossStats _bossStats;
     CharacterStats _characterStats;
     Animator _animator;
+    BossCooldownManager _bossCooldownManager;
     int _currentSweepLoops;
     int _currentDefensiveBreakLoops;
 
@@ -16,12 +17,14 @@ public class BossAnimationEvents : MonoBehaviour
         _bossStats = GetComponent<BossStats>();
         _characterStats = FindFirstObjectByType<CharacterStats>();
         _animator = GetComponent<Animator>();
+        _bossCooldownManager = GetComponent<BossCooldownManager>();
     }
 
     //These are (mostly) public methods so they can be accessed through an animation event.
     public void MeleeAttackSpawn()
     {
         Instantiate(_bossReferences.MeleeAttackPrefab, _bossReferences.MeleeAttackSpawnPoint.position, _bossReferences.MeleeAttackSpawnPoint.rotation);
+        _bossCooldownManager.LastMelee = Time.time;
     }
     public void FanProjectilesSpawn()
     {
@@ -29,6 +32,7 @@ public class BossAnimationEvents : MonoBehaviour
         {
             Instantiate(_bossReferences.FanAndCrossProjectilePrefab, _bossReferences.FanProjectilesSpawnPoints[i].position, _bossReferences.FanProjectilesSpawnPoints[i].rotation);
         }
+        _bossCooldownManager.LastFan = Time.time;
     }
     public void CrossProjectilesSpawn()
     {
@@ -36,6 +40,7 @@ public class BossAnimationEvents : MonoBehaviour
         {
             Instantiate(_bossReferences.FanAndCrossProjectilePrefab, _bossReferences.CrossProjectilesSpawnPoints[i].position, _bossReferences.CrossProjectilesSpawnPoints[i].rotation);
         }
+        _bossCooldownManager.LastCross = Time.time;
     }
     public void SweepProjectilesSpawn()
     {
@@ -79,6 +84,7 @@ public class BossAnimationEvents : MonoBehaviour
             }
             _characterStats.IsSweepBreak = false;
             _currentSweepLoops = 0;
+            _bossCooldownManager.LastSweep = Time.time;
         }
     }
     public IEnumerator ApplyBuff()
@@ -88,6 +94,7 @@ public class BossAnimationEvents : MonoBehaviour
         _bossStats.CooldownReductionAmount += _bossStats.AmountOfCooldownBuffed;
         _bossStats.TotalDamage += _bossStats.AmountOfDamageBuffed;
         _animator.SetFloat("animationSpeed", 1 + _bossStats.AmountOfAnimationSpeedBuffed / 100);
+        _bossCooldownManager.LastBuff = Time.time;
         _bossReferences.BuffIcon.SetActive(true);
 
         yield return new WaitForSeconds(_bossStats.BuffDuration);
@@ -107,6 +114,7 @@ public class BossAnimationEvents : MonoBehaviour
         _characterStats.ArmorAmount -= _bossStats.AmountOfArmorDebuffed;
         _characterStats.TotalMovementSpeed -= _bossStats.AmountOfSpeedDebuffed;
         _characterStats.TotalDamage -= _bossStats.AmountOfDamageDebuffed;
+        _bossCooldownManager.LastDebuff = Time.time;
         _bossReferences.DebuffIcon.SetActive(true);
 
         yield return new WaitForSeconds(_bossStats.DebuffDuration);
