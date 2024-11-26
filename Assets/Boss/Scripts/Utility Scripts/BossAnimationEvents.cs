@@ -96,6 +96,7 @@ public class BossAnimationEvents : MonoBehaviour
         _animator.SetFloat("animationSpeed", 1 + _bossStats.AmountOfAnimationSpeedBuffed / 100);
         _bossCooldownManager.LastBuff = Time.time;
         _bossReferences.BuffIcon.SetActive(true);
+        _bossReferences.BuffParticleSystem.Play();
 
         yield return new WaitForSeconds(_bossStats.BuffDuration);
         RevertBuff();

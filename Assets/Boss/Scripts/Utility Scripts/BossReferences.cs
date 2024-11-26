@@ -52,6 +52,10 @@ public class BossReferences : MonoBehaviour
     [SerializeField]
     GameObject _debuffIcon;
 
+    [Header("Boss particle systems")]
+    [SerializeField]
+    ParticleSystem _buffParticleSystem;
+
     //General utility variables
     Transform _actualTeleportPosition;
     bool _isActualDodgeActive;
@@ -88,6 +92,9 @@ public class BossReferences : MonoBehaviour
     //Boss UI images
     public GameObject BuffIcon { get { return _buffIcon; } }
     public GameObject DebuffIcon { get { return _debuffIcon; } }
+
+    //Boss particles systems
+    public ParticleSystem BuffParticleSystem { get { return _buffParticleSystem; } }
 
     //General utility variables
     public Transform ActualTeleportPosition { get { return _actualTeleportPosition; } set { _actualTeleportPosition = value; } }
