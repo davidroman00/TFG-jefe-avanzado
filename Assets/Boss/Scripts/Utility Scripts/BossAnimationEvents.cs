@@ -60,15 +60,15 @@ public class BossAnimationEvents : MonoBehaviour
     }
     void SweepProjectileSpawn1()
     {
-        Instantiate(_bossReferences.SweepProjectilePrefab, _bossReferences.SweepProjectilesSpawnPoints[0].position, _bossReferences.SweepProjectilesSpawnPoints[0].rotation);
+        Instantiate(_bossReferences.SweepProjectilePrefab, /*_bossReferences.SweepProjectilesSpawnPoints[0].position*/new Vector3(_bossReferences.SweepProjectilesSpawnPoints[0].position.x, _bossReferences.SweepProjectilesSpawnPoints[0].position.y + 1.75f, _bossReferences.SweepProjectilesSpawnPoints[0].position.z), _bossReferences.SweepProjectilesSpawnPoints[0].rotation);
     }
     void SweepProjectileSpawn2()
     {
-        Instantiate(_bossReferences.SweepProjectilePrefab, _bossReferences.SweepProjectilesSpawnPoints[1].position, _bossReferences.SweepProjectilesSpawnPoints[1].rotation);
+        Instantiate(_bossReferences.SweepProjectilePrefab, /*_bossReferences.SweepProjectilesSpawnPoints[1].position*/new Vector3(_bossReferences.SweepProjectilesSpawnPoints[1].position.x, _bossReferences.SweepProjectilesSpawnPoints[1].position.y + 1.75f, _bossReferences.SweepProjectilesSpawnPoints[1].position.z), _bossReferences.SweepProjectilesSpawnPoints[1].rotation);
     }
     void SweepProjectileSpawn3()
     {
-        Instantiate(_bossReferences.SweepProjectilePrefab, _bossReferences.SweepProjectilesSpawnPoints[2].position, _bossReferences.SweepProjectilesSpawnPoints[2].rotation);
+        Instantiate(_bossReferences.SweepProjectilePrefab, /*_bossReferences.SweepProjectilesSpawnPoints[2].position*/ new Vector3(_bossReferences.SweepProjectilesSpawnPoints[2].position.x, _bossReferences.SweepProjectilesSpawnPoints[2].position.y + 1.75f, _bossReferences.SweepProjectilesSpawnPoints[2].position.z), _bossReferences.SweepProjectilesSpawnPoints[2].rotation);
     }
     public void CheckSweepBreak()
     {

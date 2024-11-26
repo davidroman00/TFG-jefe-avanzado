@@ -3,14 +3,14 @@ using UnityEngine;
 public class BossCooldownManager : MonoBehaviour
 {
     BossStats _bossStats;
-    float _lastMelee;
-    float _lastFan;
-    float _lastSweep;
-    float _lastCross;
+    float _lastMelee = -5;
+    float _lastFan = 15;
+    float _lastSweep = 45;
+    float _lastCross = 30;
     float _lastUltimate;
     float _lastBuff;
-    float _lastDebuff;
-    float _lastDodge;
+    float _lastDebuff = 60;
+    float _lastDodge = -100;
 
     public float LastMelee { set { _lastMelee = value; } }
     public float LastFan { set { _lastFan = value; } }
