@@ -55,6 +55,8 @@ public class BossReferences : MonoBehaviour
     [Header("Boss particle systems")]
     [SerializeField]
     ParticleSystem _buffParticleSystem;
+    [SerializeField]
+    ParticleSystem _debuffParticleSystem;
 
     //General utility variables
     Transform _actualTeleportPosition;
@@ -95,6 +97,7 @@ public class BossReferences : MonoBehaviour
 
     //Boss particles systems
     public ParticleSystem BuffParticleSystem { get { return _buffParticleSystem; } }
+    public ParticleSystem DebuffParticleSystem { get { return _debuffParticleSystem; } }
 
     //General utility variables
     public Transform ActualTeleportPosition { get { return _actualTeleportPosition; } set { _actualTeleportPosition = value; } }

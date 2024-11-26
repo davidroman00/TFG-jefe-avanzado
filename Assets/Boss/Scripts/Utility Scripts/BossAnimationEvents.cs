@@ -117,6 +117,7 @@ public class BossAnimationEvents : MonoBehaviour
         _characterStats.TotalDamage -= _bossStats.AmountOfDamageDebuffed;
         _bossCooldownManager.LastDebuff = Time.time;
         _bossReferences.DebuffIcon.SetActive(true);
+        _bossReferences.DebuffParticleSystem.Play();
 
         yield return new WaitForSeconds(_bossStats.DebuffDuration);
         RevertDebuff();
