@@ -58,6 +58,26 @@ public class BossReferences : MonoBehaviour
     [SerializeField]
     ParticleSystem _debuffParticleSystem;
 
+    [Header("Boss audio clips")]
+    [SerializeField]
+    AudioClip _bossMeleeRoarAudio;
+    [SerializeField]
+    AudioClip _bossRangedAttacksAudio;
+    [SerializeField]
+    AudioClip _bossSweepLoopAudio;
+    [SerializeField]
+    AudioClip _bossBuffAudio;
+    [SerializeField]
+    AudioClip _bossDebuffAudio;
+    [SerializeField]
+    AudioClip _bossDodgeAudio;
+    [SerializeField]
+    AudioClip _bossTeleportAudio;
+    [SerializeField]
+    AudioClip _bossUltimateChargeAudio;
+    [SerializeField]
+    AudioClip _bossUltimateExplosionAudio;
+
     //General utility variables
     Transform _actualTeleportPosition;
     bool _isActualDodgeActive;
@@ -98,6 +118,17 @@ public class BossReferences : MonoBehaviour
     //Boss particles systems
     public ParticleSystem BuffParticleSystem { get { return _buffParticleSystem; } }
     public ParticleSystem DebuffParticleSystem { get { return _debuffParticleSystem; } }
+
+    //Boss audio clips
+    public AudioClip BossMeleeRoarAudio { get { return _bossMeleeRoarAudio; } }
+    public AudioClip BossRangedAttacksAudio { get { return _bossRangedAttacksAudio; } }
+    public AudioClip BossSweepLoopAudio { get { return _bossSweepLoopAudio; } }
+    public AudioClip BossBuffAudio { get { return _bossBuffAudio; } }
+    public AudioClip BossDebuffAudio { get { return _bossDebuffAudio; } }
+    public AudioClip BossDodgeAudio { get { return _bossDodgeAudio; } }
+    public AudioClip BossTeleportAudio { get { return _bossTeleportAudio; } }
+    public AudioClip BossUltimateChargeAudio { get { return _bossUltimateChargeAudio; } }
+    public AudioClip BossUltimateExplosionAudio { get { return _bossUltimateExplosionAudio; } }
 
     //General utility variables
     public Transform ActualTeleportPosition { get { return _actualTeleportPosition; } set { _actualTeleportPosition = value; } }

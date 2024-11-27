@@ -8,6 +8,7 @@ public class BossAnimationEvents : MonoBehaviour
     CharacterStats _characterStats;
     Animator _animator;
     BossCooldownManager _bossCooldownManager;
+    BossAudioManager _bossAudioManager;
     int _currentSweepLoops;
     int _currentDefensiveBreakLoops;
 
@@ -33,6 +34,7 @@ public class BossAnimationEvents : MonoBehaviour
             Instantiate(_bossReferences.FanAndCrossProjectilePrefab, _bossReferences.FanProjectilesSpawnPoints[i].position, _bossReferences.FanProjectilesSpawnPoints[i].rotation);
         }
         _bossCooldownManager.LastFan = Time.time;
+        //_bossAudioManager.PlayBossSound(_bossReferences.BossRangedAttacksAudio, .8f, 1.1f, .75f, false);
     }
     public void CrossProjectilesSpawn()
     {
