@@ -18598,15 +18598,15 @@ MonoBehaviour:
   _debuffIcon: {fileID: 381441982}
   _buffParticleSystem: {fileID: 853886930}
   _debuffParticleSystem: {fileID: 1753715231}
-  _bossMeleeRoarAudio: {fileID: 0}
-  _bossRangedAttacksAudio: {fileID: 0}
-  _bossSweepLoopAudio: {fileID: 0}
-  _bossBuffAudio: {fileID: 0}
-  _bossDebuffAudio: {fileID: 0}
-  _bossDodgeAudio: {fileID: 0}
-  _bossTeleportAudio: {fileID: 0}
-  _bossUltimateChargeAudio: {fileID: 0}
-  _bossUltimateExplosionAudio: {fileID: 0}
+  _bossMeleeRoarAudio: {fileID: 8300000, guid: c7336b0c2025e504482150a8747f3e3a, type: 3}
+  _bossRangedAttacksAudio: {fileID: 8300000, guid: c8e9378afd539914695469e84293eaa4, type: 3}
+  _bossSweepLoopAudio: {fileID: 8300000, guid: c46e89d37df6db1469dde38d3bd094fd, type: 3}
+  _bossBuffAudio: {fileID: 8300000, guid: 907ae92f545e1f54cb8aa845aabbd488, type: 3}
+  _bossDebuffAudio: {fileID: 8300000, guid: a7eddaf0d2aaa634a8c90ba519a9dd15, type: 3}
+  _bossDodgeAudio: {fileID: 8300000, guid: 0c86da57fcc58654d85eccb801bcb76a, type: 3}
+  _bossTeleportAudio: {fileID: 8300000, guid: e7f459e31fa5e7a4ab6c8c42fdd29ea6, type: 3}
+  _bossUltimateChargeAudio: {fileID: 8300000, guid: d248e0cdab946ee449f9af6f9771299b, type: 3}
+  _bossUltimateExplosionAudio: {fileID: 8300000, guid: 56ef4084ef50fe04cabe59dc1df3a175, type: 3}
 --- !u!4 &3340761571235983235
 Transform:
   m_ObjectHideFlags: 0
