@@ -10,7 +10,7 @@ public class BossDodgeRightState : StateMachineBehaviour
     {
         _bossStats = animator.GetComponent<BossStats>();
         _bossReferences = animator.GetComponent<BossReferences>();
-        animator.GetComponent<BossAudioManager>().PlayBossSound(_bossReferences.BossDodgeAudio, 1, 1f, .5f, !true);
+        animator.GetComponent<BossAudioManager>().PlayBossSound(_bossReferences.BossDodgeAudio, .7f, 1f, .65f, false);
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -22,7 +22,7 @@ public class BossDodgeRightState : StateMachineBehaviour
         {
             _dodgeSpeedMultiplier -= _bossStats.DodgeAccelerationSpeed * Time.deltaTime;
         }
-        
+
         if (_bossReferences.IsActualDodgeActive && !_bossReferences.IsOutsideArena)
         {
             animator.transform.Translate((_bossStats.DodgeMovementSpeed * 1 + _dodgeSpeedMultiplier / 100) * Time.deltaTime * Vector3.right);
