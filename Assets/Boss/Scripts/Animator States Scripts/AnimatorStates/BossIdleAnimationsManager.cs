@@ -55,7 +55,7 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
     void FanChecker(Animator animator)
     {
         if (!_bossCooldownManager.IsFanOnCooldown())
-        {            
+        {
             animator.SetTrigger("fan");
         }
     }
@@ -91,11 +91,14 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
     {
         if (!_bossCooldownManager.IsDodgeOnCooldown() /*&& la confirmacion de si una flecha esta cerca suyo*/)
         {
-            int randomDodgeDirection = Random.Range(1, 2);
-            if (randomDodgeDirection == 1)
+            float randomDodgeDirection = Random.value;
+            if (randomDodgeDirection > .49f){
                 animator.SetTrigger("dodgeLeft");
+            }
             else
+            {
                 animator.SetTrigger("dodgeRight");
+            }
         }
     }
     void UltimateChecker(Animator animator)

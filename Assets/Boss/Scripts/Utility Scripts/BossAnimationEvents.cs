@@ -19,6 +19,7 @@ public class BossAnimationEvents : MonoBehaviour
         _characterStats = FindFirstObjectByType<CharacterStats>();
         _animator = GetComponent<Animator>();
         _bossCooldownManager = GetComponent<BossCooldownManager>();
+        _bossAudioManager = GetComponent<BossAudioManager>();
     }
 
     //These are (mostly) public methods so they can be accessed through an animation event.
@@ -34,7 +35,7 @@ public class BossAnimationEvents : MonoBehaviour
             Instantiate(_bossReferences.FanAndCrossProjectilePrefab, _bossReferences.FanProjectilesSpawnPoints[i].position, _bossReferences.FanProjectilesSpawnPoints[i].rotation);
         }
         _bossCooldownManager.LastFan = Time.time;
-        //_bossAudioManager.PlayBossSound(_bossReferences.BossRangedAttacksAudio, .8f, 1.1f, .75f, false);
+        _bossAudioManager.PlayBossSound(_bossReferences.BossRangedAttacksAudio, 1, 1.1f, .5f, false);
     }
     public void CrossProjectilesSpawn()
     {
@@ -43,6 +44,7 @@ public class BossAnimationEvents : MonoBehaviour
             Instantiate(_bossReferences.FanAndCrossProjectilePrefab, _bossReferences.CrossProjectilesSpawnPoints[i].position, _bossReferences.CrossProjectilesSpawnPoints[i].rotation);
         }
         _bossCooldownManager.LastCross = Time.time;
+        _bossAudioManager.PlayBossSound(_bossReferences.BossRangedAttacksAudio, 1, 1.1f, .5f, false);
     }
     public void SweepProjectilesSpawn()
     {
@@ -62,15 +64,18 @@ public class BossAnimationEvents : MonoBehaviour
     }
     void SweepProjectileSpawn1()
     {
-        Instantiate(_bossReferences.SweepProjectilePrefab, /*_bossReferences.SweepProjectilesSpawnPoints[0].position*/new Vector3(_bossReferences.SweepProjectilesSpawnPoints[0].position.x, _bossReferences.SweepProjectilesSpawnPoints[0].position.y + 1.75f, _bossReferences.SweepProjectilesSpawnPoints[0].position.z), _bossReferences.SweepProjectilesSpawnPoints[0].rotation);
+        Instantiate(_bossReferences.SweepProjectilePrefab, new Vector3(_bossReferences.SweepProjectilesSpawnPoints[0].position.x, _bossReferences.SweepProjectilesSpawnPoints[0].position.y + 1.75f, _bossReferences.SweepProjectilesSpawnPoints[0].position.z), _bossReferences.SweepProjectilesSpawnPoints[0].rotation);
+        _bossAudioManager.PlayBossSound(_bossReferences.BossRangedAttacksAudio, 1, 1.1f, .5f, false);
     }
     void SweepProjectileSpawn2()
     {
-        Instantiate(_bossReferences.SweepProjectilePrefab, /*_bossReferences.SweepProjectilesSpawnPoints[1].position*/new Vector3(_bossReferences.SweepProjectilesSpawnPoints[1].position.x, _bossReferences.SweepProjectilesSpawnPoints[1].position.y + 1.75f, _bossReferences.SweepProjectilesSpawnPoints[1].position.z), _bossReferences.SweepProjectilesSpawnPoints[1].rotation);
+        Instantiate(_bossReferences.SweepProjectilePrefab, new Vector3(_bossReferences.SweepProjectilesSpawnPoints[1].position.x, _bossReferences.SweepProjectilesSpawnPoints[1].position.y + 1.75f, _bossReferences.SweepProjectilesSpawnPoints[1].position.z), _bossReferences.SweepProjectilesSpawnPoints[1].rotation);
+        _bossAudioManager.PlayBossSound(_bossReferences.BossRangedAttacksAudio, 1, 1.1f, .5f, false);
     }
     void SweepProjectileSpawn3()
     {
-        Instantiate(_bossReferences.SweepProjectilePrefab, /*_bossReferences.SweepProjectilesSpawnPoints[2].position*/ new Vector3(_bossReferences.SweepProjectilesSpawnPoints[2].position.x, _bossReferences.SweepProjectilesSpawnPoints[2].position.y + 1.75f, _bossReferences.SweepProjectilesSpawnPoints[2].position.z), _bossReferences.SweepProjectilesSpawnPoints[2].rotation);
+        Instantiate(_bossReferences.SweepProjectilePrefab, new Vector3(_bossReferences.SweepProjectilesSpawnPoints[2].position.x, _bossReferences.SweepProjectilesSpawnPoints[2].position.y + 1.75f, _bossReferences.SweepProjectilesSpawnPoints[2].position.z), _bossReferences.SweepProjectilesSpawnPoints[2].rotation);
+        _bossAudioManager.PlayBossSound(_bossReferences.BossRangedAttacksAudio, 1, 1.1f, .5f, false);
     }
     public void CheckSweepBreak()
     {
@@ -99,6 +104,7 @@ public class BossAnimationEvents : MonoBehaviour
         _bossCooldownManager.LastBuff = Time.time;
         _bossReferences.BuffIcon.SetActive(true);
         _bossReferences.BuffParticleSystem.Play();
+        _bossAudioManager.PlayBossSound(_bossReferences.BossBuffAudio, .8f, 1, .5f, false);
 
         yield return new WaitForSeconds(_bossStats.BuffDuration);
         RevertBuff();
@@ -120,6 +126,7 @@ public class BossAnimationEvents : MonoBehaviour
         _bossCooldownManager.LastDebuff = Time.time;
         _bossReferences.DebuffIcon.SetActive(true);
         _bossReferences.DebuffParticleSystem.Play();
+        _bossAudioManager.PlayBossSound(_bossReferences.BossDebuffAudio, .8f, 1, .5f, false);
 
         yield return new WaitForSeconds(_bossStats.DebuffDuration);
         RevertDebuff();
@@ -147,6 +154,7 @@ public class BossAnimationEvents : MonoBehaviour
     {
         transform.position = _bossReferences.ActualTeleportPosition.position;
         transform.rotation = _bossReferences.ActualTeleportPosition.rotation;
+        _bossAudioManager.PlayBossSound(_bossReferences.BossTeleportAudio, .8f, 1, .5f, false);
     }
     public void UltimateDeviceSpawn()
     {
@@ -155,6 +163,7 @@ public class BossAnimationEvents : MonoBehaviour
     public void UltimateAttackStart()
     {
         Instantiate(_bossReferences.UltimateWeaponPrefab, _bossReferences.UltimateWeaponSpawnPoint.position, _bossReferences.UltimateWeaponSpawnPoint.rotation);
+        _bossAudioManager.PlayBossSound(_bossReferences.BossUltimateExplosionAudio, 1, 1f, .5f, false);
     }
     public void DefensiveBreakManager()
     {

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class BossDodgeRightState : StateMachineBehaviour
@@ -11,6 +10,7 @@ public class BossDodgeRightState : StateMachineBehaviour
     {
         _bossStats = animator.GetComponent<BossStats>();
         _bossReferences = animator.GetComponent<BossReferences>();
+        animator.GetComponent<BossAudioManager>().PlayBossSound(_bossReferences.BossDodgeAudio, 1, 1f, .5f, !true);
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -33,5 +33,6 @@ public class BossDodgeRightState : StateMachineBehaviour
         _bossReferences.HasReachedMidDodge = false;
         animator.GetComponent<BossCooldownManager>().LastDodge = Time.time;
         animator.ResetTrigger("dodgeRight");
+        animator.ResetTrigger("dodgeLeft");
     }
 }

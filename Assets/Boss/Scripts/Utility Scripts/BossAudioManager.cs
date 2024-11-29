@@ -17,4 +17,8 @@ public class BossAudioManager : MonoBehaviour
         _audioSource.loop = loop;
         _audioSource.Play();
     }
+    public void StopBossSound()
+    {
+        _audioSource.Stop();
+    }
 }

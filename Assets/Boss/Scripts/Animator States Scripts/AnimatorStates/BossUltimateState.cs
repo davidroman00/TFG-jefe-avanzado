@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class BossUltimateState : StateMachineBehaviour
 {
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.GetComponent<BossAudioManager>().PlayBossSound(animator.GetComponent<BossReferences>().BossUltimateChargeAudio, 1, 1f, .5f, !true);
+    }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (FindAnyObjectByType<BossUltimateDevice>() && FindAnyObjectByType<BossUltimateDevice>().IsDeviceDestroyed)
@@ -14,5 +18,6 @@ public class BossUltimateState : StateMachineBehaviour
     {
         animator.GetComponent<BossCooldownManager>().LastUltimate = Time.time;
         animator.ResetTrigger("ultimate");
+        animator.GetComponent<BossAudioManager>().StopBossSound();
     }
 }
