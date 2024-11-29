@@ -8414,7 +8414,7 @@ GameObject:
   - component: {fileID: 1338687283}
   - component: {fileID: 1338687282}
   m_Layer: 0
-  m_Name: BossThemePlayer
+  m_Name: BattleThemePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8435,7 +8435,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -8793,7 +8793,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400907634}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: 0.000000015332867, z: -0.000000007807873, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: -0.00000001533286, z: 0.000000007807871, w: 0.89111495}
   m_LocalPosition: {x: 20, y: 11, z: 2.0000005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9116,7 +9116,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529143529}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: 0.000000015332867, z: -0.000000007807873, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: -0.00000001533286, z: 0.00000000780787, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -21967,7 +21967,7 @@ MonoBehaviour:
   _sweepRangedCooldown: 60
   _crossRangedCooldown: 14
   _buffCooldown: 75
-  _debuffCooldown: 120
+  _debuffCooldown: 90
   _dodgeCooldown: 18
   _ultimateCooldown: 180
   _fanAndCrossProjectileMovementSpeed: 32.5
@@ -21981,9 +21981,9 @@ MonoBehaviour:
   _buffDuration: 15
   _amountOfArmorBuffed: 10
   _amountOfRegenerationBuffed: 5
-  _amountOfDamageBuffed: 20
-  _amountOfCooldownBuffed: 30
-  _amountOfAnimationSpeedBuffed: 20
+  _amountOfDamageBuffed: 25
+  _amountOfCooldownBuffed: 33.33
+  _amountOfAnimationSpeedBuffed: 25
   _debuffDuration: 10
   _amountOfDamageDebuffed: 15
   _amountOfSpeedDebuffed: 25
@@ -23949,6 +23949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterHealthUI: {fileID: 1406832180}
   _deathTextUI: {fileID: 2036793331}
+  _battleThemeSource: {fileID: 1338687282}
 --- !u!4 &8484029821037465582
 Transform:
   m_ObjectHideFlags: 0

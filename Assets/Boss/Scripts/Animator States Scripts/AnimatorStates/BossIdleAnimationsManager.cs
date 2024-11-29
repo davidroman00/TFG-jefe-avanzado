@@ -61,7 +61,7 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
     }
     void SweepChecker(Animator animator)
     {
-        if (!_bossCooldownManager.IsSweepOnCooldown())
+        if (!_bossCooldownManager.IsSweepOnCooldown() && !_bossReferences.IsBuffActive)
         {
             animator.SetTrigger("sweep");
         }
@@ -103,7 +103,7 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
     }
     void UltimateChecker(Animator animator)
     {
-        if (_bossReferences.ActualUltimateUses < _bossStats.BossMaxUltimateUses && _bossHealthManager.CurrentHealth <= _bossStats.BossUltimateHPThreshold && !_bossCooldownManager.IsUltimateOnCooldown())
+        if (_bossReferences.ActualUltimateUses < _bossStats.BossMaxUltimateUses && _bossHealthManager.CurrentHealth <= _bossStats.BossUltimateHPThreshold && !_bossCooldownManager.IsUltimateOnCooldown() && !_bossReferences.IsBuffActive)
         {
             animator.SetTrigger("ultimate");
             _bossReferences.ActualUltimateUses++;

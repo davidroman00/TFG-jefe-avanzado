@@ -10,6 +10,8 @@ public class CharacterHealthManager : MonoBehaviour
     CharacterUIHealthManager _characterHealthUI;
     [SerializeField]
     GameObject _deathTextUI;
+    [SerializeField]
+    AudioSource _battleThemeSource;
     void Start()
     //Usually, you want to initialize scripts in the Awake() method.
     //However, due to Unity's execution order, you need to use the Start() method here, so it doesn't crash.
@@ -29,7 +31,8 @@ public class CharacterHealthManager : MonoBehaviour
     IEnumerator CheckDeath()
     {
         _deathTextUI.SetActive(true);
-        yield return new WaitForSeconds(3);
+        _battleThemeSource.Stop();
+        yield return new WaitForSeconds(10);
         SceneManager.LoadScene(0);
     }
     public void PlayerRecieveDamage(float value)

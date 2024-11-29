@@ -80,6 +80,7 @@ public class BossReferences : MonoBehaviour
 
     //General utility variables
     Transform _actualTeleportPosition;
+    bool _isBuffActive;
     bool _isActualDodgeActive;
     bool _hasReachedMidDodge;
     int _actualUltimateUses;
@@ -132,6 +133,7 @@ public class BossReferences : MonoBehaviour
 
     //General utility variables
     public Transform ActualTeleportPosition { get { return _actualTeleportPosition; } set { _actualTeleportPosition = value; } }
+    public bool IsBuffActive { get { return _isBuffActive; } set { _isBuffActive = value; } }
     public bool IsActualDodgeActive { get { return _isActualDodgeActive; } set { _isActualDodgeActive = value; } }
     public bool HasReachedMidDodge { get { return _hasReachedMidDodge; } set { _hasReachedMidDodge = value; } }
     public int ActualUltimateUses { get { return _actualUltimateUses; } set { _actualUltimateUses = value; } }

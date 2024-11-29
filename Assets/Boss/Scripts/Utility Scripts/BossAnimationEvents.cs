@@ -102,6 +102,7 @@ public class BossAnimationEvents : MonoBehaviour
         _bossReferences.BuffIcon.SetActive(true);
         _bossReferences.BuffParticleSystem.Play();
         _bossAudioManager.PlayBossSound(_bossReferences.BossBuffAudio, .75f, 1, .65f, false);
+        _bossReferences.IsBuffActive = true;
 
         yield return new WaitForSeconds(_bossStats.BuffDuration);
         RevertBuff();
@@ -114,6 +115,7 @@ public class BossAnimationEvents : MonoBehaviour
         _bossStats.TotalDamage -= _bossStats.AmountOfDamageBuffed;
         _animator.SetFloat("animationSpeed", 1);
         _bossReferences.BuffIcon.SetActive(false);
+        _bossReferences.IsBuffActive = false;
     }
     public IEnumerator ApplyDebuff()
     {
