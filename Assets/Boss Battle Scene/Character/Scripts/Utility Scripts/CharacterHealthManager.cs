@@ -33,7 +33,7 @@ public class CharacterHealthManager : MonoBehaviour
         _deathTextUI.SetActive(true);
         _battleThemeSource.Stop();
         yield return new WaitForSeconds(10);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
     public void PlayerRecieveDamage(float value)
     //This is a public method since it needs to be accessed from other objects
