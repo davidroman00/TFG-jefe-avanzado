@@ -55,7 +55,6 @@ public class IntroductionButtonManager : MonoBehaviour
                 break;
             case 5:
                 _usernameInputField.gameObject.SetActive(true);
-                Debug.Log(_usernameInputField.text);
                 if (_usernameInputField.text != "")
                 {
                     _confirmUsernameButton.gameObject.SetActive(true);

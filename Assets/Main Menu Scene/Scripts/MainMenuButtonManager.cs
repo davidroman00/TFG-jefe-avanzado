@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 public class MainMenuButtonManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject _mainMenu;
-    [SerializeField]
     GameObject _settingsMenu;
     public void PlayButton()
     {
@@ -14,7 +12,7 @@ public class MainMenuButtonManager : MonoBehaviour
     }
     public void SettingsButton()
     {
-        _mainMenu.SetActive(false);
+        gameObject.SetActive(false);
         _settingsMenu.SetActive(true);
     }
     public void QuitButton()

@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class VideoSettingsMenuButtonManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    GameObject _settingsMenu;
+    public void BackButton()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _settingsMenu.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

@@ -11,7 +11,7 @@ public class BossAudioManager : MonoBehaviour
     public void PlayBossSound(AudioClip audioClip, float volume, float pitch, float spatialBlend, bool loop)
     {
         _audioSource.clip = audioClip;
-        _audioSource.volume = volume;
+        _audioSource.volume = volume * AudioSettingsMenuButtonManager.SFXVolumeSetting;
         _audioSource.pitch = pitch;
         _audioSource.spatialBlend = spatialBlend;
         _audioSource.loop = loop;
