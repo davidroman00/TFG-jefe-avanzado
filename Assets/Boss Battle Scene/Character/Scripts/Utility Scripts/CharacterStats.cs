@@ -29,7 +29,7 @@ public class CharacterStats : MonoBehaviour
     [SerializeField]
     float _dashAccelerationSpeed;
     [SerializeField]
-    float _backdashCooldown;
+    float _dashCooldown;
 
     [Header("Character defensive moves stats")]
     [SerializeField]
@@ -68,7 +68,7 @@ public class CharacterStats : MonoBehaviour
     //Character dash related stats
     public float DashMovementSpeed { get { return _dashMovementSpeed; } }
     public float DashAccelerationSpeed { get { return _dashAccelerationSpeed; } }
-    public float BackdashCooldown { get { return _backdashCooldown; } }
+    public float DashCooldown { get { return _dashCooldown; } }
 
     //Character defensive moves stats
     public float ParryDamageReduction { get { return _parryDamageReduction; } }

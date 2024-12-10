@@ -6,11 +6,9 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     //This is the core script of the character.
 
     //Necessary variables to handle Cooldowns.
-    float _lastAttackUse;
     float _lastBackdashUse;
-    [SerializeField]
-    Image _backdashImage;
     CharacterStats _characterStats;
+    CharacterReferences _characterReferences;
 
     //Necessary variables to handle movement, rotation and animations.
     float _turnSmoothTime = .075f;
@@ -21,14 +19,7 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     float _verticalInput;
     Vector3 _initialDirection;
     Vector3 _moveDirection;
-    Vector3 _backdashMoveDirection;
-    public Vector3 BackdashMoveDirection { get { return _backdashMoveDirection; } }
-    bool _isAttacking;
-    public bool IsAttacking { set { _isAttacking = value; } }
-    bool _isBackdashing;
-    public bool IsBackdashing { set { _isBackdashing = value; } }
-    bool _isActualBackdashActive;
-    public bool IsActualBackdashActive { get { return _isActualBackdashActive; } set { _isActualBackdashActive = value; } }
+    
     CharacterController _characterController;
     [SerializeField]
     Transform _camera;
@@ -36,9 +27,10 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
 
     void Awake()
     {
+        _characterStats = GetComponent<CharacterStats>();
+        _characterReferences = GetComponent<CharacterReferences>();
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
-        _characterStats = GetComponent<CharacterStats>();
     }
 
     void Update()
@@ -55,7 +47,7 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
         _initialDirection = new Vector3(_horizontalInput, 0f, _verticalInput).normalized;
 
         //Handling animations, cooldowns and other inputs.
-        if (_initialDirection.magnitude > .05f && !_isAttacking && !_isBackdashing)
+        if (_initialDirection.magnitude > .05f && !_characterReferences.IsAttacking && !_characterReferences.IsDashing)
         {
             HandlePlayerMovementAndRotation();
             _animator.SetBool("isWalking", true);
@@ -72,7 +64,6 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             _animator.SetTrigger("attack");
-            _lastAttackUse = Time.time;
         }
     }
     void HandlePlayerMovementAndRotation()
@@ -86,23 +77,23 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
         _moveDirection = Quaternion.Euler(0, _targetAngle, 0) * Vector3.forward;
         _characterController.Move(_characterStats.BaseMovementSpeed * (1 + _characterStats.TotalMovementSpeedIncrease / 100) * Time.deltaTime * _moveDirection.normalized);
 
-        _backdashMoveDirection = Quaternion.Euler(0, _appliedAngle, 0) * Vector3.back;
+        _characterReferences.DashMoveDirection = Quaternion.Euler(0, _appliedAngle, 0) * Vector3.back;
     }
     //Handling cooldowns on screen.
     void ShowSkillsCooldownOnScreen()
     {
         if (IsBackdashOnCooldown())
         {
-            _backdashImage.fillAmount = (Time.time - _lastBackdashUse) / _characterStats.BackdashCooldown;
+            _characterReferences.DashImage.fillAmount = (Time.time - _lastBackdashUse) / _characterStats.DashCooldown;
         }
         else if (!IsBackdashOnCooldown())
         {
-            _backdashImage.fillAmount = 0;
-        }        
+            _characterReferences.DashImage.fillAmount = 0;
+        }
     }
     //Handling cooldowns.
     bool IsBackdashOnCooldown()
     {
-        return Time.time < _lastBackdashUse + _characterStats.BackdashCooldown;
+        return Time.time < _lastBackdashUse + _characterStats.DashCooldown;
     }
 }

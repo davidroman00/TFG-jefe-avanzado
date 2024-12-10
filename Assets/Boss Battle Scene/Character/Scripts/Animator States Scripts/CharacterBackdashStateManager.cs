@@ -3,26 +3,26 @@ using UnityEngine;
 public class CharacterBackdashStateManager : StateMachineBehaviour
 {
     CharacterStats _characterStats;
-    CharacterMovementAndAnimationsController _characterMovementAndAnimationsController;
+    CharacterReferences _characterReferences;
     CharacterController _characterController;
     
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _characterMovementAndAnimationsController = animator.GetComponent<CharacterMovementAndAnimationsController>();
+        _characterReferences = animator.GetComponent<CharacterReferences>();
         _characterController = animator.GetComponent<CharacterController>();
         _characterStats = animator.GetComponent<CharacterStats>();
-        _characterMovementAndAnimationsController.IsBackdashing = true; //This line here is necessary to avoid the character moving while the animation lasts.
+        _characterReferences.IsDashing = true; //This line here is necessary to avoid the character moving while the animation lasts.
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (_characterMovementAndAnimationsController.IsActualBackdashActive)
+        if (_characterReferences.IsActualDashActive)
         {
-            _characterController.Move(_characterStats.DashMovementSpeed * Time.deltaTime * _characterMovementAndAnimationsController.BackdashMoveDirection.normalized);
+            _characterController.Move(_characterStats.DashMovementSpeed * Time.deltaTime * _characterReferences.DashMoveDirection.normalized);
         }
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.ResetTrigger("backdash");
-        _characterMovementAndAnimationsController.IsBackdashing = false;
+        _characterReferences.IsDashing = false;
     }
 }

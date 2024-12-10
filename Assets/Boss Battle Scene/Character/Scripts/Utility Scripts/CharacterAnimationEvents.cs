@@ -3,11 +3,11 @@ using UnityEngine;
 public class CharacterAnimationEvents : MonoBehaviour
 {
     CharacterMeleeWeapon _characterMeleeWeapon;
-    CharacterMovementAndAnimationsController _characterMovementAndAnimationsController;
+    CharacterReferences _characterReferences;
     void Awake()
     {
         _characterMeleeWeapon = GetComponentInChildren<CharacterMeleeWeapon>();
-        _characterMovementAndAnimationsController = GetComponent<CharacterMovementAndAnimationsController>();
+        _characterReferences = GetComponent<CharacterReferences>();
     }
     //These are public methods so they can be accessed through an animation event
     public void OnAttackStart()
@@ -20,10 +20,10 @@ public class CharacterAnimationEvents : MonoBehaviour
     }
     public void ActualBackdashStart()
     {
-        _characterMovementAndAnimationsController.IsActualBackdashActive = true;
+        _characterReferences.IsActualDashActive = true;
     }
     public void ActualBackdashEnd()
     {
-        _characterMovementAndAnimationsController.IsActualBackdashActive = false;
+        _characterReferences.IsActualDashActive = false;
     }
 }
