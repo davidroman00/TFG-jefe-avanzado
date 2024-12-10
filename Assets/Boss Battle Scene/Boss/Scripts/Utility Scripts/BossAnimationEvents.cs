@@ -120,7 +120,7 @@ public class BossAnimationEvents : MonoBehaviour
     public IEnumerator ApplyDebuff()
     {
         _characterStats.ArmorAmount -= _bossStats.AmountOfArmorDebuffed;
-        _characterStats.TotalMovementSpeed -= _bossStats.AmountOfSpeedDebuffed;
+        _characterStats.TotalMovementSpeedIncrease -= _bossStats.AmountOfSpeedDebuffed;
         _characterStats.TotalDamage -= _bossStats.AmountOfDamageDebuffed;
         _bossCooldownManager.LastDebuff = Time.time;
         _bossReferences.DebuffIcon.SetActive(true);
@@ -133,7 +133,7 @@ public class BossAnimationEvents : MonoBehaviour
     void RevertDebuff()
     {
         _characterStats.ArmorAmount += _bossStats.AmountOfArmorDebuffed;
-        _characterStats.TotalMovementSpeed += _bossStats.AmountOfSpeedDebuffed;
+        _characterStats.TotalMovementSpeedIncrease += _bossStats.AmountOfSpeedDebuffed;
         _characterStats.TotalDamage += _bossStats.AmountOfDamageDebuffed;
         _bossReferences.DebuffIcon.SetActive(false);
     }

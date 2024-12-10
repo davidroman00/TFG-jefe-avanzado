@@ -7,7 +7,9 @@ public class BossStats : MonoBehaviour
    //The fact that there are some values at 0 on inspector means they are not necessary for the current phase of the boss.
    [Header("Boss global combat stats")]
    [SerializeField]
-   float _bossMaxHP;
+   float _maxHP;
+   [SerializeField]
+   float _currentHP;
    [SerializeField]
    float _armorAmount;
    [SerializeField]
@@ -99,7 +101,8 @@ public class BossStats : MonoBehaviour
    //If you want to modify these variables dynamically, you need a setter instead.
 
    //Boss global combat stats
-   public float BossMaxHP { get { return _bossMaxHP; } }
+   public float MaxHP { get { return _maxHP; } }
+   public float CurrentHP { get { return _currentHP; } set { _currentHP = value; } }
    public float ArmorAmount { get { return _armorAmount; } set { _armorAmount = value; } }
    public float HealthRegenerationAmount { get { return _healthRegenerationAmount; } set { _healthRegenerationAmount = value; } }
    public float CooldownReductionAmount { get { return _cooldownReductionAmount; } set { _cooldownReductionAmount = value; } }

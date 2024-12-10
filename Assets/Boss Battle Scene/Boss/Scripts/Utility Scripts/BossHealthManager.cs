@@ -5,16 +5,13 @@ public class BossHealthManager : MonoBehaviour
     BossStats _bossStats;
     [SerializeField]
     BossUIHealthManager _bossUIHealthManager;
-    float _currentHealth;
-    public float CurrentHealth { get { return _currentHealth; } }
     void Start()
     //Usually, you want to initialize scripts in the Awake() method.
     //However, due to Unity's execution order, you need to use the Start() method here, so it doesn't crash.
     {
         _bossStats = GetComponentInParent<BossStats>();
-        _currentHealth = _bossStats.BossMaxHP;
-        _bossUIHealthManager.SetMaxHealth(_currentHealth);
-        _bossUIHealthManager.SetCurrentHealth(_currentHealth);
+        _bossUIHealthManager.SetMaxHealth(_bossStats.MaxHP);
+        _bossUIHealthManager.SetCurrentHealth(_bossStats.CurrentHP);
     }
     void Update()
     {
@@ -22,7 +19,7 @@ public class BossHealthManager : MonoBehaviour
         {
             BossRegenerateHealt();
         }
-        if (_currentHealth <= 0)
+        if (_bossStats.CurrentHP <= 0)
         {
             GetComponentInParent<Animator>().SetTrigger("death");
         }
@@ -31,16 +28,16 @@ public class BossHealthManager : MonoBehaviour
     {
         if (value > 0)
         {
-            _currentHealth -= value - _bossStats.ArmorAmount;
+            _bossStats.CurrentHP -= value - _bossStats.ArmorAmount;
         }
         else
         {
-            _currentHealth -= value;
+            _bossStats.CurrentHP -= value;
         }
-        _bossUIHealthManager.SetCurrentHealth(_currentHealth);
+        _bossUIHealthManager.SetCurrentHealth(_bossStats.CurrentHP);
     }
     void BossRegenerateHealt()
     {
-        _currentHealth += _bossStats.HealthRegenerationAmount * Time.deltaTime;
+        _bossStats.CurrentHP += _bossStats.HealthRegenerationAmount * Time.deltaTime;
     }
 }

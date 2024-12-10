@@ -3,13 +3,11 @@ using UnityEngine;
 public class BossIdleAnimationsManager : StateMachineBehaviour
 {
     //This is the core logic of the animator.
-    BossHealthManager _bossHealthManager;
     BossStats _bossStats;
     BossReferences _bossReferences;
     BossCooldownManager _bossCooldownManager;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _bossHealthManager = animator.GetComponentInChildren<BossHealthManager>();
         _bossStats = animator.GetComponent<BossStats>();
         _bossReferences = animator.GetComponent<BossReferences>();
         _bossCooldownManager = animator.GetComponent<BossCooldownManager>();
@@ -103,7 +101,7 @@ public class BossIdleAnimationsManager : StateMachineBehaviour
     }
     void UltimateChecker(Animator animator)
     {
-        if (_bossReferences.ActualUltimateUses < _bossStats.BossMaxUltimateUses && _bossHealthManager.CurrentHealth <= _bossStats.BossUltimateHPThreshold && !_bossCooldownManager.IsUltimateOnCooldown() && !_bossReferences.IsBuffActive)
+        if (_bossReferences.ActualUltimateUses < _bossStats.BossMaxUltimateUses && _bossStats.CurrentHP <= _bossStats.BossUltimateHPThreshold && !_bossCooldownManager.IsUltimateOnCooldown() && !_bossReferences.IsBuffActive)
         {
             animator.SetTrigger("ultimate");
             _bossReferences.ActualUltimateUses++;

@@ -10,8 +10,6 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     float _lastBackdashUse;
     [SerializeField]
     Image _backdashImage;
-    [SerializeField]
-    Image _attackImage;
     CharacterStats _characterStats;
 
     //Necessary variables to handle movement, rotation and animations.
@@ -71,7 +69,7 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
             _animator.SetTrigger("backdash");
             _lastBackdashUse = Time.time;
         }
-        if (Input.GetMouseButtonDown(0) && !IsAttackOnCooldown())
+        if (Input.GetMouseButtonDown(0))
         {
             _animator.SetTrigger("attack");
             _lastAttackUse = Time.time;
@@ -86,7 +84,7 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
 
         //Handling character movement.
         _moveDirection = Quaternion.Euler(0, _targetAngle, 0) * Vector3.forward;
-        _characterController.Move(_characterStats.MovementSpeed * (1 + _characterStats.TotalMovementSpeed / 100) * Time.deltaTime * _moveDirection.normalized);
+        _characterController.Move(_characterStats.BaseMovementSpeed * (1 + _characterStats.TotalMovementSpeedIncrease / 100) * Time.deltaTime * _moveDirection.normalized);
 
         _backdashMoveDirection = Quaternion.Euler(0, _appliedAngle, 0) * Vector3.back;
     }
@@ -100,23 +98,11 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
         else if (!IsBackdashOnCooldown())
         {
             _backdashImage.fillAmount = 0;
-        }
-        if (IsAttackOnCooldown())
-        {
-            _attackImage.fillAmount = (Time.time - _lastAttackUse) / _characterStats.AttackCooldown;
-        }
-        else if (!IsAttackOnCooldown())
-        {
-            _attackImage.fillAmount = 0;
-        }
+        }        
     }
     //Handling cooldowns.
     bool IsBackdashOnCooldown()
     {
         return Time.time < _lastBackdashUse + _characterStats.BackdashCooldown;
-    }
-    bool IsAttackOnCooldown()
-    {
-        return Time.time < _lastAttackUse + _characterStats.AttackCooldown;
     }
 }

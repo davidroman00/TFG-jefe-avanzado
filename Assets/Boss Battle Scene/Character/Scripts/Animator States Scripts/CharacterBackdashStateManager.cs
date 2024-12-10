@@ -17,7 +17,7 @@ public class CharacterBackdashStateManager : StateMachineBehaviour
     {
         if (_characterMovementAndAnimationsController.IsActualBackdashActive)
         {
-            _characterController.Move(_characterStats.BackdashMovementSpeed * Time.deltaTime * _characterMovementAndAnimationsController.BackdashMoveDirection.normalized);
+            _characterController.Move(_characterStats.DashMovementSpeed * Time.deltaTime * _characterMovementAndAnimationsController.BackdashMoveDirection.normalized);
         }
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
