@@ -3,15 +3,16 @@ using UnityEngine;
 public class BossHealthManager : MonoBehaviour
 {
     BossStats _bossStats;
-    [SerializeField]
-    BossUIHealthManager _bossUIHealthManager;
+    BossReferences _bossReferences;
+
     void Start()
     //Usually, you want to initialize scripts in the Awake() method.
     //However, due to Unity's execution order, you need to use the Start() method here, so it doesn't crash.
     {
         _bossStats = GetComponentInParent<BossStats>();
-        _bossUIHealthManager.SetMaxHealth(_bossStats.MaxHP);
-        _bossUIHealthManager.SetCurrentHealth(_bossStats.CurrentHP);
+        _bossReferences = GetComponentInParent<BossReferences>();
+        _bossReferences.BossUIHealthManager.SetMaxHealth(_bossStats.MaxHP);
+        _bossReferences.BossUIHealthManager.SetCurrentHealth(_bossStats.CurrentHP);
     }
     void Update()
     {
@@ -34,7 +35,7 @@ public class BossHealthManager : MonoBehaviour
         {
             _bossStats.CurrentHP -= value;
         }
-        _bossUIHealthManager.SetCurrentHealth(_bossStats.CurrentHP);
+        _bossReferences.BossUIHealthManager.SetCurrentHealth(_bossStats.CurrentHP);
     }
     void BossRegenerateHealt()
     {

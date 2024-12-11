@@ -46,11 +46,13 @@ public class BossReferences : MonoBehaviour
     [SerializeField]
     Transform _ultimateBossPosition;
 
-    [Header("Boss UI images")]
+    [Header("Boss UI related stuff")]
     [SerializeField]
     GameObject _buffIcon;
     [SerializeField]
     GameObject _debuffIcon;
+    [SerializeField]
+    BossUIHealthManager _bossUIHealthManager;
 
     [Header("Boss particle systems")]
     [SerializeField]
@@ -112,9 +114,10 @@ public class BossReferences : MonoBehaviour
     public Transform CrossBossPosition { get { return _crossBossPosition; } }
     public Transform UltimateBossPosition { get { return _ultimateBossPosition; } }
 
-    //Boss UI images
+    //Boss UI related stuff
     public GameObject BuffIcon { get { return _buffIcon; } }
     public GameObject DebuffIcon { get { return _debuffIcon; } }
+    public BossUIHealthManager BossUIHealthManager { get { return _bossUIHealthManager; } }
 
     //Boss particles systems
     public ParticleSystem BuffParticleSystem { get { return _buffParticleSystem; } }

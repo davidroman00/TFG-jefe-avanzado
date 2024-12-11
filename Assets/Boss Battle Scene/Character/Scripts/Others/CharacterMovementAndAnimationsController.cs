@@ -21,8 +21,6 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     Vector3 _moveDirection;
     
     CharacterController _characterController;
-    [SerializeField]
-    Transform _camera;
     Animator _animator;
 
     void Awake()
@@ -69,7 +67,7 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     void HandlePlayerMovementAndRotation()
     {
         //Handling character rotation.
-        _targetAngle = Mathf.Atan2(_initialDirection.x, _initialDirection.z) * Mathf.Rad2Deg + _camera.eulerAngles.y;
+        _targetAngle = Mathf.Atan2(_initialDirection.x, _initialDirection.z) * Mathf.Rad2Deg + _characterReferences.Camera.eulerAngles.y;
         _appliedAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
         transform.rotation = Quaternion.Euler(0, _appliedAngle, 0);
 
