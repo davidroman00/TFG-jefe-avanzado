@@ -34,7 +34,6 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     void Update()
     {
         HandleInput();
-        ShowSkillsCooldownOnScreen();
     }
 
     void HandleInput()
@@ -77,18 +76,7 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
 
         _characterReferences.DashMoveDirection = Quaternion.Euler(0, _appliedAngle, 0) * Vector3.back;
     }
-    //Handling cooldowns on screen.
-    void ShowSkillsCooldownOnScreen()
-    {
-        if (IsBackdashOnCooldown())
-        {
-            _characterReferences.DashImage.fillAmount = (Time.time - _lastBackdashUse) / _characterStats.DashCooldown;
-        }
-        else if (!IsBackdashOnCooldown())
-        {
-            _characterReferences.DashImage.fillAmount = 0;
-        }
-    }
+
     //Handling cooldowns.
     bool IsBackdashOnCooldown()
     {

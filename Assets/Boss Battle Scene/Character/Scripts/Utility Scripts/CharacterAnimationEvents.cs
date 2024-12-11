@@ -18,11 +18,11 @@ public class CharacterAnimationEvents : MonoBehaviour
     {
         _characterMeleeWeapon.enabled = false;
     }
-    public void ActualBackdashStart()
+    public void ActualDashStart()
     {
         _characterReferences.IsActualDashActive = true;
     }
-    public void ActualBackdashEnd()
+    public void ActualDashEnd()
     {
         _characterReferences.IsActualDashActive = false;
     }

@@ -41,6 +41,8 @@ public class CharacterStats : MonoBehaviour
     [SerializeField]
     float _healAmount;
     [SerializeField]
+    float _maxHealCharges;
+    [SerializeField]
     float _healCooldown;
 
     [Header("Character stagger related stats")]
@@ -77,6 +79,7 @@ public class CharacterStats : MonoBehaviour
     public float ParryDamageReduction { get { return _parryDamageReduction; } }
     public float ParryBlockingTime { get { return _parryBlockingTime; } }
     public float HealAmount { get { return _healAmount; } }
+    public float MaxHealCharges { get { return _maxHealCharges; } }
     public float HealCooldown { get { return _healCooldown; } }
 
     //Character stagger related stats
