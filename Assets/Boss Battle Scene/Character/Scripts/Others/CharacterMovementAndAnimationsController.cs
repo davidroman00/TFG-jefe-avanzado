@@ -1,14 +1,14 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CharacterMovementAndAnimationsController : MonoBehaviour
 {
     //This is the core script of the character.
 
-    //Necessary variables to handle Cooldowns.
-    float _lastBackdashUse;
     CharacterStats _characterStats;
     CharacterReferences _characterReferences;
+    CharacterCooldownManager _characterCooldownManager;
+    CharacterController _characterController;
+    Animator _animator;
 
     //Necessary variables to handle movement, rotation and animations.
     float _turnSmoothTime = .075f;
@@ -18,15 +18,13 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     float _horizontalInput;
     float _verticalInput;
     Vector3 _initialDirection;
-    Vector3 _moveDirection;
-    
-    CharacterController _characterController;
-    Animator _animator;
+    Vector3 _moveDirection; 
 
     void Awake()
     {
         _characterStats = GetComponent<CharacterStats>();
         _characterReferences = GetComponent<CharacterReferences>();
+        _characterCooldownManager = GetComponent<CharacterCooldownManager>();
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
     }
@@ -53,10 +51,9 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
         {
             _animator.SetBool("isWalking", false);
         }
-        if (Input.GetKeyDown(KeyCode.Space) && !IsBackdashOnCooldown())
+        if (Input.GetKeyDown(KeyCode.Space) && !_characterCooldownManager.IsHealOnCooldown())
         {
             _animator.SetTrigger("backdash");
-            _lastBackdashUse = Time.time;
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -77,9 +74,4 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
         _characterReferences.DashMoveDirection = Quaternion.Euler(0, _appliedAngle, 0) * Vector3.back;
     }
 
-    //Handling cooldowns.
-    bool IsBackdashOnCooldown()
-    {
-        return Time.time < _lastBackdashUse + _characterStats.DashCooldown;
-    }
 }

@@ -6,6 +6,7 @@ public class BossAnimationEvents : MonoBehaviour
     BossReferences _bossReferences;
     BossStats _bossStats;
     CharacterStats _characterStats;
+    CharacterReferences _characterReferences;
     Animator _animator;
     BossCooldownManager _bossCooldownManager;
     BossAudioManager _bossAudioManager;
@@ -17,6 +18,7 @@ public class BossAnimationEvents : MonoBehaviour
         _bossReferences = GetComponent<BossReferences>();
         _bossStats = GetComponent<BossStats>();
         _characterStats = FindFirstObjectByType<CharacterStats>();
+        _characterReferences = FindFirstObjectByType<CharacterReferences>();
         _animator = GetComponent<Animator>();
         _bossCooldownManager = GetComponent<BossCooldownManager>();
         _bossAudioManager = GetComponent<BossAudioManager>();
@@ -78,7 +80,7 @@ public class BossAnimationEvents : MonoBehaviour
     {
         if (_currentSweepLoops >= 3)
         {
-            if (_characterStats.IsSweepBreak)
+            if (_characterReferences.IsSweepBreak)
             {
                 _animator.SetTrigger("sweepBreak");
             }
@@ -86,7 +88,7 @@ public class BossAnimationEvents : MonoBehaviour
             {
                 _animator.SetTrigger("notSweepBreak");
             }
-            _characterStats.IsSweepBreak = false;
+            _characterReferences.IsSweepBreak = false;
             _currentSweepLoops = 0;
             _bossCooldownManager.LastSweep = Time.time;
         }

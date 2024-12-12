@@ -30,8 +30,6 @@ public class CharacterStats : MonoBehaviour
     float _dashMovementSpeed;
     [SerializeField]
     float _dashAccelerationSpeed;
-    [SerializeField]
-    float _dashCooldown;
 
     [Header("Character defensive moves stats")]
     [SerializeField]
@@ -50,8 +48,6 @@ public class CharacterStats : MonoBehaviour
     float _staggerProcDamageThreshold;
     [SerializeField]
     float _staggerCooldown;
-
-    bool _isSweepBreak;
 
     //This section is in charge of exporting every variable in ReadOnly, thanks to the getter.
     //If you want to modify these variables dynamically, you need a setter instead.
@@ -73,7 +69,6 @@ public class CharacterStats : MonoBehaviour
     //Character dash related stats
     public float DashMovementSpeed { get { return _dashMovementSpeed; } }
     public float DashAccelerationSpeed { get { return _dashAccelerationSpeed; } }
-    public float DashCooldown { get { return _dashCooldown; } }
 
     //Character defensive moves stats
     public float ParryDamageReduction { get { return _parryDamageReduction; } }
@@ -86,5 +81,4 @@ public class CharacterStats : MonoBehaviour
     public float StaggerProcDamageThreshold { get { return _staggerProcDamageThreshold; } }
     public float StaggerCooldown { get { return _staggerCooldown; } }
 
-    public bool IsSweepBreak { get { return _isSweepBreak; } set { _isSweepBreak = value; } }
 }

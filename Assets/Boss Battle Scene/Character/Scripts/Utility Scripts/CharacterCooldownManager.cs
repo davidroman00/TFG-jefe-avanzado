@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class CharacterCooldownManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    CharacterStats _characterStats;
+    float _lastHeal;
+    float _lastStagger;
+    public float LastHeal { set { _lastHeal = value; } }
+    public float LastStagger { set { _lastStagger = value; } }
+    void Awake()
     {
-        
+        _characterStats = GetComponent<CharacterStats>();
     }
-
-    // Update is called once per frame
-    void Update()
+    public bool IsHealOnCooldown()
     {
-        
+        return Time.time < _lastHeal + _characterStats.HealCooldown;
+    }
+    public bool IsStaggerOnCooldown()
+    {
+        return Time.time < _lastStagger + _characterStats.StaggerCooldown;
     }
 }

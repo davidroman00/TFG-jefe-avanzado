@@ -1524,7 +1524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681489261}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: -0.00000001533286, z: 0.00000000780787, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: 0.000000015332867, z: -0.000000007807873, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8171,7 +8171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239307038}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: -0.00000001533286, z: 0.00000000780787, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: 0.000000015332867, z: -0.000000007807873, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23506,12 +23506,14 @@ MonoBehaviour:
   _totalDamage: 0
   _baseMovementSpeed: 15
   _totalMovementSpeedIncrease: 0
-  _meleeAttacksDamage: []
+  _meleeAttacksDamage:
+  - 12
+  - 18
+  - 25
   _bowBaseDamage: 10
   _bowMaxChargeDamageMultiplier: 3
   _dashMovementSpeed: 20
   _dashAccelerationSpeed: 1000
-  _dashCooldown: 5
   _parryDamageReduction: 35
   _parryBlockingTime: 0.35
   _healAmount: 50
@@ -23786,7 +23788,6 @@ MonoBehaviour:
   _deathTextUI: {fileID: 2036793331}
   _characterHealthUI: {fileID: 1406832180}
   _battleThemeSource: {fileID: 1338687282}
-  _deathTheme: {fileID: 0}
 --- !u!4 &8484029821037465582
 Transform:
   m_ObjectHideFlags: 0
