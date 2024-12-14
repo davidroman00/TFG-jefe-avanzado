@@ -20,6 +20,16 @@ public class CharacterReferences : MonoBehaviour
     // [SerializeField]
     // AudioClip _deathTheme;
 
+    [Header("Character model references")]
+    [SerializeField]
+    GameObject _characterSword;
+    [SerializeField]
+    GameObject _characterShield;
+    [SerializeField]
+    GameObject _characterBow;
+    [SerializeField]
+    GameObject _characterArrow;
+
     //Other private references
     Vector3 _dashMoveDirection;
     bool _isActualDashActive;
@@ -37,6 +47,12 @@ public class CharacterReferences : MonoBehaviour
     //Character audio references
     public AudioSource BattleThemeSource { get { return _battleThemeSource; } }
     //public AudioClip DeathTheme { get { return _deathTheme; } }
+
+    //Character model references
+    public GameObject CharacterSword { get { return _characterSword; } }
+    public GameObject CharacterShield { get { return _characterShield; } }
+    public GameObject CharacterBow { get { return _characterBow; } }
+    public GameObject CharacteArrow { get { return _characterArrow; } }
 
     //Other private references
     public Vector3 DashMoveDirection { get { return _dashMoveDirection; } set { _dashMoveDirection = value; } }
