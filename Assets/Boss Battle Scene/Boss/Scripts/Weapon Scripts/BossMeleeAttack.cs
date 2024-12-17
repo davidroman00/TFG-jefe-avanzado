@@ -16,7 +16,7 @@ public class BossMeleeAttack : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             collider.GetComponent<CharacterHealthManager>()
-            .PlayerRecieveDamage(_bossStats.MeleeAttackDamage * (1 + _bossStats.TotalDamage / 100));
+            .CharacterModifyCurrentHealth(_bossStats.MeleeAttackDamage * (1 + _bossStats.TotalDamage / 100));
         }
     }
 }

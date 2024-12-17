@@ -16,7 +16,7 @@ public class BossUltimateWeapon : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            collider.GetComponent<CharacterHealthManager>().PlayerRecieveDamage(_bossStats.UltimateAttackDamage);
+            collider.GetComponent<CharacterHealthManager>().CharacterModifyCurrentHealth(_bossStats.UltimateAttackDamage);
         }
     }
 }

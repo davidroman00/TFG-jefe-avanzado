@@ -103,7 +103,7 @@ public partial class @CharacterControlls: IInputActionCollection2, IDisposable
                     ""name"": ""WeaponSwap"",
                     ""type"": ""PassThrough"",
                     ""id"": ""b47373d8-7a56-4a55-8ecf-65184875c524"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -287,7 +287,7 @@ public partial class @CharacterControlls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6603554d-2185-40d0-9e2d-799ff13e835d"",
-                    ""path"": ""<Mouse>/scroll/y"",
+                    ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

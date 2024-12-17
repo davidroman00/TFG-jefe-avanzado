@@ -36,7 +36,9 @@ public class CharacterReferences : MonoBehaviour
     bool _isActualDashActive;
     bool _isAttacking;
     bool _isdashing;
+    bool _isHealing;
     bool _isSweepBreak;
+    int _currentWeapon;
 
     //Character camera
     public Transform Camera { get { return _camera; } }
@@ -61,5 +63,7 @@ public class CharacterReferences : MonoBehaviour
     public bool IsActualDashActive { get { return _isActualDashActive; } set { _isActualDashActive = value; } }
     public bool IsAttacking { get { return _isAttacking; } set { _isAttacking = value; } }
     public bool IsDashing { get { return _isdashing; } set { _isdashing = value; } }
+    public bool IsHealing { get { return _isHealing; } set { _isHealing = value; } }
     public bool IsSweepBreak { get { return _isSweepBreak; } set { _isSweepBreak = value; } }
+    public int CurrentWeapon { get { return _currentWeapon; } set { _currentWeapon = value; } }
 }

@@ -30,10 +30,25 @@ public class CharacterHealthManager : MonoBehaviour
         yield return new WaitForSeconds(10);
         SceneManager.LoadScene(1);
     }
-    public void PlayerRecieveDamage(float value)
+    public void CharacterModifyCurrentHealth(float value)
     //This is a public method since it needs to be accessed from other objects
     {
-        _characterStats.CurrentHealth -= value - _characterStats.ArmorAmount;
+        if (value < 0 && _characterStats.CurrentHealth + value > _characterStats.MaxHealth)
+        {
+            _characterStats.CurrentHealth = _characterStats.MaxHealth;
+        }
+        if (value < 0 && _characterStats.CurrentHealth + value < _characterStats.MaxHealth)
+        {
+            _characterStats.CurrentHealth -= value;
+        }
+        if (value > 0 && value - _characterStats.ArmorAmount <= 1)
+        {
+            _characterStats.CurrentHealth -= 1;
+        }
+        if (value > 0 && value - _characterStats.ArmorAmount > 1)
+        {
+            _characterStats.CurrentHealth -= value - _characterStats.ArmorAmount;
+        }
         _characterReferences.CharacterUIHealthManager.SetCurrentHealth(_characterStats.CurrentHealth);
     }
 }

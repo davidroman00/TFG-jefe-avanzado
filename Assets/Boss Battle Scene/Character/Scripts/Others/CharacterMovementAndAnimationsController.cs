@@ -15,8 +15,6 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     float _turnSmoothVelocity;
     float _targetAngle;
     float _appliedAngle;
-    float _horizontalInput;
-    float _verticalInput;
     Vector3 _initialDirection;
     Vector3 _moveDirection;
 
@@ -91,7 +89,7 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     void Update()
     {
         CharacterMoveChecker();
-        WeaponSwapChecker();
+        WeaponSwap();
     }
 
     void CharacterMoveChecker()
@@ -128,20 +126,32 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     }
     void Weapon1(InputAction.CallbackContext context)
     {
-
+        _characterReferences.CurrentWeapon = 0;
     }
     void Weapon2(InputAction.CallbackContext context)
     {
-
+        _characterReferences.CurrentWeapon = 1;
+    }
+    void WeaponSwap()
+    {
+        if (_weaponSwap.ReadValue<Vector2>().normalized.y > 0 || _weaponSwap.ReadValue<Vector2>().normalized.y < 0)
+        {
+            if (_characterReferences.CurrentWeapon == 0)
+            {
+                _characterReferences.CurrentWeapon++;
+            }
+            else
+            {
+                _characterReferences.CurrentWeapon--;
+            }
+        }
+        Debug.Log(_weaponSwap.ReadValue<Vector2>());
     }
     void Pause(InputAction.CallbackContext context)
     {
 
     }
-    void WeaponSwapChecker()
-    {
 
-    }
     void HandleCharacterMovementAndRotation()
     {
         Vector2 inputVector = _move.ReadValue<Vector2>();
