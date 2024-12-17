@@ -1524,7 +1524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681489261}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: -0.00000001533286, z: 0.00000000780787, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: 0.000000015332867, z: -0.000000007807873, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8171,7 +8171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239307038}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45377764, y: -0.00000001533286, z: 0.00000000780787, w: 0.89111495}
+  m_LocalRotation: {x: 0.45377764, y: 0.000000015332867, z: -0.000000007807873, w: 0.89111495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17967,12 +17967,15 @@ GameObject:
   - component: {fileID: 4281741980595324857}
   - component: {fileID: 3847520372604911711}
   - component: {fileID: 3917059405512989431}
+  - component: {fileID: 8464001470254640716}
   - component: {fileID: 8464001470254640715}
   - component: {fileID: 8364204887163207651}
   - component: {fileID: 132923919072357193}
   - component: {fileID: 8464001470254640713}
+  - component: {fileID: 8464001470254640718}
   - component: {fileID: 8464001470254640714}
   - component: {fileID: 4876605651822462870}
+  - component: {fileID: 8464001470254640717}
   m_Layer: 0
   m_Name: CharacterLogic
   m_TagString: Player
@@ -24631,10 +24634,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealth: 100
+  _maxStamina: 100
+  _currentStamina: 100
   _armorAmount: 10
-  _totalDamage: 0
+  _damageBlocked: 0
+  _totalDamageBonus: 0
   _baseMovementSpeed: 15
-  _totalMovementSpeedIncrease: 0
+  _totalMovementSpeedBonus: 0
   _meleeAttacksDamage:
   - 12
   - 18
@@ -24936,6 +24942,60 @@ MonoBehaviour:
   _characterShield: {fileID: 2110283001}
   _characterBow: {fileID: 1949721602}
   _characterArrow: {fileID: 1629235638}
+--- !u!114 &8464001470254640716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477789106218664846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 6ee7ae2564d92b1408329913916fcb01, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 1400907637}
+--- !u!114 &8464001470254640717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477789106218664846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe4f514301ae8c4fa66ddbd3c0b0f23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8464001470254640718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477789106218664846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6258ab57fc157744185f03200766617c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8484029821037465582
 Transform:
   m_ObjectHideFlags: 0

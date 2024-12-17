@@ -9,13 +9,19 @@ public class CharacterStats : MonoBehaviour
     [SerializeField]
     float _currentHealth;
     [SerializeField]
+    float _maxStamina;
+    [SerializeField]
+    float _currentStamina;
+    [SerializeField]
     float _armorAmount;
     [SerializeField]
-    float _totalDamage;
+    float _damageBlocked;
+    [SerializeField]
+    float _totalDamageBonus;
     [SerializeField]
     float _baseMovementSpeed;
     [SerializeField]
-    float _totalMovementSpeedIncrease;
+    float _totalMovementSpeedBonus;
 
     [Header("Character attacks related stats")]
     [SerializeField]
@@ -55,10 +61,13 @@ public class CharacterStats : MonoBehaviour
     //Global character stats
     public float MaxHealth { get { return _maxHealth; } }
     public float CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
+    public float MaxStamina { get { return _maxStamina; } }
+    public float CurrentStamina { get { return _currentStamina; } set { _currentStamina = value; } }
     public float ArmorAmount { get { return _armorAmount; } set { _armorAmount = value; } }
-    public float TotalDamage { get { return _totalDamage; } set { _totalDamage = value; } }
+    public float DamageBlocked { get { return _damageBlocked; } set { _damageBlocked = value; } }
+    public float TotalDamageBonus { get { return _totalDamageBonus; } set { _totalDamageBonus = value; } }
     public float BaseMovementSpeed { get { return _baseMovementSpeed; } set { _baseMovementSpeed = value; } }
-    public float TotalMovementSpeedIncrease { get { return _totalMovementSpeedIncrease; } set { _totalMovementSpeedIncrease = value; } }
+    public float TotalMovementSpeedBonus { get { return _totalMovementSpeedBonus; } set { _totalMovementSpeedBonus = value; } }
 
 
     //Character attacks related stats

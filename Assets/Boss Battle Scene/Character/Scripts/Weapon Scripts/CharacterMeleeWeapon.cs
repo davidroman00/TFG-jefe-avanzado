@@ -12,7 +12,7 @@ public class CharacterMeleeWeapon : MonoBehaviour
     {
         if (collider.GetComponent<BossHealthManager>() && enabled)
         {
-            collider.GetComponent<BossHealthManager>().BossRecieveDamage(_characterStats.MeleeAttacksDamage[0] * (1 + _characterStats.TotalDamage / 100));
+            collider.GetComponent<BossHealthManager>().BossRecieveDamage(_characterStats.MeleeAttacksDamage[0] * (1 + _characterStats.TotalDamageBonus / 100));
             enabled = false;
             //Disabling this script is necessary in order to deal damage only once per attack.
             //This is enabled through animation events, check the script 'CharacterAnimationEvents.cs' and the relative animation to learn more.

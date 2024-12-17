@@ -8,11 +8,12 @@ public class PlayerInputController : MonoBehaviour
     GameObject _pauseMenu;
     [SerializeField]
     Transform _camera;
-    public CharacterControlls CharacterControlls;
+    CharacterControlls _characterControlls;
+    public CharacterControlls CharacterControlls { get { return _characterControlls; } set { _characterControlls = value; } }
     InputAction _move;
     InputAction _pause;
     InputAction _interact;
-    InputAction _jump;
+    InputAction _dodge;
     CharacterController _characterController;
     Vector3 _moveDirection;
     Vector3 _initialDirection;
@@ -26,6 +27,7 @@ public class PlayerInputController : MonoBehaviour
     //GameObject[] _itemSlots;
     public List<Item> Inventory = new();
     Collider _interactableObject;
+
     float _gravity = -9.81f;
     [SerializeField]
     float _gravityStrength;
@@ -53,22 +55,23 @@ public class PlayerInputController : MonoBehaviour
         _move = CharacterControlls.Player.Move;
         _pause = CharacterControlls.Player.Pause;
         _interact = CharacterControlls.Player.Interact;
-        _jump = CharacterControlls.Player.Jump;
+        _dodge = CharacterControlls.Player.Dodge;
 
         _move.Enable();
         _pause.Enable();
         _interact.Enable();
-        _jump.Enable();
+        _dodge.Enable();
 
         _pause.performed += Pause;
         _interact.performed += Interact;
-        _jump.performed += Jump;
+        _dodge.performed += Dodge;
     }
     void OnDisable()
     {
         _move.Disable();
         _pause.Disable();
         _interact.Disable();
+        _dodge.Disable();
     }
 
     void Update()
@@ -105,7 +108,7 @@ public class PlayerInputController : MonoBehaviour
             }
         }
     }
-    private void Jump(InputAction.CallbackContext context)
+    private void Dodge(InputAction.CallbackContext context)
     {
         _yVelocity = _jumpSpeed;
     }

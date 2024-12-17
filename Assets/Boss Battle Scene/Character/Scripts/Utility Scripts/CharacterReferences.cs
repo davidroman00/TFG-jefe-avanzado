@@ -31,6 +31,7 @@ public class CharacterReferences : MonoBehaviour
     GameObject _characterArrow;
 
     //Other private references
+    CharacterControlls _characterControlls;
     Vector3 _dashMoveDirection;
     bool _isActualDashActive;
     bool _isAttacking;
@@ -55,6 +56,7 @@ public class CharacterReferences : MonoBehaviour
     public GameObject CharacteArrow { get { return _characterArrow; } }
 
     //Other private references
+    public CharacterControlls CharacterControlls { get { return _characterControlls; } set { _characterControlls = value; } }
     public Vector3 DashMoveDirection { get { return _dashMoveDirection; } set { _dashMoveDirection = value; } }
     public bool IsActualDashActive { get { return _isActualDashActive; } set { _isActualDashActive = value; } }
     public bool IsAttacking { get { return _isAttacking; } set { _isAttacking = value; } }
