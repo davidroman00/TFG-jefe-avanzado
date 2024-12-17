@@ -13,6 +13,8 @@ public class CharacterReferences : MonoBehaviour
     GameObject _deathTextUI;
     [SerializeField]
     CharacterUIHealthManager _characterHealthUI;
+    [SerializeField]
+    CharacterUIStaminaManager _characterStaminaUI;
 
     [Header("Character audio references")]
     [SerializeField]
@@ -32,10 +34,11 @@ public class CharacterReferences : MonoBehaviour
 
     //Other private references
     CharacterControlls _characterControlls;
-    Vector3 _dashMoveDirection;
-    bool _isActualDashActive;
+    Vector3 _dodgeMoveDirection;
+    bool _isActualDodgeActive;
+    bool _hasReachedMidDodge;
     bool _isAttacking;
-    bool _isdashing;
+    bool _isDodging;
     bool _isHealing;
     bool _isSweepBreak;
     int _currentWeapon;
@@ -46,6 +49,7 @@ public class CharacterReferences : MonoBehaviour
     //Character UI related stuff
     public GameObject DeathTextUI { get { return _deathTextUI; } }
     public CharacterUIHealthManager CharacterUIHealthManager { get { return _characterHealthUI; } }
+    public CharacterUIStaminaManager CharacterUIStamina { get { return _characterStaminaUI; } }
 
     //Character audio references
     public AudioSource BattleThemeSource { get { return _battleThemeSource; } }
@@ -59,10 +63,11 @@ public class CharacterReferences : MonoBehaviour
 
     //Other private references
     public CharacterControlls CharacterControlls { get { return _characterControlls; } set { _characterControlls = value; } }
-    public Vector3 DashMoveDirection { get { return _dashMoveDirection; } set { _dashMoveDirection = value; } }
-    public bool IsActualDashActive { get { return _isActualDashActive; } set { _isActualDashActive = value; } }
+    public Vector3 DodgeMoveDirection { get { return _dodgeMoveDirection; } set { _dodgeMoveDirection = value; } }
+    public bool IsActualDodgeActive { get { return _isActualDodgeActive; } set { _isActualDodgeActive = value; } }
+    public bool HasReachedMidDodge { get { return _hasReachedMidDodge; } set { _hasReachedMidDodge = value; } }
     public bool IsAttacking { get { return _isAttacking; } set { _isAttacking = value; } }
-    public bool IsDashing { get { return _isdashing; } set { _isdashing = value; } }
+    public bool IsDodging { get { return _isDodging; } set { _isDodging = value; } }
     public bool IsHealing { get { return _isHealing; } set { _isHealing = value; } }
     public bool IsSweepBreak { get { return _isSweepBreak; } set { _isSweepBreak = value; } }
     public int CurrentWeapon { get { return _currentWeapon; } set { _currentWeapon = value; } }

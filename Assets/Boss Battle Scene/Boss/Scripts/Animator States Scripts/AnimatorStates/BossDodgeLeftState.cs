@@ -22,10 +22,10 @@ public class BossDodgeLeftState : StateMachineBehaviour
         {
             _dodgeSpeedMultiplier -= _bossStats.DodgeAccelerationSpeed * Time.deltaTime;
         }
-        
+
         if (_bossReferences.IsActualDodgeActive && !_bossReferences.IsOutsideArena)
         {
-            animator.transform.Translate((_bossStats.DodgeMovementSpeed * 1 + _dodgeSpeedMultiplier / 100) * Time.deltaTime * Vector3.left);
+            animator.transform.Translate((_bossStats.DodgeMovementSpeed + _dodgeSpeedMultiplier) * Time.deltaTime * Vector3.left);
         }
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

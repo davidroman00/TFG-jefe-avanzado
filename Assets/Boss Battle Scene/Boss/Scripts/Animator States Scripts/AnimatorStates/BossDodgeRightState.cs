@@ -25,7 +25,7 @@ public class BossDodgeRightState : StateMachineBehaviour
 
         if (_bossReferences.IsActualDodgeActive && !_bossReferences.IsOutsideArena)
         {
-            animator.transform.Translate((_bossStats.DodgeMovementSpeed * 1 + _dodgeSpeedMultiplier / 100) * Time.deltaTime * Vector3.right);
+            animator.transform.Translate((_bossStats.DodgeMovementSpeed + _dodgeSpeedMultiplier) * Time.deltaTime * Vector3.right);
         }
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

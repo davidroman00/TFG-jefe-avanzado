@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class CharacterStaminaManager : MonoBehaviour
@@ -13,13 +12,22 @@ public class CharacterStaminaManager : MonoBehaviour
     {
         _characterStats = GetComponent<CharacterStats>();
         _characterReferences = GetComponent<CharacterReferences>();
-        // _characterReferences.CharacterUIStaminaManager.SetMaxHealth(_characterStats.MaxStamina);
-        // _characterReferences.CharacterUIStaminaManager.SetCurrentHealth(_characterStats.CurrentStamina);
-    }    
+        _characterReferences.CharacterUIStamina.SetMaxStamina(_characterStats.MaxStamina);
+        _characterReferences.CharacterUIStamina.SetCurrentStamina(_characterStats.CurrentStamina);
+    }
+    void Update()
+    {
+        HandleStaminaRegeneration();
+    }
+    void HandleStaminaRegeneration()
+    {
+        _characterStats.CurrentStamina += _characterStats.StaminaRegeneration * Time.deltaTime;
+        _characterReferences.CharacterUIStamina.SetCurrentStamina(_characterStats.CurrentStamina);
+    }
     public void ReduceStamina(float value)
     //This is a public method since it needs to be accessed from other objects
     {
         _characterStats.CurrentStamina -= value;
-        // _characterReferences.CharacterUIStaminaManager.SetCurrentStamina(_characterStats.CurrentStamina);
+        _characterReferences.CharacterUIStamina.SetCurrentStamina(_characterStats.CurrentStamina);
     }
 }

@@ -94,7 +94,7 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
 
     void CharacterMoveChecker()
     {
-        if (_move.ReadValue<Vector2>().magnitude > .05f && !_characterReferences.IsAttacking && !_characterReferences.IsDashing)
+        if (_move.ReadValue<Vector2>().magnitude > .05f && !_characterReferences.IsAttacking && !_characterReferences.IsDodging)
         {
             HandleCharacterMovementAndRotation();
             _animator.SetBool("isWalking", true);
@@ -110,11 +110,17 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     }
     void Heal(InputAction.CallbackContext context)
     {
-
+        if (!_characterCooldownManager.IsHealOnCooldown() && _characterStats.HealCharges > 0)
+        {
+            _animator.SetTrigger("heal");
+        }
     }
     void Dodge(InputAction.CallbackContext context)
     {
-
+        if (_characterStats.CurrentStamina > _characterStats.DodgeStaminaConsumption)
+        {
+            _animator.SetTrigger("dodge");
+        }
     }
     void Fire1(InputAction.CallbackContext context)
     {
@@ -145,7 +151,6 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
                 _characterReferences.CurrentWeapon--;
             }
         }
-        Debug.Log(_weaponSwap.ReadValue<Vector2>());
     }
     void Pause(InputAction.CallbackContext context)
     {
@@ -164,6 +169,6 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
         _moveDirection = Quaternion.Euler(0, _targetAngle, 0) * Vector3.forward;
         _characterController.Move(_characterStats.BaseMovementSpeed * Time.deltaTime * _moveDirection);
 
-        _characterReferences.DashMoveDirection = _moveDirection;
+        _characterReferences.DodgeMoveDirection = _moveDirection;
     }
 }

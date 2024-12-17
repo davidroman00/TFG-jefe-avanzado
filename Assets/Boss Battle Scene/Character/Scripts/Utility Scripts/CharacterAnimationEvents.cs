@@ -20,10 +20,10 @@ public class CharacterAnimationEvents : MonoBehaviour
     }
     public void ActualDashStart()
     {
-        _characterReferences.IsActualDashActive = true;
+        _characterReferences.IsActualDodgeActive = true;
     }
     public void ActualDashEnd()
     {
-        _characterReferences.IsActualDashActive = false;
+        _characterReferences.IsActualDodgeActive = false;
     }
 }

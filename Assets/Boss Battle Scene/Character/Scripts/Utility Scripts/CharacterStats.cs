@@ -13,6 +13,8 @@ public class CharacterStats : MonoBehaviour
     [SerializeField]
     float _currentStamina;
     [SerializeField]
+    float _staminaRegeneration;
+    [SerializeField]
     float _armorAmount;
     [SerializeField]
     float _damageBlocked;
@@ -33,9 +35,11 @@ public class CharacterStats : MonoBehaviour
 
     [Header("Character dash related stats")]
     [SerializeField]
-    float _dashMovementSpeed;
+    float _dodgeMovementSpeed;
     [SerializeField]
-    float _dashAccelerationSpeed;
+    float _dodgeAccelerationSpeed;
+    [SerializeField]
+    float _dodgeStaminaConsumption;
 
     [Header("Character defensive moves stats")]
     [SerializeField]
@@ -45,7 +49,7 @@ public class CharacterStats : MonoBehaviour
     [SerializeField]
     float _healAmount;
     [SerializeField]
-    float _maxHealCharges;
+    float _healCharges;
     [SerializeField]
     float _healCooldown;
 
@@ -63,6 +67,7 @@ public class CharacterStats : MonoBehaviour
     public float CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
     public float MaxStamina { get { return _maxStamina; } }
     public float CurrentStamina { get { return _currentStamina; } set { _currentStamina = value; } }
+    public float StaminaRegeneration { get { return _staminaRegeneration; } }
     public float ArmorAmount { get { return _armorAmount; } set { _armorAmount = value; } }
     public float DamageBlocked { get { return _damageBlocked; } set { _damageBlocked = value; } }
     public float TotalDamageBonus { get { return _totalDamageBonus; } set { _totalDamageBonus = value; } }
@@ -76,14 +81,15 @@ public class CharacterStats : MonoBehaviour
     public float BowMaxChargeDamageMultiplier { get { return _bowMaxChargeDamageMultiplier; } }
 
     //Character dash related stats
-    public float DashMovementSpeed { get { return _dashMovementSpeed; } }
-    public float DashAccelerationSpeed { get { return _dashAccelerationSpeed; } }
+    public float DodgeMovementSpeed { get { return _dodgeMovementSpeed; } }
+    public float DodgeAccelerationSpeed { get { return _dodgeAccelerationSpeed; } }
+    public float DodgeStaminaConsumption { get { return _dodgeStaminaConsumption; } }
 
     //Character defensive moves stats
     public float ParryDamageReduction { get { return _parryDamageReduction; } }
     public float ParryBlockingTime { get { return _parryBlockingTime; } }
     public float HealAmount { get { return _healAmount; } }
-    public float MaxHealCharges { get { return _maxHealCharges; } }
+    public float HealCharges { get { return _healCharges; } set { _healCharges = value; } }
     public float HealCooldown { get { return _healCooldown; } }
 
     //Character stagger related stats
