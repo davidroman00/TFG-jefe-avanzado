@@ -40,8 +40,9 @@ public class CharacterReferences : MonoBehaviour
     bool _isAttacking;
     bool _isDodging;
     bool _isHealing;
+    bool _isStaggered;
+    bool _isSwapping;
     bool _isSweepBreak;
-    int _currentWeapon;
 
     //Character camera
     public Transform Camera { get { return _camera; } }
@@ -69,6 +70,7 @@ public class CharacterReferences : MonoBehaviour
     public bool IsAttacking { get { return _isAttacking; } set { _isAttacking = value; } }
     public bool IsDodging { get { return _isDodging; } set { _isDodging = value; } }
     public bool IsHealing { get { return _isHealing; } set { _isHealing = value; } }
+    public bool IsStaggered { get { return _isStaggered; } set { _isStaggered = value; } }
+    public bool IsSwapping { get { return _isSwapping; } set { _isSwapping = value; } }
     public bool IsSweepBreak { get { return _isSweepBreak; } set { _isSweepBreak = value; } }
-    public int CurrentWeapon { get { return _currentWeapon; } set { _currentWeapon = value; } }
 }

@@ -47,7 +47,15 @@ public class CharacterHealthManager : MonoBehaviour
         }
         if (value > 0 && value - _characterStats.ArmorAmount > 1)
         {
-            _characterStats.CurrentHealth -= value - _characterStats.ArmorAmount;
+            _characterStats.CurrentHealth -= (value - _characterStats.ArmorAmount) * (1 - _characterStats.DamageBlocked / 100);
+            if ((value - _characterStats.ArmorAmount) * (1 - _characterStats.DamageBlocked / 100) > _characterStats.StaggerProcDamageThreshold && !GetComponent<CharacterCooldownManager>().IsStaggerOnCooldown())
+            {
+                GetComponent<Animator>().SetTrigger("stagger");
+            }
+            if ((value - _characterStats.ArmorAmount) * (1 - _characterStats.DamageBlocked / 100) == 0)
+            {
+                //Play parry sound
+            }
         }
         _characterReferences.CharacterUIHealthManager.SetCurrentHealth(_characterStats.CurrentHealth);
     }

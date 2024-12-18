@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class ShieldAnimationsManager : MonoBehaviour
 {
-    Animation _animationReference;
+    Animation _animation;
     void Awake()
     {
-        _animationReference = GetComponent<Animation>();
+        _animation = GetComponent<Animation>();
     }
     public void SwitchToParryStance()
     {
-        _animationReference.Play("shield_switch_to_parry");
+        _animation.Play("shield_switch_to_parry");
     }
     public void SwitchToIdleStance()
     {
-        _animationReference.Play("shield_switch_to_idle");
+        _animation.Play("shield_switch_to_idle");
 
     }
 }

@@ -69,6 +69,7 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
         _dodge.performed += Dodge;
         _fire1.performed += Fire1;
         _fire2.performed += Fire2;
+        _fire2.canceled += Fire2Relese;
         _weapon1.performed += Weapon1;
         _weapon2.performed += Weapon2;
         _pause.performed += Pause;
@@ -89,19 +90,22 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     void Update()
     {
         CharacterMoveChecker();
-        WeaponSwap();
+        WeaponSwapChecker();
     }
 
     void CharacterMoveChecker()
     {
-        if (_move.ReadValue<Vector2>().magnitude > .05f && !_characterReferences.IsAttacking && !_characterReferences.IsDodging)
+        if (!_animator.GetBool("isFire2"))
         {
-            HandleCharacterMovementAndRotation();
-            _animator.SetBool("isWalking", true);
-        }
-        else
-        {
-            _animator.SetBool("isWalking", false);
+            if (_move.ReadValue<Vector2>().magnitude > .05f && !_characterReferences.IsAttacking && !_characterReferences.IsDodging && !_characterReferences.IsHealing && !_characterReferences.IsStaggered && !_characterReferences.IsSwapping)
+            {
+                HandleCharacterMovementAndRotation();
+                _animator.SetBool("isWalking", true);
+            }
+            else
+            {
+                _animator.SetBool("isWalking", false);
+            }
         }
     }
     void Interact(InputAction.CallbackContext context)
@@ -124,32 +128,47 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     }
     void Fire1(InputAction.CallbackContext context)
     {
-
+        _animator.SetTrigger("fire1");
     }
     void Fire2(InputAction.CallbackContext context)
     {
-
+        _animator.SetBool("isFire2", true);
+        if (_animator.GetInteger("currentWeapon") == 0)
+        {
+            GetComponentInChildren<ShieldAnimationsManager>().SwitchToParryStance();
+        }
+    }
+    void Fire2Relese(InputAction.CallbackContext context)
+    {
+        _animator.SetBool("isFire2", false);
+        if (_animator.GetInteger("currentWeapon") == 0)
+        {
+            GetComponentInChildren<ShieldAnimationsManager>().SwitchToIdleStance();
+        }
     }
     void Weapon1(InputAction.CallbackContext context)
     {
-        _characterReferences.CurrentWeapon = 0;
+        _animator.SetInteger("currentWeapon", 0);
+        _animator.SetTrigger("swap");
     }
     void Weapon2(InputAction.CallbackContext context)
     {
-        _characterReferences.CurrentWeapon = 1;
+        _animator.SetInteger("currentWeapon", 1);
+        _animator.SetTrigger("swap");
     }
-    void WeaponSwap()
+    void WeaponSwapChecker()
     {
         if (_weaponSwap.ReadValue<Vector2>().normalized.y > 0 || _weaponSwap.ReadValue<Vector2>().normalized.y < 0)
         {
-            if (_characterReferences.CurrentWeapon == 0)
+            if (_animator.GetInteger("currentWeapon") == 0)
             {
-                _characterReferences.CurrentWeapon++;
+                _animator.SetInteger("currentWeapon", 1);
             }
             else
             {
-                _characterReferences.CurrentWeapon--;
+                _animator.SetInteger("currentWeapon", 0);
             }
+            _animator.SetTrigger("swap");
         }
     }
     void Pause(InputAction.CallbackContext context)
