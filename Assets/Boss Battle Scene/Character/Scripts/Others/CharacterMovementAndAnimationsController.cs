@@ -31,6 +31,8 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     InputAction _weaponSwap;
     InputAction _pause;
 
+    int _meleeAttacksCounter;
+
     void Awake()
     {
         _characterStats = GetComponent<CharacterStats>();
@@ -130,6 +132,28 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     void Fire1(InputAction.CallbackContext context)
     {
         _animator.SetTrigger("fire1");
+        StopAllCoroutines();
+        if (_animator.GetInteger("currentWeapon") == 0 && !_characterReferences.IsAttacking && !_characterReferences.IsAttackStoredAndNotPerformed)
+        {
+            if (_meleeAttacksCounter < 3)
+            {
+                _meleeAttacksCounter++;
+                _animator.SetInteger("meleeAttacksCount", _meleeAttacksCounter);
+            }
+            else
+            {
+                _meleeAttacksCounter = 0;
+                _meleeAttacksCounter++;
+                _animator.SetInteger("meleeAttacksCount", _meleeAttacksCounter);
+            }
+            StartCoroutine(DelayMeleeAttackReset());
+            _characterReferences.IsAttackStoredAndNotPerformed = true;
+        }
+    }
+    IEnumerator DelayMeleeAttackReset()
+    {
+        yield return new WaitForSeconds(3.5f);
+        _meleeAttacksCounter = 0;
     }
     void Fire2(InputAction.CallbackContext context)
     {

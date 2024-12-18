@@ -38,6 +38,7 @@ public class CharacterReferences : MonoBehaviour
     bool _isActualDodgeActive;
     bool _hasReachedMidDodge;
     bool _isAttacking;
+    bool _isAttackStoredAndNotPerformed;
     bool _isDodging;
     bool _isHealing;
     bool _isStaggered;
@@ -68,6 +69,7 @@ public class CharacterReferences : MonoBehaviour
     public bool IsActualDodgeActive { get { return _isActualDodgeActive; } set { _isActualDodgeActive = value; } }
     public bool HasReachedMidDodge { get { return _hasReachedMidDodge; } set { _hasReachedMidDodge = value; } }
     public bool IsAttacking { get { return _isAttacking; } set { _isAttacking = value; } }
+    public bool IsAttackStoredAndNotPerformed { get { return _isAttackStoredAndNotPerformed; } set { _isAttackStoredAndNotPerformed = value; } }
     public bool IsDodging { get { return _isDodging; } set { _isDodging = value; } }
     public bool IsHealing { get { return _isHealing; } set { _isHealing = value; } }
     public bool IsStaggered { get { return _isStaggered; } set { _isStaggered = value; } }
