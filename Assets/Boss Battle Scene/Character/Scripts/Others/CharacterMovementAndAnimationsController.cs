@@ -126,6 +126,8 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     {
         if (_characterStats.CurrentStamina > _characterStats.DodgeStaminaConsumption)
         {
+            _characterReferences.DodgeMoveDirection = MoveDirection();
+
             _animator.SetTrigger("dodge");
         }
     }
@@ -135,7 +137,7 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
         StopAllCoroutines();
         if (_animator.GetInteger("currentWeapon") == 0 && !_characterReferences.IsAttacking && !_characterReferences.IsAttackStoredAndNotPerformed)
         {
-            if (_meleeAttacksCounter < 3)
+            if (_meleeAttacksCounter < _characterStats.MeleeAttacksDamage.Length)
             {
                 _meleeAttacksCounter++;
                 _animator.SetInteger("meleeAttacksCount", _meleeAttacksCounter);
@@ -213,6 +215,9 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
 
     void HandleCharacterMovementAndRotation()
     {
+        _characterController.Move(_characterStats.BaseMovementSpeed * Time.deltaTime * (1 + _characterStats.TotalMovementSpeedBonus / 100) * MoveDirection());
+    }
+    Vector3 MoveDirection(){
         Vector2 inputVector = _move.ReadValue<Vector2>();
         _initialDirection = new(inputVector.x, 0f, inputVector.y);
 
@@ -221,8 +226,7 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, _appliedAngle, 0);
 
         _moveDirection = Quaternion.Euler(0, _targetAngle, 0) * Vector3.forward;
-        _characterController.Move(_characterStats.BaseMovementSpeed * Time.deltaTime * _moveDirection);
-
-        _characterReferences.DodgeMoveDirection = _moveDirection;
+        
+        return _moveDirection;
     }
 }

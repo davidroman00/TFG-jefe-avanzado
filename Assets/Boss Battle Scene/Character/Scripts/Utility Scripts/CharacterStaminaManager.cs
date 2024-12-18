@@ -21,8 +21,11 @@ public class CharacterStaminaManager : MonoBehaviour
     }
     void HandleStaminaRegeneration()
     {
-        _characterStats.CurrentStamina += _characterStats.StaminaRegeneration * Time.deltaTime;
-        _characterReferences.CharacterUIStamina.SetCurrentStamina(_characterStats.CurrentStamina);
+        if (_characterStats.CurrentStamina < _characterStats.MaxStamina)
+        {
+            _characterStats.CurrentStamina += _characterStats.StaminaRegeneration * Time.deltaTime;
+            _characterReferences.CharacterUIStamina.SetCurrentStamina(_characterStats.CurrentStamina);
+        }
     }
     public void ReduceStamina(float value)
     //This is a public method since it needs to be accessed from other objects

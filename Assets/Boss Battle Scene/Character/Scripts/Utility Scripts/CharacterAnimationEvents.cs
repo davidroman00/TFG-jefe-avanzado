@@ -19,6 +19,7 @@ public class CharacterAnimationEvents : MonoBehaviour
     public void OnAttackMid()
     {
         _characterMeleeWeapon.enabled = false;
+        GetComponent<CharacterStaminaManager>().ReduceStamina(_characterStats.MeleeAttacksStaminaConsumption[GetComponent<Animator>().GetInteger("meleeAttacksCount") -1]);
     }
     public void ActualDodgeStart()
     {
@@ -35,6 +36,6 @@ public class CharacterAnimationEvents : MonoBehaviour
     public void ActualHeal()
     {
         _characterStats.HealCharges--;
-        GetComponent<CharacterHealthManager>().CharacterModifyCurrentHealth(_characterStats.HealAmount);
+        GetComponent<CharacterHealthManager>().CharacterModifyCurrentHealth(-_characterStats.HealAmount);
     }
 }

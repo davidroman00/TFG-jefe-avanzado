@@ -29,6 +29,8 @@ public class CharacterStats : MonoBehaviour
     [SerializeField]
     float[] _meleeAttacksDamage;
     [SerializeField]
+    float[] _meleeAttacksStaminaConsumprion;
+    [SerializeField]
     float _bowBaseDamage;
     [SerializeField]
     float _bowMaxChargeDamageMultiplier;
@@ -46,6 +48,8 @@ public class CharacterStats : MonoBehaviour
     float _parryDamageReduction;
     [SerializeField]
     float _parryBlockingTime;
+    [SerializeField]
+    float _parryStaminaConsumptionOnHit;
     [SerializeField]
     float _healAmount;
     [SerializeField]
@@ -77,6 +81,7 @@ public class CharacterStats : MonoBehaviour
 
     //Character attacks related stats
     public float[] MeleeAttacksDamage { get { return _meleeAttacksDamage; } }
+    public float[] MeleeAttacksStaminaConsumption { get { return _meleeAttacksStaminaConsumprion; } }
     public float BowBaseDamage { get { return _bowBaseDamage; } }
     public float BowMaxChargeDamageMultiplier { get { return _bowMaxChargeDamageMultiplier; } }
 
@@ -88,6 +93,7 @@ public class CharacterStats : MonoBehaviour
     //Character defensive moves stats
     public float ParryDamageReduction { get { return _parryDamageReduction; } }
     public float ParryBlockingTime { get { return _parryBlockingTime; } }
+    public float ParryStaminaConsumptionOnHit { get { return _parryStaminaConsumptionOnHit; } }
     public float HealAmount { get { return _healAmount; } }
     public float HealCharges { get { return _healCharges; } set { _healCharges = value; } }
     public float HealCooldown { get { return _healCooldown; } }

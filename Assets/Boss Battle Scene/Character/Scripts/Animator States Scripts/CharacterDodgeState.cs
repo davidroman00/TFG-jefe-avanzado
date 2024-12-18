@@ -22,7 +22,7 @@ public class CharacterDodgeState : StateMachineBehaviour
         {
             if (!_characterReferences.HasReachedMidDodge)
             {
-                _dodgeSpeedMultiplier += _characterStats.DodgeAccelerationSpeed * Time.deltaTime;
+                _dodgeSpeedMultiplier += _characterStats.DodgeAccelerationSpeed * 2 * Time.deltaTime;
             }
             else
             {
