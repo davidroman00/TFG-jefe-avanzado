@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class BossUltimateState : StateMachineBehaviour
 {
+    EntityAudioManager _entityAudioManager;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<BossAudioManager>().PlayBossSound(animator.GetComponent<BossReferences>().BossUltimateChargeAudio, 1, 1f, .5f, false);
+        _entityAudioManager = animator.GetComponent<EntityAudioManager>();
+        _entityAudioManager.PlaySound(animator.GetComponent<BossReferences>().BossUltimateChargeAudio, 1, 1f, .5f, false);
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -18,6 +20,6 @@ public class BossUltimateState : StateMachineBehaviour
     {
         animator.GetComponent<BossCooldownManager>().LastUltimate = Time.time;
         animator.ResetTrigger("ultimate");
-        animator.GetComponent<BossAudioManager>().StopBossSound();
+        _entityAudioManager.StopSound();
     }
 }

@@ -10,7 +10,7 @@ public class BossDodgeLeftState : StateMachineBehaviour
     {
         _bossStats = animator.GetComponent<BossStats>();
         _bossReferences = animator.GetComponent<BossReferences>();
-        animator.GetComponent<BossAudioManager>().PlayBossSound(_bossReferences.BossDodgeAudio, .7f, 1f, .65f, false);
+        animator.GetComponent<EntityAudioManager>().PlaySound(_bossReferences.BossDodgeAudio, .7f, 1f, .65f, false);
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

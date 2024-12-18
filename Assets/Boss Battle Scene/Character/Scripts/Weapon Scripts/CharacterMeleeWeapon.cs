@@ -7,7 +7,6 @@ public class CharacterMeleeWeapon : MonoBehaviour
     {
         _characterStats = GetComponentInParent<CharacterStats>();
     }
-
     void OnTriggerEnter(Collider collider)
     {
         if (collider.GetComponent<BossHealthManager>() && enabled)

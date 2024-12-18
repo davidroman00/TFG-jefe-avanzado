@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -136,6 +137,7 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
         if (_animator.GetInteger("currentWeapon") == 0)
         {
             GetComponentInChildren<ShieldAnimationsManager>().SwitchToParryStance();
+            StartCoroutine(DelayParryStart());
         }
     }
     void Fire2Relese(InputAction.CallbackContext context)
@@ -144,7 +146,16 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
         if (_animator.GetInteger("currentWeapon") == 0)
         {
             GetComponentInChildren<ShieldAnimationsManager>().SwitchToIdleStance();
+            StopAllCoroutines();
+            _characterStats.DamageBlocked = 0;
         }
+    }
+    IEnumerator DelayParryStart()
+    {
+        yield return new WaitForSeconds(.2f);
+        _characterStats.DamageBlocked = 100;
+        yield return new WaitForSeconds(_characterStats.ParryBlockingTime);
+        _characterStats.DamageBlocked = _characterStats.ParryDamageReduction;
     }
     void Weapon1(InputAction.CallbackContext context)
     {

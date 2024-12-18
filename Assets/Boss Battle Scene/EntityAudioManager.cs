@@ -1,14 +1,14 @@
 
 using UnityEngine;
 
-public class BossAudioManager : MonoBehaviour
+public class EntityAudioManager : MonoBehaviour
 {
     AudioSource _audioSource;
     void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
     }
-    public void PlayBossSound(AudioClip audioClip, float volume, float pitch, float spatialBlend, bool loop)
+    public void PlaySound(AudioClip audioClip, float volume, float pitch, float spatialBlend, bool loop)
     {
         _audioSource.clip = audioClip;
         _audioSource.volume = volume * AudioSettingsMenuButtonManager.SFXVolumeSetting;
@@ -17,7 +17,7 @@ public class BossAudioManager : MonoBehaviour
         _audioSource.loop = loop;
         _audioSource.Play();
     }
-    public void StopBossSound()
+    public void StopSound()
     {
         _audioSource.Stop();
     }
