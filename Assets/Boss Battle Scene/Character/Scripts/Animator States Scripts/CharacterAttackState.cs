@@ -1,15 +1,17 @@
 using UnityEngine;
 
-public class CharacterAttackStateManager : StateMachineBehaviour
+public class CharacterAttackState : StateMachineBehaviour
 {   
+    CharacterReferences _characterReferences;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<CharacterReferences>().IsAttacking = true; //This line here is necessary to avoid the character moving while the animation lasts.
+        _characterReferences = animator.GetComponent<CharacterReferences>(); 
+        _characterReferences.IsAttacking = true;
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.ResetTrigger("attack");
-        animator.GetComponent<CharacterReferences>().IsAttacking = false;
+        _characterReferences.IsAttacking = false;
         animator.GetComponentInChildren<CharacterMeleeWeapon>().enabled = false;
     }
 }
