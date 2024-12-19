@@ -27,6 +27,7 @@ public class CharacterHealthManager : MonoBehaviour
     {
         _characterReferences.DeathTextUI.SetActive(true);
         _characterReferences.BattleThemeSource.Stop();
+        _characterReferences.CharacterControlls.Player.Disable();
         yield return new WaitForSeconds(10);
         SceneManager.LoadScene(1);
     }

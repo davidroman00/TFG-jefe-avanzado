@@ -15,6 +15,10 @@ public class CharacterReferences : MonoBehaviour
     CharacterUIHealthManager _characterHealthUI;
     [SerializeField]
     CharacterUIStaminaManager _characterStaminaUI;
+    [SerializeField]
+    GameObject _pauseMenu;
+    [SerializeField]
+    GameObject _optionsMenu;
 
     [Header("Character audio references")]
     [SerializeField]
@@ -52,6 +56,8 @@ public class CharacterReferences : MonoBehaviour
     public GameObject DeathTextUI { get { return _deathTextUI; } }
     public CharacterUIHealthManager CharacterUIHealthManager { get { return _characterHealthUI; } }
     public CharacterUIStaminaManager CharacterUIStamina { get { return _characterStaminaUI; } }
+    public GameObject PauseMenu { get { return _pauseMenu; } }
+    public GameObject OptionsMenu { get { return _optionsMenu; } }
 
     //Character audio references
     public AudioSource BattleThemeSource { get { return _battleThemeSource; } }

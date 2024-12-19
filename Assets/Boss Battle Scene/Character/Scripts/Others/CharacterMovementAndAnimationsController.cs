@@ -9,6 +9,7 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     CharacterReferences _characterReferences;
     CharacterCooldownManager _characterCooldownManager;
     CharacterController _characterController;
+    MouseCursorManager _mouseCursorManager;
     Animator _animator;
 
     //Necessary variables to handle movement, rotation and animations.
@@ -39,9 +40,11 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
         _characterReferences = GetComponent<CharacterReferences>();
         _characterCooldownManager = GetComponent<CharacterCooldownManager>();
         _characterController = GetComponent<CharacterController>();
+        _mouseCursorManager = GetComponent<MouseCursorManager>();
         _animator = GetComponent<Animator>();
 
         _characterReferences.CharacterControlls = new CharacterControlls();
+        _mouseCursorManager.HideMouse();
     }
     void OnEnable()
     {
@@ -210,7 +213,12 @@ public class CharacterMovementAndAnimationsController : MonoBehaviour
     }
     void Pause(InputAction.CallbackContext context)
     {
-
+        _characterReferences.PauseMenu.SetActive(true);
+        _characterReferences.CharacterControlls.Player.Disable();
+        _characterReferences.CharacterControlls.UI.Enable();
+        
+        Time.timeScale = 0f;
+        _mouseCursorManager.ShowMouse();
     }
 
     void HandleCharacterMovementAndRotation()
